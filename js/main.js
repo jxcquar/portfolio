@@ -60,7 +60,7 @@
       const eased = p * p * (3 - 2 * p); // smoothstep
 
       // hero image sharpens and fades away; moss scene parallaxes in
-      heroImg.style.filter = `blur(${6 * (1 - eased)}px)`;
+      heroImg.style.filter = `blur(${9 * (1 - eased)}px) brightness(${0.94 + 0.06 * eased})`;
       bgHero.style.opacity = String(1 - eased);
       bgMoss.style.opacity = String(eased);
       mossImg.style.transform = `scale(${1.08 - 0.08 * eased}) translateY(${(1 - eased) * 4}%)`;
@@ -94,6 +94,18 @@
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
     update();
+
+    // Leaving for About: replay the scroll transition outward — sky crossfades
+    // in with the same depth as the moss, content parallaxes up, nav glides top.
+    const navAbout = document.getElementById("navAbout");
+    navAbout.addEventListener("click", (e) => {
+      if (reduceMotion) return; // plain navigation
+      e.preventDefault();
+      document.body.classList.add("leave");
+      setTimeout(() => {
+        location.href = navAbout.href;
+      }, 620);
+    });
   }
 
   /* ---------- About: pannable canvas with pop-in bubbles ---------- */
@@ -219,11 +231,21 @@
 
     let current = -1;
     let locked = false;
+    const leaf = document.getElementById("pageLeaf");
 
     function go(i, instant) {
       i = Math.min(slides.length - 1, Math.max(0, i));
       if (i === current) return;
+      const dir = i > current ? "next" : "prev";
+      const firstRender = current === -1;
       current = i;
+
+      // page-turn leaf sweeps around the spine
+      if (!firstRender && !instant && !reduceMotion && leaf) {
+        leaf.classList.remove("turn-next", "turn-prev");
+        void leaf.offsetWidth; // restart the animation
+        leaf.classList.add("turn-" + dir);
+      }
 
       slides.forEach((s, k) => {
         s.classList.toggle("is-active", k === i);
