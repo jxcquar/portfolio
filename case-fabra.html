@@ -162,6 +162,25 @@
   </button>
   <div class="pager-dots" id="pagerDots" aria-label="Section indicator"></div>
 
+  <div class="reader-hint" id="readerHint" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+  </div>
+
+  <div class="reader-bar" id="readerBar">
+    <button class="reader-contents" id="readerContents" aria-expanded="false" aria-controls="tocSheet">
+      <span id="readerProgress">Contents · 0%</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="14" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="toc-sheet" id="tocSheet" aria-label="Contents" hidden>
+    <a href="#overview">Overview</a>
+    <a href="#challenge">01 — The challenge</a>
+    <a href="#approach">02 — The approach</a>
+    <a href="#decisions">03 — Key decisions</a>
+    <a href="#solution">04 — The solution</a>
+    <a href="#impact">05 — The impact</a>
+  </nav>
+
   <script src="js/main.js?v=2"></script>
 </body>
 </html>

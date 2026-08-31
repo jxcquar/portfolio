@@ -446,6 +446,74 @@ body.pager {
   pointer-events: none;
 }
 
+/* little scroll-down cue in reading mode */
+.reader-hint {
+  display: none;
+  position: fixed;
+  bottom: 84px;
+  left: 50%;
+  translate: -50% 0;
+  z-index: 21;
+  color: #8a8a8e;
+  animation: hint-bob 2.4s ease-in-out infinite;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+.reader-hint svg { width: 26px; height: 26px; }
+.reader-hint.gone { opacity: 0; }
+
+/* Apple Books reader bar + contents sheet (mobile) */
+.reader-bar {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  translate: -50% 0;
+  z-index: 22;
+}
+.reader-contents {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 13px 20px;
+  border: none;
+  border-radius: 999px;
+  background: #1c1c1e;
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  min-width: 230px;
+  justify-content: space-between;
+}
+.reader-contents svg { width: 18px; height: 18px; flex: none; }
+
+.toc-sheet {
+  position: fixed;
+  bottom: 76px;
+  left: 50%;
+  translate: -50% 0;
+  z-index: 22;
+  min-width: 230px;
+  padding: 10px 0;
+  border-radius: 18px;
+  background: #1c1c1e;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+  animation: bubble-pop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  transform-origin: bottom center;
+}
+.toc-sheet a {
+  display: block;
+  padding: 11px 22px;
+  color: #fff;
+  font-size: 15px;
+}
+.toc-sheet a.active { color: #9decb2; }
+.toc-sheet a:active { background: rgba(255, 255, 255, 0.08); }
+
 /* Apple Books-style close (mobile) */
 .book-close {
   display: none;
@@ -618,10 +686,10 @@ body.canvas-page {
   position: absolute;
   top: 0;
   left: 0;
-  width: 185vw;
-  height: 175vh;
+  width: 140vw;
+  height: 140vh;
   min-width: 1500px;
-  min-height: 1100px;
+  min-height: 1150px;
   will-change: transform;
   cursor: grab;
 }
@@ -753,8 +821,8 @@ body.canvas-page {
 
 .world .bio-card {
   position: absolute;
-  left: 56%;
-  top: 36%;
+  left: 57.5%;
+  top: 28%;
   margin: 0;
   width: min(440px, 82vw);
 }
@@ -874,18 +942,66 @@ body.canvas-page {
   .work-main::-webkit-scrollbar { display: none; }
   .project-card {
     flex: 0 0 auto;
-    width: min(78vw, 365px);
-    min-height: min(64svh, 494px);
+    width: min(70vw, 340px);
+    min-height: min(62svh, 480px);
     height: auto;
     scroll-snap-align: center;
   }
 
-  /* Case study: Apple Books-style close button (light mode) */
-  .book-close { display: flex; }
+  /* Case study on mobile: Apple Books reading mode — a white page you
+     scroll down, with the Contents bar and close button */
+  body.pager {
+    height: auto;
+    overflow: auto;
+    background: #fff;
+  }
+  body.pager .bg,
+  body.pager .pill-nav,
+  .pager-arrow,
+  .pager-dots,
+  .page-leaf { display: none; }
 
-  body.pager { --bookw: 92vw; --bookh: calc(100svh - 200px); }
-  .pager-arrow--prev { left: 2px; width: 38px; }
-  .pager-arrow--next { right: 4px; width: 28px; height: 56px; }
+  .book--stage {
+    position: static;
+    translate: none;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: visible;
+    perspective: none;
+  }
+  .case-slide {
+    position: static;
+    inset: auto;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+    transition: none;
+  }
+  .case-slide .book-inner {
+    height: auto;
+    overflow: visible;
+    border-radius: 0;
+    min-height: 0;
+  }
+  .book-page { padding: 40px 26px 8px; }
+  .case-slide:first-of-type .book-page { padding-top: 110px; }
+  .case-slide:last-of-type .book-page:last-of-type { padding-bottom: 130px; }
+
+  .book-close {
+    display: flex;
+    background: #1c1c1e;
+    color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  }
+  .reader-bar { display: block; }
+  .reader-hint { display: block; }
 
   .world .bio-card { left: 50%; top: 20%; }
 }

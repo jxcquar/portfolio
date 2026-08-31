@@ -125,8 +125,8 @@
     // start centred on Jacqueline (the bio point of interest)
     const centreOnBio = () => {
       const b = bounds();
-      tx = clamp(window.innerWidth / 2 - world.offsetWidth * 0.51, b.minX, 0);
-      ty = clamp(window.innerHeight / 2 - world.offsetHeight * 0.44, b.minY, 0);
+      tx = clamp(window.innerWidth / 2 - world.offsetWidth * 0.5, b.minX, 0);
+      ty = clamp(window.innerHeight / 2 - world.offsetHeight * 0.5, b.minY, 0);
       x = tx; y = ty;
     };
     centreOnBio();
@@ -151,21 +151,31 @@
 
     window.addEventListener("wheel", (e) => nudge(-e.deltaX, -e.deltaY), { passive: true });
 
-    // pointer drag (mouse + touch)
-    let dragging = false, lx = 0, ly = 0;
+    // pointer drag (mouse + touch) with a little momentum on release
+    let dragging = false, lx = 0, ly = 0, vx = 0, vy = 0;
     world.addEventListener("pointerdown", (e) => {
       if (e.target.closest(".poi, .bubble")) return;
       dragging = true;
       lx = e.clientX; ly = e.clientY;
+      vx = 0; vy = 0;
       world.classList.add("dragging");
       world.setPointerCapture(e.pointerId);
     });
     world.addEventListener("pointermove", (e) => {
       if (!dragging) return;
-      nudge(e.clientX - lx, e.clientY - ly);
+      const dx = e.clientX - lx;
+      const dy = e.clientY - ly;
+      vx = dx; vy = dy;
+      nudge(dx, dy);
       lx = e.clientX; ly = e.clientY;
     });
-    const endDrag = () => { dragging = false; world.classList.remove("dragging"); };
+    const endDrag = () => {
+      if (!dragging) return;
+      dragging = false;
+      world.classList.remove("dragging");
+      // fling: carry the last drag velocity a little further
+      nudge(vx * 9, vy * 9);
+    };
     world.addEventListener("pointerup", endDrag);
     world.addEventListener("pointercancel", endDrag);
 
@@ -213,8 +223,68 @@
     });
   }
 
+  /* ---------- Case study, mobile: Apple Books reading mode ---------- */
+  const isReader =
+    document.body.dataset.page === "case" &&
+    window.matchMedia("(max-width: 900px)").matches;
+
+  if (isReader) {
+    const progress = document.getElementById("readerProgress");
+    const contentsBtn = document.getElementById("readerContents");
+    const sheet = document.getElementById("tocSheet");
+    const tocLinks = [...sheet.querySelectorAll("a")];
+    const sections = tocLinks
+      .map((a) => document.querySelector(a.getAttribute("href")))
+      .filter(Boolean);
+
+    let ticking = false;
+    const updateProgress = () => {
+      ticking = false;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = max > 0 ? Math.round((window.scrollY / max) * 100) : 0;
+      progress.textContent = `Contents · ${Math.min(100, Math.max(0, pct))}%`;
+      let currentId = sections[0] && sections[0].id;
+      sections.forEach((s) => {
+        if (s.getBoundingClientRect().top <= window.innerHeight * 0.4) currentId = s.id;
+      });
+      tocLinks.forEach((a) =>
+        a.classList.toggle("active", a.getAttribute("href") === "#" + currentId)
+      );
+    };
+    const readerHint = document.getElementById("readerHint");
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (window.scrollY > 80) readerHint.classList.add("gone");
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(updateProgress);
+        }
+      },
+      { passive: true }
+    );
+    updateProgress();
+
+    const closeSheet = () => {
+      sheet.hidden = true;
+      contentsBtn.setAttribute("aria-expanded", "false");
+    };
+    contentsBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      sheet.hidden = !sheet.hidden;
+      contentsBtn.setAttribute("aria-expanded", String(!sheet.hidden));
+    });
+    tocLinks.forEach((a) => a.addEventListener("click", closeSheet));
+    document.addEventListener("click", (e) => {
+      if (!sheet.hidden && !e.target.closest(".toc-sheet, .reader-contents")) closeSheet();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeSheet();
+    });
+  }
+
   /* ---------- Case study: Apple Books-style pager ---------- */
-  if (document.body.dataset.page === "case") {
+  if (document.body.dataset.page === "case" && !isReader) {
     const slides = [...document.querySelectorAll(".case-slide")];
     const caseLinks = [...document.querySelectorAll(".case-nav a")];
     const prevBtn = document.getElementById("pagerPrev");
