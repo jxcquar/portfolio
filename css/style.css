@@ -828,6 +828,29 @@ body.canvas-page {
 }
 .world .bubble--mini { position: absolute; }
 
+/* Mobile: bubbles become Apple-style popovers pinned to the screen */
+.bubble.bubble--popover {
+  position: fixed !important;
+  left: 50% !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: 84px !important;
+  translate: -50% 0;
+  transform-origin: bottom center;
+  z-index: 40;
+  max-width: calc(100vw - 32px);
+  box-shadow: 0 24px 60px rgba(0, 25, 80, 0.35);
+}
+.bubble.bubble--popover.bio-card {
+  width: calc(100vw - 32px);
+  max-height: 70svh;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(24px) saturate(1.2);
+  -webkit-backdrop-filter: blur(24px) saturate(1.2);
+}
+.bubble.bubble--popover.bubble--mini { white-space: nowrap; }
+
 .pan-hint {
   position: fixed;
   bottom: 26px;

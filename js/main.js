@@ -194,6 +194,11 @@
       document.getElementById(p.getAttribute("aria-controls")),
     ]);
 
+    // On small screens bubbles become Apple-style popovers pinned to the
+    // viewport. position:fixed is defeated by the world's transform, so the
+    // bubble is re-parented to <body> while open.
+    const popoverMode = window.matchMedia("(max-width: 900px)");
+
     const closeBubble = (poi, bubble) => {
       if (bubble.hidden) return;
       poi.setAttribute("aria-expanded", "false");
@@ -202,15 +207,28 @@
       setTimeout(() => {
         bubble.hidden = true;
         bubble.classList.remove("pop-out");
+        if (bubble.classList.contains("bubble--popover")) {
+          bubble.classList.remove("bubble--popover");
+          world.appendChild(bubble);
+        }
       }, 260);
     };
     const openBubble = (poi, bubble) => {
       pairs.forEach(([p, b]) => closeBubble(p, b));
       poi.setAttribute("aria-expanded", "true");
+      if (popoverMode.matches) {
+        bubble.classList.add("bubble--popover");
+        document.body.appendChild(bubble);
+      }
       bubble.hidden = false;
       bubble.classList.add("pop-in");
       hint.classList.add("gone");
     };
+
+    // tap anywhere outside to dismiss, like an Apple popover
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".bubble, .poi")) pairs.forEach(([p, b]) => closeBubble(p, b));
+    });
 
     pairs.forEach(([poi, bubble]) => {
       poi.addEventListener("click", () => {
