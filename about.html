@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Jacqueline Tenges</title>
+  <meta name="description" content="About Jacqueline Tenges — senior product designer based in Sydney, designing 0-1 products end-to-end." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌼</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,500;1,600&family=Crimson+Text:ital@0;1&family=Inter:wght@400;500;600;700;800&family=Roboto:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="about" class="canvas-page">
+
+  <nav class="pill-nav pill-nav--top" aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="index.html#work">Work</a>
+    <a href="about.html" aria-current="page">About</a>
+  </nav>
+
+  <div class="world" id="world" aria-label="Interactive scene — scroll or drag to look around">
+    <img class="world-sky" src="assets/sky.jpg" alt="" aria-hidden="true" />
+
+    <img class="float-item" src="assets/bottle.png" alt="" aria-hidden="true" style="width:9%;  left:10%; top:16%; --fd: 9s;  --fdelay: -2s" />
+    <img class="float-item" src="assets/bottle.png" alt="" aria-hidden="true" style="width:7.5%; left:24%; top:7%;  --fd: 11s; --fdelay: -6s" />
+    <img class="float-item" src="assets/bottle.png" alt="" aria-hidden="true" style="width:8%;  left:16%; top:47%; --fd: 10s; --fdelay: -4s" />
+    <img class="float-item" src="assets/bottle.png" alt="" aria-hidden="true" style="width:9%;  left:27%; top:74%; --fd: 12s; --fdelay: -8s" />
+    <img class="float-item" src="assets/bottle.png" alt="" aria-hidden="true" style="width:8%;  left:44%; top:80%; --fd: 10s; --fdelay: -1s" />
+    <img class="float-item" src="assets/bottle.png" alt="" aria-hidden="true" style="width:7%;  left:66%; top:12%; --fd: 13s; --fdelay: -5s" />
+    <img class="float-item" src="assets/bottle.png" alt="" aria-hidden="true" style="width:8.5%; left:80%; top:64%; --fd: 11s; --fdelay: -3s" />
+    <img class="float-item" src="assets/bottle.png" alt="" aria-hidden="true" style="width:7%;  left:58%; top:56%; --fd: 12s; --fdelay: -7s" />
+
+    <img class="float-item float-item--person" src="assets/person.png" alt="Jacqueline standing in a dark hoodie and jeans"
+         style="width:13%; left:42.5%; top:30%; --fd: 14s; --fdelay: -3s" />
+
+    <button class="poi" id="poiBio" style="left:51%; top:42%" aria-expanded="false" aria-controls="bioCard" aria-label="About Jacqueline">
+      <span class="poi-dot"></span>
+    </button>
+
+    <button class="poi poi--sm" id="poiBottle" style="left:19.5%; top:51%" aria-expanded="false" aria-controls="bottleBubble" aria-label="About the bottles">
+      <span class="poi-dot"></span>
+    </button>
+
+    <div class="bubble bio-card" id="bioCard" role="dialog" aria-label="About Jacqueline" hidden>
+      <button class="bubble-close" data-close aria-label="Close">×</button>
+      <h2>Designing 0–1 products</h2>
+      <p>I'm Jacqueline Tenges, a senior product designer based in Sydney. I design end-to-end: product UX, brand, marketing and the words in between.</p>
+      <p>Currently I'm the solo designer at Fabra, building browser-based tools that make 3D fashion design feel simple. Off the canvas I make videos about design psychology and why people do what they do.</p>
+      <div class="bio-links">
+        <a href="mailto:jxcquie@gmail.com">jxcquie@gmail.com</a>
+        <span class="dot">·</span>
+        <a href="https://www.linkedin.com/in/jacquelinetenges" target="_blank" rel="noopener">LinkedIn</a>
+        <span class="dot">·</span>
+        <a href="https://www.youtube.com/@jacquelinetenges" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </div>
+
+    <div class="bubble bubble--mini" id="bottleBubble" role="dialog" aria-label="About the bottles" hidden>
+      <button class="bubble-close" data-close aria-label="Close">×</button>
+      <p class="bubble-mini-text">Diptyque Tam Dao</p>
+    </div>
+  </div>
+
+  <p class="pan-hint" id="panHint">Scroll or drag to look around</p>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
