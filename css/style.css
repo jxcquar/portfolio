@@ -446,6 +446,27 @@ body.pager {
   pointer-events: none;
 }
 
+/* Apple Books-style close (mobile) */
+.book-close {
+  display: none;
+  position: fixed;
+  top: 26px;
+  right: 18px;
+  z-index: 14;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f2f2f6;
+  color: #1a1a1a;
+  font-size: 20px;
+  line-height: 1;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(20, 30, 55, 0.22);
+  transition: transform 0.3s var(--ease-out), background 0.3s ease;
+}
+.book-close:active { transform: scale(0.94); background: #ffffff; }
+
 .pager-dots {
   position: fixed;
   bottom: 26px;
@@ -838,13 +859,33 @@ body.canvas-page {
   .book-page { padding: 36px 28px; }
   .book-page--blank { display: none; }
 
+  /* Work: horizontal swipe carousel, next card peeking in (per mobile design) */
+  .work-main {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 18px;
+    padding: 110px 24px 70px;
+  }
+  .work-main::-webkit-scrollbar { display: none; }
+  .project-card {
+    flex: 0 0 auto;
+    width: min(78vw, 365px);
+    min-height: min(64svh, 494px);
+    height: auto;
+    scroll-snap-align: center;
+  }
+
+  /* Case study: Apple Books-style close button (light mode) */
+  .book-close { display: flex; }
+
   body.pager { --bookw: 92vw; --bookh: calc(100svh - 200px); }
   .pager-arrow--prev { left: 2px; width: 38px; }
   .pager-arrow--next { right: 4px; width: 28px; height: 56px; }
-
-  .work-main { gap: 32px; padding-top: 120px; }
-  .project-card { height: auto; min-height: 420px; width: min(365px, 100%); }
-  .project-card--tilt { rotate: 0deg; }
 
   .world .bio-card { left: 50%; top: 20%; }
 }
