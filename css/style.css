@@ -956,10 +956,19 @@ body.canvas-page {
     background: #fff;
   }
   body.pager .bg,
-  body.pager .pill-nav,
   .pager-arrow,
   .pager-dots,
   .page-leaf { display: none; }
+
+  /* keep the nav fixed as an escape hatch while reading — light mode
+     so it reads on the white page */
+  body.pager .pill-nav {
+    top: 22px;
+    background: rgba(242, 242, 246, 0.85);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 6px 20px rgba(20, 30, 55, 0.12);
+  }
+  body.pager .pill-nav a { color: #1a1a1a; }
 
   .book--stage {
     position: static;
