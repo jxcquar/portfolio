@@ -126,7 +126,7 @@
     const centreOnBio = () => {
       const b = bounds();
       tx = clamp(window.innerWidth / 2 - world.offsetWidth * 0.51, b.minX, 0);
-      ty = clamp(window.innerHeight / 2 - world.offsetHeight * 0.4, b.minY, 0);
+      ty = clamp(window.innerHeight / 2 - world.offsetHeight * 0.44, b.minY, 0);
       x = tx; y = ty;
     };
     centreOnBio();
@@ -259,7 +259,7 @@
 
       if (!instant) {
         locked = true;
-        setTimeout(() => (locked = false), 750);
+        setTimeout(() => (locked = false), 600);
       }
     }
 
@@ -278,14 +278,26 @@
       if (e.key === "ArrowLeft" || e.key === "PageUp") go(current - 1);
     });
 
-    // Flip pages with the wheel / trackpad — horizontal or vertical, one section
-    // at a time. Small deltas accumulate so trackpad swipes feel smooth.
+    // Flip pages with the wheel / trackpad — horizontal or vertical. One
+    // gesture turns exactly one page: after a flip, trackpad momentum is
+    // swallowed until the deltas go quiet for a beat.
     let acc = 0;
     let accReset;
+    let needQuiet = false;
+    let quietTimer;
     window.addEventListener(
       "wheel",
       (e) => {
-        if (locked) return;
+        if (locked) {
+          acc = 0;
+          needQuiet = true;
+          return;
+        }
+        if (needQuiet) {
+          clearTimeout(quietTimer);
+          quietTimer = setTimeout(() => (needQuiet = false), 180);
+          return;
+        }
 
         const horizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY);
         const delta = horizontal ? e.deltaX : e.deltaY;
@@ -303,7 +315,7 @@
         acc += delta;
         clearTimeout(accReset);
         accReset = setTimeout(() => (acc = 0), 200);
-        if (Math.abs(acc) > 55) {
+        if (Math.abs(acc) > 60) {
           go(current + (acc > 0 ? 1 : -1));
           acc = 0;
         }
