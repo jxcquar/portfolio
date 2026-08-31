@@ -24,6 +24,22 @@
 
   /* ---------- Home: hero → work parallax crossfade ---------- */
   if (document.body.dataset.page === "home") {
+    // Arriving straight at #work (nav from another page): land there with no intro
+    if (location.hash === "#work") {
+      document.body.classList.add("no-intro");
+      document.documentElement.style.scrollBehavior = "auto";
+      const land = () => {
+        const work = document.getElementById("work");
+        if (work) window.scrollTo(0, work.offsetTop);
+      };
+      land();
+      window.addEventListener("load", () => {
+        land();
+        requestAnimationFrame(() => {
+          document.documentElement.style.scrollBehavior = "";
+        });
+      });
+    }
     const bgHero = document.getElementById("bgHero");
     const bgMoss = document.getElementById("bgMoss");
     const heroCopy = document.getElementById("heroCopy");
@@ -150,11 +166,11 @@
     });
     window.addEventListener("resize", () => nudge(0, 0));
 
-    // points of interest → bubbles
-    const pairs = [
-      [document.getElementById("poiBio"), document.getElementById("bioCard")],
-      [document.getElementById("poiBottle"), document.getElementById("bottleBubble")],
-    ];
+    // points of interest → bubbles (every .poi controls the bubble named in aria-controls)
+    const pairs = [...document.querySelectorAll(".poi")].map((p) => [
+      p,
+      document.getElementById(p.getAttribute("aria-controls")),
+    ]);
 
     const closeBubble = (poi, bubble) => {
       if (bubble.hidden) return;
@@ -240,12 +256,35 @@
       if (e.key === "ArrowLeft" || e.key === "PageUp") go(current - 1);
     });
 
-    // Flip pages with the wheel / trackpad, one section at a time
+    // Flip pages with the wheel / trackpad — horizontal or vertical, one section
+    // at a time. Small deltas accumulate so trackpad swipes feel smooth.
+    let acc = 0;
+    let accReset;
     window.addEventListener(
       "wheel",
       (e) => {
-        if (locked || Math.abs(e.deltaY) < 12) return;
-        go(current + (e.deltaY > 0 ? 1 : -1));
+        if (locked) return;
+
+        const horizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY);
+        const delta = horizontal ? e.deltaX : e.deltaY;
+
+        // let a vertically-overflowing page scroll its own text first
+        if (!horizontal) {
+          const inner = e.target.closest && e.target.closest(".book-inner");
+          if (inner && inner.scrollHeight > inner.clientHeight + 1) {
+            const atTop = inner.scrollTop <= 0 && delta < 0;
+            const atBottom = inner.scrollTop + inner.clientHeight >= inner.scrollHeight - 1 && delta > 0;
+            if (!atTop && !atBottom) return;
+          }
+        }
+
+        acc += delta;
+        clearTimeout(accReset);
+        accReset = setTimeout(() => (acc = 0), 200);
+        if (Math.abs(acc) > 55) {
+          go(current + (acc > 0 ? 1 : -1));
+          acc = 0;
+        }
       },
       { passive: true }
     );

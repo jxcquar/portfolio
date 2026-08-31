@@ -210,12 +210,10 @@ body { animation: page-in 0.7s var(--ease-soft) both; }
   transition: transform 0.6s var(--ease-out), box-shadow 0.6s var(--ease-out), background 0.6s ease;
 }
 .project-card:hover {
-  transform: translateY(-10px);
+  transform: rotate(3.5deg) translateY(-8px);
   background: rgba(255, 255, 255, 0.1);
   box-shadow: 0 30px 60px -20px rgba(0, 20, 0, 0.35);
 }
-.project-card--tilt { rotate: 3deg; }
-.project-card--tilt:hover { transform: translateY(-10px) rotate(-1.2deg); }
 
 .project-card .wordmark {
   text-align: right;
@@ -245,9 +243,20 @@ a.project-card { cursor: pointer; }
 
 .hero-copy { will-change: transform, opacity; }
 
+/* Arriving straight at #work (e.g. nav from another page): skip the hero intro */
+body.no-intro .rise {
+  animation: none;
+  opacity: 1;
+  translate: 0 0;
+}
+body.no-intro .bg-hero { animation: none; }
+body.no-intro .reveal { transition: none; }
+
 /* ---------------- Case study (Apple Books-style pager) ---------------- */
 
 body.pager {
+  --bookw: min(71vw, 1300px);
+  --bookh: min(76svh, calc(100svh - 190px), 960px);
   height: 100vh;
   height: 100svh;
   overflow: hidden;
@@ -276,44 +285,54 @@ body.pager {
 .case-slide.is-before { transform: translateX(-6%); }
 
 .case-slide .book {
-  max-height: calc(100vh - 170px);
-  max-height: calc(100svh - 170px);
+  width: var(--bookw);
+  height: var(--bookh);
   display: flex;
 }
 .case-slide .book-inner {
+  flex: 1;
   overflow-y: auto;
   min-height: 0;
 }
 
+/* Page-edge tabs with thin chevrons, centred on the book's edges */
 .pager-arrow {
   position: fixed;
   top: 50%;
   translate: 0 -50%;
   z-index: 12;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
   border: none;
+  padding: 0;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(30, 30, 30, 0.18);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  color: #fff;
-  opacity: 0.65;
-  transition: opacity 0.3s ease, background 0.3s ease, transform 0.3s var(--ease-out);
+  width: 32px;
+  height: 68px;
+  border-radius: 10px;
+  background: #eef0f4;
+  box-shadow: 0 8px 22px rgba(25, 35, 55, 0.22);
+  color: #3a3a3a;
+  opacity: 0.9;
+  transition: opacity 0.3s ease, color 0.3s ease, transform 0.35s var(--ease-out), background 0.3s ease, box-shadow 0.3s ease;
+}
+.pager-arrow svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+  stroke-width: 1.4;
 }
 .pager-arrow:hover {
+  background: #ffffff;
+  color: #000;
   opacity: 1;
-  background: rgba(30, 30, 30, 0.34);
-  transform: scale(1.12);
+  box-shadow: 0 12px 28px rgba(25, 35, 55, 0.3);
 }
-.pager-arrow:active { transform: scale(0.98); }
-.pager-arrow svg { width: 22px; height: 22px; display: block; }
-.pager-arrow--prev { left: 28px; }
-.pager-arrow--next { right: 28px; }
+.pager-arrow--prev { left: calc(50% - var(--bookw) / 2 - 16px); }
+.pager-arrow--prev:hover { transform: translateX(-2px); }
+.pager-arrow--next { right: calc(50% - var(--bookw) / 2 - 16px); }
+.pager-arrow--next:hover { transform: translateX(2px); }
+.pager-arrow:active { transform: none; }
 .pager-arrow[disabled] {
   opacity: 0;
   pointer-events: none;
@@ -588,7 +607,14 @@ body.canvas-page {
   white-space: nowrap;
 }
 .bubble--mini .bubble-close { position: static; width: 22px; height: 22px; font-size: 14px; margin-left: 10px; vertical-align: middle; }
-.bubble-mini-text { display: inline; font-family: var(--font-serif); font-style: italic; font-size: 19px; }
+.bubble-mini-text {
+  display: inline;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  font-size: 19px;
+}
 
 .world .bio-card {
   position: absolute;
@@ -597,11 +623,7 @@ body.canvas-page {
   margin: 0;
   width: min(440px, 82vw);
 }
-.world .bubble--mini {
-  position: absolute;
-  left: 21.5%;
-  top: 45%;
-}
+.world .bubble--mini { position: absolute; }
 
 .pan-hint {
   position: fixed;
@@ -702,10 +724,10 @@ body.canvas-page {
   .book-page { padding: 36px 28px; }
   .book-page--blank { display: none; }
 
+  body.pager { --bookw: 92vw; --bookh: calc(100svh - 200px); }
   .case-slide { padding: 104px 18px 70px; }
-  .pager-arrow { width: 44px; height: 44px; }
-  .pager-arrow--prev { left: 10px; }
-  .pager-arrow--next { right: 10px; }
+  .pager-arrow--prev { left: 2px; width: 38px; }
+  .pager-arrow--next { right: 4px; width: 28px; height: 56px; }
 
   .work-main { gap: 32px; padding-top: 120px; }
   .project-card { height: auto; min-height: 420px; width: min(365px, 100%); }

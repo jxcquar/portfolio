@@ -22,26 +22,31 @@
   <div class="world" id="world" aria-label="Interactive scene — scroll or drag to look around">
     <img class="world-sky" src="assets/sky.jpg" alt="" aria-hidden="true" />
 
-    <img class="float-item" src="assets/bottle.png" alt="" aria-hidden="true" style="width:9%;  left:10%; top:16%; --fd: 9s;  --fdelay: -2s" />
-    <img class="float-item" src="assets/bottle.png" alt="" aria-hidden="true" style="width:7.5%; left:24%; top:7%;  --fd: 11s; --fdelay: -6s" />
-    <img class="float-item" src="assets/bottle.png" alt="" aria-hidden="true" style="width:8%;  left:16%; top:47%; --fd: 10s; --fdelay: -4s" />
-    <img class="float-item" src="assets/bottle.png" alt="" aria-hidden="true" style="width:9%;  left:27%; top:74%; --fd: 12s; --fdelay: -8s" />
-    <img class="float-item" src="assets/bottle.png" alt="" aria-hidden="true" style="width:8%;  left:44%; top:80%; --fd: 10s; --fdelay: -1s" />
-    <img class="float-item" src="assets/bottle.png" alt="" aria-hidden="true" style="width:7%;  left:66%; top:12%; --fd: 13s; --fdelay: -5s" />
-    <img class="float-item" src="assets/bottle.png" alt="" aria-hidden="true" style="width:8.5%; left:80%; top:64%; --fd: 11s; --fdelay: -3s" />
-    <img class="float-item" src="assets/bottle.png" alt="" aria-hidden="true" style="width:7%;  left:58%; top:56%; --fd: 12s; --fdelay: -7s" />
+    <!-- bottles: clustered around Jacqueline, deliberately uneven -->
+    <img class="float-item" src="assets/bottle.png" alt="" aria-hidden="true" style="width:8%;   left:30%;   top:13%; --fd: 9s;  --fdelay: -2s" />
+    <img class="float-item" src="assets/bottle.png" alt="" aria-hidden="true" style="width:9%;   left:26.5%; top:38%; --fd: 11s; --fdelay: -6s" />
+    <img class="float-item" src="assets/bottle.png" alt="" aria-hidden="true" style="width:7%;   left:38.5%; top:58%; --fd: 10s; --fdelay: -4s" />
+    <img class="float-item" src="assets/bottle.png" alt="" aria-hidden="true" style="width:8.5%; left:34%;   top:78%; --fd: 12s; --fdelay: -8s" />
+    <img class="float-item" src="assets/bottle.png" alt="" aria-hidden="true" style="width:7%;   left:55.5%; top:15%; --fd: 13s; --fdelay: -5s" />
+    <img class="float-item" src="assets/bottle.png" alt="" aria-hidden="true" style="width:8%;   left:60%;   top:47%; --fd: 11s; --fdelay: -3s" />
+    <img class="float-item" src="assets/bottle.png" alt="" aria-hidden="true" style="width:7.5%; left:53%;   top:70%; --fd: 12s; --fdelay: -7s" />
+    <img class="float-item" src="assets/bottle.png" alt="" aria-hidden="true" style="width:6.5%; left:66%;   top:26%; --fd: 10s; --fdelay: -1s" />
 
     <img class="float-item float-item--person" src="assets/person.png" alt="Jacqueline standing in a dark hoodie and jeans"
-         style="width:13%; left:42.5%; top:30%; --fd: 14s; --fdelay: -3s" />
+         style="width:13%; left:42.5%; top:28%; --fd: 14s; --fdelay: -3s" />
 
-    <button class="poi" id="poiBio" style="left:51%; top:42%" aria-expanded="false" aria-controls="bioCard" aria-label="About Jacqueline">
-      <span class="poi-dot"></span>
-    </button>
+    <!-- points of interest -->
+    <button class="poi" style="left:51%; top:40%" aria-expanded="false" aria-controls="bioCard" aria-label="About Jacqueline"><span class="poi-dot"></span></button>
+    <button class="poi poi--sm" style="left:34%;   top:19%"   aria-expanded="false" aria-controls="bub1" aria-label="About this bottle"><span class="poi-dot"></span></button>
+    <button class="poi poi--sm" style="left:31%;   top:44.5%" aria-expanded="false" aria-controls="bub2" aria-label="About this bottle"><span class="poi-dot"></span></button>
+    <button class="poi poi--sm" style="left:42%;   top:63%"   aria-expanded="false" aria-controls="bub3" aria-label="About this bottle"><span class="poi-dot"></span></button>
+    <button class="poi poi--sm" style="left:38.2%; top:84%"   aria-expanded="false" aria-controls="bub4" aria-label="About this bottle"><span class="poi-dot"></span></button>
+    <button class="poi poi--sm" style="left:59%;   top:20.5%" aria-expanded="false" aria-controls="bub5" aria-label="About this bottle"><span class="poi-dot"></span></button>
+    <button class="poi poi--sm" style="left:64%;   top:53%"   aria-expanded="false" aria-controls="bub6" aria-label="About this bottle"><span class="poi-dot"></span></button>
+    <button class="poi poi--sm" style="left:56.7%; top:75.5%" aria-expanded="false" aria-controls="bub7" aria-label="About this bottle"><span class="poi-dot"></span></button>
+    <button class="poi poi--sm" style="left:69.2%; top:31%"   aria-expanded="false" aria-controls="bub8" aria-label="About this bottle"><span class="poi-dot"></span></button>
 
-    <button class="poi poi--sm" id="poiBottle" style="left:19.5%; top:51%" aria-expanded="false" aria-controls="bottleBubble" aria-label="About the bottles">
-      <span class="poi-dot"></span>
-    </button>
-
+    <!-- bubbles -->
     <div class="bubble bio-card" id="bioCard" role="dialog" aria-label="About Jacqueline" hidden>
       <button class="bubble-close" data-close aria-label="Close">×</button>
       <h2>Designing 0–1 products</h2>
@@ -56,10 +61,14 @@
       </div>
     </div>
 
-    <div class="bubble bubble--mini" id="bottleBubble" role="dialog" aria-label="About the bottles" hidden>
-      <button class="bubble-close" data-close aria-label="Close">×</button>
-      <p class="bubble-mini-text">Diptyque Tam Dao</p>
-    </div>
+    <div class="bubble bubble--mini" id="bub1" role="dialog" hidden style="left:36.5%; top:14.5%"><p class="bubble-mini-text">Diptyque Tam Dao</p><button class="bubble-close" data-close aria-label="Close">×</button></div>
+    <div class="bubble bubble--mini" id="bub2" role="dialog" hidden style="left:33.5%; top:40%"><p class="bubble-mini-text">Diptyque Tam Dao</p><button class="bubble-close" data-close aria-label="Close">×</button></div>
+    <div class="bubble bubble--mini" id="bub3" role="dialog" hidden style="left:44.5%; top:58.5%"><p class="bubble-mini-text">Diptyque Tam Dao</p><button class="bubble-close" data-close aria-label="Close">×</button></div>
+    <div class="bubble bubble--mini" id="bub4" role="dialog" hidden style="left:40.7%; top:79.5%"><p class="bubble-mini-text">Diptyque Tam Dao</p><button class="bubble-close" data-close aria-label="Close">×</button></div>
+    <div class="bubble bubble--mini" id="bub5" role="dialog" hidden style="left:61.5%; top:16%"><p class="bubble-mini-text">Diptyque Tam Dao</p><button class="bubble-close" data-close aria-label="Close">×</button></div>
+    <div class="bubble bubble--mini" id="bub6" role="dialog" hidden style="left:66.5%; top:48.5%"><p class="bubble-mini-text">Diptyque Tam Dao</p><button class="bubble-close" data-close aria-label="Close">×</button></div>
+    <div class="bubble bubble--mini" id="bub7" role="dialog" hidden style="left:59.2%; top:71%"><p class="bubble-mini-text">Diptyque Tam Dao</p><button class="bubble-close" data-close aria-label="Close">×</button></div>
+    <div class="bubble bubble--mini" id="bub8" role="dialog" hidden style="left:71.7%; top:26.5%"><p class="bubble-mini-text">Diptyque Tam Dao</p><button class="bubble-close" data-close aria-label="Close">×</button></div>
   </div>
 
   <p class="pan-hint" id="panHint">Scroll or drag to look around</p>
