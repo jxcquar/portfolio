@@ -1067,10 +1067,21 @@ body.canvas-page {
 
   /* Mobile About: pure swipe/drag exploration — big centred Jacqueline,
      items bleeding off the edges, no pointers or popovers */
-  /* items stay tap-free on mobile, but Jacqueline keeps her pointer —
-     tapping it opens the bio as an Apple-style popover */
-  body[data-page="about"] .poi:not([aria-controls="bioCard"]),
-  body[data-page="about"] .bubble:not(#bioCard) { display: none !important; }
+  /* every pointer opens its bubble as a bottom popover on mobile; the
+     Tam Dao bottle is dropped here (too crowded at phone sizes) */
+  .world img:nth-of-type(10),
+  .poi[aria-controls="bub9"],
+  #bub9 { display: none !important; }
+
+  /* pointers repositioned to match the mobile arrangement */
+  .poi[aria-controls="bub1"] { left: 38.3% !important; top: 26.8% !important; } /* matcha */
+  .poi[aria-controls="bub7"] { left: 22.3% !important; top: 49%   !important; } /* passport */
+  .poi[aria-controls="bub3"] { left: 41.6% !important; top: 84.4% !important; } /* coffee */
+  .poi[aria-controls="bub8"] { left: 24.5% !important; top: 78.3% !important; } /* headphones L */
+  .poi[aria-controls="bub5"] { left: 59.9% !important; top: 84.6% !important; } /* sushi */
+  .poi[aria-controls="bub2"] { left: 35.5% !important; top: 57%   !important; } /* macbook */
+  .poi[aria-controls="bub4"] { left: 60.9% !important; top: 27.6% !important; } /* headphones R */
+  .poi[aria-controls="bub6"] { left: 61.3% !important; top: 58%   !important; } /* corgi */
   .float-item--person { scale: 1.65; margin-left: -12px; margin-top: 55px; }
 
   /* Mobile arrangement: the centred opening view matches the mock —
@@ -1078,9 +1089,9 @@ body.canvas-page {
      coffee & sushi at the bottom. (img #1 inside .world is the sky.) */
   .world img:nth-of-type(2)  { left: 35.8%  !important; top: 23.5% !important; width: 5%   !important; } /* matcha */
   .world img:nth-of-type(3)  { left: 20%    !important; top: 45%   !important; width: 4.5% !important; } /* passport (off-view left) */
-  .world img:nth-of-type(4)  { left: 39%    !important; top: 81%   !important; width: 5.2% !important; } /* coffee */
+  .world img:nth-of-type(4)  { left: 38.3%  !important; top: 80.5% !important; width: 6.7% !important; } /* coffee */
   .world img:nth-of-type(5)  { left: 22%    !important; top: 75%   !important; width: 5%   !important; } /* headphones (off-view left) */
-  .world img:nth-of-type(6)  { left: 57.5%  !important; top: 81.5% !important; width: 4.8% !important; } /* sushi */
+  .world img:nth-of-type(6)  { left: 56.6%  !important; top: 81%   !important; width: 6.7% !important; } /* sushi */
   .world img:nth-of-type(7)  { left: 32%    !important; top: 54%   !important; width: 7%   !important; } /* macbook, bleeds left */
   .world img:nth-of-type(8)  { left: 58.5%  !important; top: 24.5% !important; width: 4.8% !important; } /* headphones right */
   .world img:nth-of-type(9)  { left: 56.5%  !important; top: 52%   !important; width: 9.5% !important; } /* corgi, bleeds right */
