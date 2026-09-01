@@ -231,10 +231,18 @@
     });
 
     pairs.forEach(([poi, bubble]) => {
-      poi.addEventListener("click", () => {
+      let lastTap = 0;
+      poi.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const now = Date.now();
+        if (now - lastTap < 400) return; // ghost/duplicate tap on touch devices
+        lastTap = now;
         bubble.hidden ? openBubble(poi, bubble) : closeBubble(poi, bubble);
       });
-      bubble.querySelector("[data-close]").addEventListener("click", () => closeBubble(poi, bubble));
+      bubble.querySelector("[data-close]").addEventListener("click", (e) => {
+        e.stopPropagation();
+        closeBubble(poi, bubble);
+      });
     });
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") pairs.forEach(([p, b]) => closeBubble(p, b));
