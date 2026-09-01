@@ -1057,12 +1057,12 @@ body.canvas-page {
      items bleeding off the edges, no pointers or popovers */
   body[data-page="about"] .poi,
   body[data-page="about"] .bubble { display: none !important; }
-  .float-item--person { scale: 1.65; margin-left: -18px; margin-top: 55px; }
+  .float-item--person { scale: 1.65; margin-left: -62px; margin-top: 55px; }
 
   /* Mobile arrangement: the centred opening view matches the mock —
      matcha & headphones up top, MacBook & corgi bleeding at the sides,
      coffee & sushi at the bottom. (img #1 inside .world is the sky.) */
-  .world img:nth-of-type(2)  { left: 38.5%  !important; top: 29%   !important; width: 5%   !important; } /* matcha */
+  .world img:nth-of-type(2)  { left: 37.3%  !important; top: 27.5% !important; width: 5%   !important; } /* matcha */
   .world img:nth-of-type(3)  { left: 20%    !important; top: 45%   !important; width: 4.5% !important; } /* passport (off-view left) */
   .world img:nth-of-type(4)  { left: 41%    !important; top: 76%   !important; width: 5.2% !important; } /* coffee */
   .world img:nth-of-type(5)  { left: 22%    !important; top: 75%   !important; width: 5%   !important; } /* headphones (off-view left) */

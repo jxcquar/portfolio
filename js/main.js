@@ -130,6 +130,9 @@
       x = tx; y = ty;
     };
     centreOnBio();
+    // paint the centred position immediately — don't wait for the first
+    // animation frame (can be delayed on mobile during load)
+    world.style.transform = `translate3d(${x}px, ${y}px, 0)`;
 
     const tick = () => {
       x += (tx - x) * 0.09;
