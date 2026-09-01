@@ -725,6 +725,7 @@ body.canvas-page {
 .poi {
   position: absolute;
   touch-action: manipulation;
+  transition: opacity 0.3s ease;
   width: 44px;
   height: 44px;
   border: none;
@@ -765,6 +766,13 @@ body.canvas-page {
   box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.4);
 }
 .poi[aria-expanded="true"]::before { display: none; }
+
+/* while a bubble is open, the other pointers step aside so nothing
+   shines through the glass card */
+.world.bubble-open .poi:not([aria-expanded="true"]) {
+  opacity: 0;
+  pointer-events: none;
+}
 /* the card glass is translucent, so an open poi must vanish, not just sit behind */
 .poi[aria-expanded="true"] {
   opacity: 0;

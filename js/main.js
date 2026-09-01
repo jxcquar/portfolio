@@ -204,6 +204,7 @@
       poi.setAttribute("aria-expanded", "false");
       bubble.classList.remove("pop-in");
       bubble.classList.add("pop-out");
+      world.classList.remove("bubble-open");
       setTimeout(() => {
         bubble.hidden = true;
         bubble.classList.remove("pop-out");
@@ -222,6 +223,7 @@
       }
       bubble.hidden = false;
       bubble.classList.add("pop-in");
+      world.classList.add("bubble-open");
       hint.classList.add("gone");
     };
 
