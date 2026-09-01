@@ -881,6 +881,10 @@ body.canvas-page {
   bottom: 26px;
   left: 50%;
   translate: -50% 0;
+  text-align: center;
+  text-wrap: balance;
+  width: max-content;
+  max-width: 86vw;
   font-size: 12px;
   letter-spacing: 0.24em;
   text-transform: uppercase;
