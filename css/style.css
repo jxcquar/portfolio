@@ -1067,8 +1067,10 @@ body.canvas-page {
 
   /* Mobile About: pure swipe/drag exploration — big centred Jacqueline,
      items bleeding off the edges, no pointers or popovers */
-  body[data-page="about"] .poi,
-  body[data-page="about"] .bubble { display: none !important; }
+  /* items stay tap-free on mobile, but Jacqueline keeps her pointer —
+     tapping it opens the bio as an Apple-style popover */
+  body[data-page="about"] .poi:not([aria-controls="bioCard"]),
+  body[data-page="about"] .bubble:not(#bioCard) { display: none !important; }
   .float-item--person { scale: 1.65; margin-left: -12px; margin-top: 55px; }
 
   /* Mobile arrangement: the centred opening view matches the mock —
