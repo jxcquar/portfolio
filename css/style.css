@@ -1045,7 +1045,11 @@ body.canvas-page {
   .reader-bar { display: block; }
   .reader-hint { display: block; }
 
-  .world .bio-card { left: 50%; top: 20%; }
+  /* Mobile About: pure swipe/drag exploration — big centred Jacqueline,
+     items bleeding off the edges, no pointers or popovers */
+  body[data-page="about"] .poi,
+  body[data-page="about"] .bubble { display: none !important; }
+  .float-item--person { scale: 1.65; }
 }
 
 @media (max-width: 900px) {
