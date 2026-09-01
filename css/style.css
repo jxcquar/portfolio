@@ -994,8 +994,8 @@ body.canvas-page {
   .work-main::-webkit-scrollbar { display: none; }
   .project-card {
     flex: 0 0 auto;
-    width: min(70vw, 340px);
-    min-height: min(62svh, 480px);
+    width: min(77vw, 320px);
+    min-height: min(76svh, 640px);
     height: auto;
     scroll-snap-align: center;
   }
