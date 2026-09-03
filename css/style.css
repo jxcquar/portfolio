@@ -475,9 +475,9 @@ body.pager {
   opacity: 1;
   box-shadow: 0 12px 28px rgba(25, 35, 55, 0.3);
 }
-.pager-arrow--prev { left: calc(50% - var(--bookw) / 2 - 44px); }
+.pager-arrow--prev { left: calc(50% - var(--bookw) / 2 - 16px); }
 .pager-arrow--prev:hover { transform: translateX(-2px); }
-.pager-arrow--next { right: calc(50% - var(--bookw) / 2 - 44px); }
+.pager-arrow--next { right: calc(50% - var(--bookw) / 2 - 16px); }
 .pager-arrow--next:hover { transform: translateX(2px); }
 .pager-arrow:active { transform: none; }
 .pager-arrow[disabled] {
