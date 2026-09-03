@@ -333,6 +333,10 @@
     let current = -1;
     let locked = false;
     const leaf = document.getElementById("pageLeaf");
+    if (leaf) {
+      // vanish the instant the turn lands (its faces match the real pages)
+      leaf.addEventListener("animationend", () => leaf.classList.remove("turn-next", "turn-prev"));
+    }
 
     function go(i, instant) {
       i = Math.min(slides.length - 1, Math.max(0, i));
@@ -346,10 +350,19 @@
       // page being turned: forward shows the outgoing right page, backward
       // settles the incoming one
       if (!firstRender && !instant && !reduceMotion && leaf) {
-        const srcSlide = dir === "next" ? slides[from] : slides[i];
-        const pages = srcSlide.querySelectorAll(".book-page");
-        const rightPage = pages[pages.length - 1];
-        leaf.replaceChildren(rightPage.cloneNode(true));
+        // front face: the right page visible when the leaf lies to the right;
+        // back face: the left page revealed when it lies to the left
+        const rightOwner = dir === "next" ? slides[from] : slides[i];
+        const leftOwner = dir === "next" ? slides[i] : slides[from];
+        const rightPages = rightOwner.querySelectorAll(".book-page");
+        const leftPages = leftOwner.querySelectorAll(".book-page");
+        const front = document.createElement("div");
+        front.className = "leaf-face";
+        front.appendChild(rightPages[rightPages.length - 1].cloneNode(true));
+        const back = document.createElement("div");
+        back.className = "leaf-face leaf-back";
+        back.appendChild(leftPages[0].cloneNode(true));
+        leaf.replaceChildren(front, back);
         leaf.classList.remove("turn-next", "turn-prev");
         void leaf.offsetWidth; // restart the animation
         leaf.classList.add("turn-" + dir);

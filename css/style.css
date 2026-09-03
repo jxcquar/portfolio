@@ -361,7 +361,10 @@ body.pager {
   perspective: 2600px;
 }
 
-/* The turning leaf: carries a live preview of the page it is turning */
+/* The turning leaf: a two-sided page. The front carries the outgoing
+   page; the back shows a readable preview of the incoming one, like
+   really opening a book. (No filter/opacity mid-animation: grouping
+   properties flatten preserve-3d and mirror the text.) */
 .page-leaf {
   position: absolute;
   top: 13px;
@@ -369,22 +372,29 @@ body.pager {
   left: 50%;
   right: 13px;
   transform-origin: left center;
-  background: #ffffff;
-  border-radius: 0 12px 12px 0;
-  box-shadow: 0 6px 20px rgba(20, 30, 50, 0.14);
+  transform-style: preserve-3d;
   opacity: 0;
   pointer-events: none;
   z-index: 8;
   will-change: transform;
-  overflow: hidden;
 }
-.page-leaf .book-page {
+.leaf-face {
+  position: absolute;
+  inset: 0;
+  background: #ffffff;
+  border-radius: 0 12px 12px 0;
+  box-shadow: 0 6px 20px rgba(20, 30, 50, 0.14);
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.leaf-face .book-page {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
 }
-.page-leaf::after {
+.leaf-face::after {
   /* fold shading over the preview */
   content: "";
   position: absolute;
@@ -392,20 +402,21 @@ body.pager {
   background: linear-gradient(to right, rgba(20, 30, 50, 0.07), rgba(20, 30, 50, 0) 18%, rgba(20, 30, 50, 0) 82%, rgba(20, 30, 50, 0.05));
   pointer-events: none;
 }
-/* one full, solid page turn around the spine */
+.leaf-back {
+  transform: rotateY(180deg);
+  border-radius: 12px 0 0 12px;
+}
+.page-leaf.turn-next,
+.page-leaf.turn-prev { opacity: 1; }
 .page-leaf.turn-next { animation: leaf-next 0.55s cubic-bezier(0.45, 0.05, 0.35, 1) both; }
 .page-leaf.turn-prev { animation: leaf-prev 0.55s cubic-bezier(0.45, 0.05, 0.35, 1) both; }
 @keyframes leaf-next {
-  0% { transform: rotateY(0deg); opacity: 1; }
-  50% { filter: brightness(0.93); }
-  97% { opacity: 1; }
-  100% { transform: rotateY(-180deg); opacity: 0; }
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(-178deg); }
 }
 @keyframes leaf-prev {
-  0% { transform: rotateY(-180deg); opacity: 1; }
-  50% { filter: brightness(0.93); }
-  97% { opacity: 1; }
-  100% { transform: rotateY(0deg); opacity: 0; }
+  from { transform: rotateY(-178deg); }
+  to { transform: rotateY(0deg); }
 }
 
 .case-slide {
