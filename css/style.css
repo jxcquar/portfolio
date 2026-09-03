@@ -424,13 +424,15 @@ body.pager {
   inset: 13px;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.4s ease, visibility 0s linear 0.4s;
+  /* hold the outgoing spread until the turning leaf covers it mid-flip,
+     then swap underneath — the previous page stays visible as the flip begins */
+  transition: opacity 0.3s ease 0.18s, visibility 0s linear 0.48s;
   pointer-events: none;
 }
 .case-slide.is-active {
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.4s ease, visibility 0s;
+  transition: opacity 0.3s ease 0.18s, visibility 0s;
   pointer-events: auto;
 }
 
