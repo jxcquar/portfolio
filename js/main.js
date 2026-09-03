@@ -339,10 +339,17 @@
       if (i === current) return;
       const dir = i > current ? "next" : "prev";
       const firstRender = current === -1;
+      const from = current;
       current = i;
 
-      // page-turn leaf sweeps around the spine
+      // page-turn leaf sweeps around the spine, carrying a preview of the
+      // page being turned: forward shows the outgoing right page, backward
+      // settles the incoming one
       if (!firstRender && !instant && !reduceMotion && leaf) {
+        const srcSlide = dir === "next" ? slides[from] : slides[i];
+        const pages = srcSlide.querySelectorAll(".book-page");
+        const rightPage = pages[pages.length - 1];
+        leaf.replaceChildren(rightPage.cloneNode(true));
         leaf.classList.remove("turn-next", "turn-prev");
         void leaf.offsetWidth; // restart the animation
         leaf.classList.add("turn-" + dir);

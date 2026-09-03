@@ -361,7 +361,7 @@ body.pager {
   perspective: 2600px;
 }
 
-/* The turning leaf: a blank sheet that flips around the spine on every page turn */
+/* The turning leaf: carries a live preview of the page it is turning */
 .page-leaf {
   position: absolute;
   top: 13px;
@@ -369,13 +369,28 @@ body.pager {
   left: 50%;
   right: 13px;
   transform-origin: left center;
-  background: linear-gradient(to right, #f2f3f6, #ffffff 16%, #fdfdfe 86%, #f2f3f6);
+  background: #ffffff;
   border-radius: 0 12px 12px 0;
   box-shadow: 0 6px 20px rgba(20, 30, 50, 0.14);
   opacity: 0;
   pointer-events: none;
   z-index: 8;
   will-change: transform;
+  overflow: hidden;
+}
+.page-leaf .book-page {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.page-leaf::after {
+  /* fold shading over the preview */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(20, 30, 50, 0.07), rgba(20, 30, 50, 0) 18%, rgba(20, 30, 50, 0) 82%, rgba(20, 30, 50, 0.05));
+  pointer-events: none;
 }
 /* one full, solid page turn around the spine */
 .page-leaf.turn-next { animation: leaf-next 0.55s cubic-bezier(0.45, 0.05, 0.35, 1) both; }
