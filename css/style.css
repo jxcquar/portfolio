@@ -629,7 +629,7 @@ body.pager {
 }
 
 .book {
-  width: min(1025px, 100%);
+  width: min(1025px, calc(100% - 76px)); /* leave room for the edge tabs on smaller screens */
   border-radius: 24px;
   padding: 13px;
   background: var(--paper-frame);

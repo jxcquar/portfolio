@@ -388,8 +388,9 @@
     const stage = document.querySelector(".book--stage");
     const placeArrows = () => {
       const r = stage.getBoundingClientRect();
-      prevBtn.style.left = r.left - prevBtn.offsetWidth / 2 + "px";
-      nextBtn.style.right = window.innerWidth - r.right - nextBtn.offsetWidth / 2 + "px";
+      // straddle the page edges, but never leave the screen on small windows
+      prevBtn.style.left = Math.max(r.left - prevBtn.offsetWidth / 2, 6) + "px";
+      nextBtn.style.right = Math.max(window.innerWidth - r.right - nextBtn.offsetWidth / 2, 6) + "px";
     };
     placeArrows();
     window.addEventListener("resize", placeArrows);
