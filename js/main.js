@@ -384,6 +384,22 @@
       }
     }
 
+    // pin the arrow tabs to the book's measured edges at any viewport size
+    const stage = document.querySelector(".book--stage");
+    const placeArrows = () => {
+      const r = stage.getBoundingClientRect();
+      prevBtn.style.left = r.left - prevBtn.offsetWidth / 2 + "px";
+      nextBtn.style.right = window.innerWidth - r.right - nextBtn.offsetWidth / 2 + "px";
+    };
+    placeArrows();
+    window.addEventListener("resize", placeArrows);
+    window.addEventListener("load", placeArrows);
+    if (window.ResizeObserver) {
+      const ro = new ResizeObserver(placeArrows);
+      ro.observe(stage);
+      ro.observe(document.documentElement);
+    }
+
     prevBtn.addEventListener("click", () => go(current - 1));
     nextBtn.addEventListener("click", () => go(current + 1));
 
