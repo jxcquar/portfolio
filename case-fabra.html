@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,500;1,600&family=Crimson+Text:ital@0;1&family=Inter:wght@400;500;600;700;800&family=Roboto:wght@500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=38" />
+  <link rel="stylesheet" href="css/style.css?v=39" />
 </head>
 <body class="pager case-light" data-page="case">
 
@@ -29,14 +29,15 @@
   <nav class="case-nav" aria-label="Case study sections">
     <a href="#overview">Overview</a>
     <a href="#challenge">Challenge</a>
-    <a href="#scope">Scope</a>
     <a href="#signal">Signal</a>
+    <a href="#friction">Friction</a>
     <a href="#insight">Insight</a>
     <a href="#structure">Structure</a>
     <a href="#layers">Layers</a>
     <a href="#start">Starting point</a>
-    <a href="#funnel">Funnel</a>
-    <a href="#shipped">Trade-offs</a>
+    <a href="#focus">Focus</a>
+    <a href="#strategy">Strategy</a>
+    <a href="#business">Business</a>
     <a href="#result">Result</a>
     <a href="#learned">Learnings</a>
   </nav>
@@ -48,19 +49,19 @@
     <section class="case-slide" id="overview">
       <div class="book-inner">
           <div class="book-page">
-            <div class="img-slot img-slot--tall"><span>[Image] Hero — a finished garment on the 3D canvas in the Fabra editor</span></div>
+            <div class="img-slot img-slot--tall"><span>[Image] Hero — short looping video or GIF of the 3D editor: a garment being built, rotated and recoloured in real time</span></div>
           </div>
           <div class="book-page book-page--center">
-            <h2>Designing the 0→1 product ecosystem that took Fabra from private beta to 17,600 designers and 48,400 garments — as the only designer on the team.</h2>
+            <h2>Designing Fabra, a professional 3D fashion tool for the browser.</h2>
             <div>
               <img class="fabra-mark" src="assets/fabra-wordmark.svg" alt="FABRA" />
-              <p class="body" style="margin-top:6px">Fabra is the first browser-based 3D fashion design tool built for non-technical designers.</p>
+              <p class="body" style="margin-top:12px">Fabra is a browser-based 3D fashion design platform built to make professional garment creation accessible to designers without traditional 3D expertise.</p>
             </div>
             <div class="meta-rows">
-              <p><span class="k">Role</span><span class="v">Senior Product Designer — Solo</span></p>
-              <p><span class="k">Scope</span><span class="v">0→1 · UX strategy · Product · Design system · Research · Growth funnel · Monetisation</span></p>
-              <p><span class="k">Team</span><span class="v">3 Engineers · 1 Product Manager · 1 Product-Led Growth · CPO</span></p>
-              <p><span class="k">Timeline</span><span class="v">Apr 2025 Private Beta · Nov 2025 Public Beta · Aug 2026 Public Launch &amp; Monetisation</span></p>
+              <p><span class="k">Role</span><span class="v">Senior Product Designer</span></p>
+              <p><span class="k">Ownership</span><span class="v">Sole product designer across 0→1 product, research, marketing site and launch. Evolved and scaled the existing design system as the product’s surface area grew.</span></p>
+              <p><span class="k">Team</span><span class="v">3 Engineers · 1 Product Manager · 1 Product-Led Growth</span></p>
+              <p><span class="k">Timeline</span><span class="v">Apr 2025 — Private Beta · Nov 2025 — Public Beta · 2026 — Public Launch &amp; Monetisation</span></p>
             </div>
           </div>
       </div>
@@ -70,40 +71,15 @@
       <div class="book-inner">
           <div class="book-page">
             <p class="eyebrow">01 — The challenge</p>
-            <h2>Fashion ideas move fast. Fashion production doesn’t.</h2>
+            <h2>Fashion ideas move fast. Getting them into production is slower and messier than it should be.</h2>
             <div class="body">
-              <p>For many designers, the creative part is the easy part. The difficult part starts when an idea has to become something real.</p>
-              <p>A garment needs to be visualised, constructed, measured, documented and communicated to manufacturers. That often means moving between sketches, Illustrator files, spreadsheets, 3D tools, tech packs and physical samples.</p>
-              <p>Existing 3D tools are powerful, but they’re built for trained specialists. For everyone else, the learning curve is high.</p>
+              <p>For most designers, the idea is the easy part. What comes after is harder: turning that idea into something a factory can actually make. In practice that means bouncing between sketches, Illustrator files, spreadsheets, 3D tools, tech packs and physical samples, and hoping nothing gets lost along the way.</p>
             </div>
           </div>
           <div class="book-page">
             <div class="body">
-              <p>Fabra’s opportunity was to make 3D fashion design accessible in the browser, without reducing it to a lightweight mockup tool.</p>
-              <p>The challenge wasn’t just making 3D easier. It was making it useful enough to become part of a real design-to-production workflow.</p>
-            </div>
-            <p class="pullquote">How do you make professional-grade 3D fashion design dramatically easier to use, without sacrificing the depth professional designers need?</p>
-            <div class="img-slot"><span>[Image] The fragmented workflow — sketch, Illustrator, spreadsheet, 3D tool, tech pack, sample, side by side</span></div>
-          </div>
-      </div>
-    </section>
-
-    <section class="case-slide" id="scope">
-      <div class="book-inner">
-          <div class="book-page">
-            <p class="eyebrow">02 — Scope</p>
-            <h2>Solo in-house designer</h2>
-            <div class="body">
-              <p>I joined Fabra as its only designer, with a brief that ran wider than the canvas.</p>
-              <p>Own the user experience as the product moved from early access to public beta. Balance first-time creators against returning power users. Deliver everything from wireframes to high-fidelity designs, and build the reusable UI system underneath them.</p>
-              <p>Run the research programme across Fabra Friends, the waitlist and early adopters. Turn what we learned into what we built.</p>
-            </div>
-          </div>
-          <div class="book-page">
-            <div class="body">
-              <p>Design the full growth funnel: video → landing page → design tool → share → sign-up. And own the path from concept to production output — tech packs, exports, downloadable assets.</p>
-              <p>Alongside that, work directly with the CPO to shape the roadmap from research and behavioural data.</p>
-              <p>By launch, that brief had become a set of things that exist because I was in the room: a design principle the whole product runs on, a public beta scoped from my research rather than a feature wishlist, a performance fix that moved ahead of the roadmap because I kept putting users in front of the team, and a funnel converting visitors to designers at 7.6%.</p>
+              <p>The 3D tools that already exist are genuinely powerful, but they’re built for people who’ve trained on them for years. Everyone else hits a wall almost immediately.</p>
+              <p>Fabra’s bet was that professional 3D fashion design could work in a browser without turning into a toy. That meant solving two things at once: make it simple enough that someone could open it and start, and keep it capable enough to survive a real production workflow.</p>
             </div>
           </div>
       </div>
@@ -112,23 +88,52 @@
     <section class="case-slide" id="signal">
       <div class="book-inner">
           <div class="book-page">
-            <p class="eyebrow">03 — The early signal</p>
-            <h2>People could start using Fabra quickly. The problem was what happened next.</h2>
+            <p class="eyebrow">02 — The early signal</p>
+            <h2>People picked up Fabra fast. The real question was what happened once they got past the first five minutes.</h2>
             <div class="body">
-              <p>In private beta, I worked closely with fashion designers, founders, print designers and creative professionals to understand how Fabra fitted into their existing workflows.</p>
-              <p>I ran 20 usability sessions with Gloria, our CPO, over Zoom — designers joined from all over the world. Each call followed a 30/70 structure: a third of the time watching people work through scenario-based tasks in Fabra, the rest understanding how they actually worked day to day, with or without us.</p>
-              <p>I synthesised the findings by persona — solo founder, team-based studio, print designer — and delivered the public beta change list in Notion: what to fix, what to add, what to leave alone. That document became the team’s brief for public beta.</p>
-              <div class="img-slot"><span>[Image] Notion synthesis doc — findings grouped by persona, with the public beta fix/add/leave list</span></div>
+              <p>During private beta I ran 30 usability sessions with fashion designers, founders, print designers and other creative professionals, trying to understand where Fabra actually fit into how they already worked. The average rating came out to 8.2/10, higher than I expected given the bugs and rough edges you’d expect from an early beta.</p>
+              <div class="img-slot"><span>[Image] A simple chart or quote wall from the usability sessions — “What did an 8.2/10 actually sound like?”</span></div>
             </div>
           </div>
           <div class="book-page">
             <div class="body">
-              <p>Across those sessions, users rated the experience an average of 8.2/10, even while encountering beta bugs and performance issues. That told us something important: the core interaction model was approachable. People could open Fabra and start designing without needing to learn traditional 3D software first.</p>
-              <p>But as they went deeper, a second pattern appeared. Users began asking for more control: measurements and tech packs, garment customisation, bulk edits, better layer management, keyboard shortcuts, accurate colour and material rendering, production-ready exports.</p>
-              <p>Later rounds of interviews and surveys fed a running insights log and periodic UX Learnings Reports to Gloria and the team — what we’d heard, what the data backed up, and what it meant for the roadmap.</p>
-              <p>The problem had shifted. We no longer needed to prove that Fabra could be easy. We needed to prove that easy didn’t mean limited.</p>
+              <p>That told me the core interaction model was working. People could open Fabra and start designing without first learning traditional 3D software. But the longer they spent in it, the more specific their requests got:</p>
+              <ul class="flow-list">
+                <li>Measurements and tech packs</li>
+                <li>More garment customisation</li>
+                <li>Bulk editing</li>
+                <li>Better layer management</li>
+                <li>Keyboard shortcuts</li>
+                <li>More accurate colour and material rendering</li>
+                <li>Production-ready exports</li>
+              </ul>
+              <p>So the question changed. It stopped being “can this be easy” and became “can this be easy without being limited.”</p>
             </div>
-            <div class="img-slot"><span>[Image] Session summary — 8.2/10 average and the recurring request themes</span></div>
+          </div>
+      </div>
+    </section>
+
+    <section class="case-slide" id="friction">
+      <div class="book-inner">
+          <div class="book-page">
+            <p class="eyebrow">03 — Where simplicity broke down</p>
+            <h2>Approachable didn’t always mean predictable, and that mattered more than I expected.</h2>
+            <div class="body">
+              <p>The friction showed up in small ways. In one round of testing, 7 of 8 participants hesitated at the same issue: was this a click or a drag? Fabra used both, inconsistently, for actions that looked nearly identical. 5 of 8 struggled the first time they tried to apply a print to a design. Separately, most participants testing on older MacBooks ran into real performance issues, which I flagged to the dev team and we eventually resolved.</p>
+              <div class="img-slot"><span>[Image] Side-by-side of two similar interactions, one click-based and one drag-based, annotated — “Same intent, two different gestures.”</span></div>
+              <p>None of this was dramatic on its own. Selection feedback was too subtle. No keyboard shortcuts. Some interactions used a click, others a drag. Panels competed for space. Zoom and navigation weren’t perfect. Changes sometimes took a beat too long to show up. Stacked together, they made the whole product feel less trustworthy than it should have.</p>
+              <p>So before adding anything new, I went back to fundamentals: make selection obvious, make common actions consistent, keep the canvas dominant, make the result of every action clear. That became a hard rule for everything after it. New capability couldn’t come at the cost of predictability.</p>
+            </div>
+          </div>
+          <div class="book-page">
+            <div class="body">
+              <p>One recurring debate with engineering was how our panels should scale as the product became more complex.</p>
+              <p>Early versions relied entirely on the left panel. A one-size-fits-all approach for finding, applying and editing content. We experimented with making this even faster through one-click apply, similar to Canva, where selecting an asset adds it directly to the canvas.</p>
+              <p>But I wasn’t convinced the model would hold up as Fabra gained more advanced controls. My hypothesis was that discovery and configuration were fundamentally different tasks and should have distinct spaces. Figma provided a useful reference: the left side supports browsing and adding, while the right becomes contextual to whatever is selected. I proposed the same underlying model for Fabra — the left for search, upload and discovery, and the right for granular configuration.</p>
+              <p>Some of the decision-makers weren’t convinced, so rather than relying on instinct, I put the idea to the test with 25 users. Most participants quickly understood the left-for-discovery, right-for-configuration model, including people with little experience using tools like Figma or Canva.</p>
+              <p>That gave us confidence that we weren’t simply relying on familiarity with another product. The separation itself created a clearer mental model, while giving Fabra an interface that could scale as more professional controls were introduced.</p>
+              <div class="img-slot"><span>[Image] The panel model — left for discovery, right for configuration</span></div>
+            </div>
           </div>
       </div>
     </section>
@@ -137,19 +142,19 @@
       <div class="book-inner">
           <div class="book-page">
             <p class="eyebrow">04 — The key insight</p>
-            <h2>Beginners and professionals didn’t need different products. They needed different levels of the same product.</h2>
+            <h2>Beginners and professionals seemed to want very different things from Fabra. But I didn’t think they needed different products. They needed different depths of the same one.</h2>
             <div class="body">
-              <p>New founders and non-technical creatives wanted to start with templates, presets and familiar interactions.</p>
-              <p>Professional designers wanted the same simplicity, but expected more precision as they worked: measurements, patterns, specifications and production controls.</p>
+              <p>New founders and non-technical creatives wanted an easy place to start, with templates, presets and familiar interactions.</p>
+              <p>Professional designers wanted that same simplicity, but expected more precision as they went deeper, with patterns, measurements, specifications and production controls.</p>
             </div>
           </div>
           <div class="book-page">
             <div class="body">
-              <p>That changed the way I thought about the product. Instead of exposing every capability upfront, Fabra could grow with the user. Start simple. Reveal depth when it becomes useful.</p>
-              <p>That became the design principle I set for the product, and the one I held every decision against:</p>
+              <p>The challenge was designing for both without overwhelming one or limiting the other.</p>
+              <p>The fix wasn’t a beginner mode or a pro mode. It was a product that could grow with whoever was using it:</p>
             </div>
             <p class="principle">Simple by default. Powerful on demand.</p>
-            <div class="img-slot"><span>[Image] Diagram — one product, two entry depths: templates and presets at the top, measurements and production controls revealed beneath</span></div>
+            <div class="img-slot"><span>[Image] The simple → powerful spectrum diagram, showing a feature like materials moving along the line as a designer’s intent gets more specific</span></div>
           </div>
       </div>
     </section>
@@ -158,21 +163,22 @@
       <div class="book-inner">
           <div class="book-page">
             <p class="eyebrow">05 — Rethinking the product structure</p>
-            <h2>One garment, instead of a collection of disconnected files.</h2>
+            <h2>The bigger problem wasn’t any one feature. It was fragmentation.</h2>
             <div class="body">
-              <p>The bigger problem wasn’t any individual feature. It was the fragmentation of the fashion workflow. A designer might update a garment in one tool, adjust the pattern somewhere else, then manually update measurements or production documents to match. Every change created more admin.</p>
-              <p>Gloria and Nick, our CTO, made the structural call: the garment would become the single source of truth.</p>
-              <p>The Design Editor, Pattern Studio and Tech Pack would not behave like separate tools. They would become different ways of working with the same garment.</p>
+              <p>A designer might visualise a garment in one tool, adjust the pattern somewhere else, track measurements in a spreadsheet, then build production docs separately. Change the garment and everything downstream needs to be checked and updated by hand.</p>
+              <p>So we made a structural call: the garment itself would become the single source of truth.</p>
+              <p>Instead of treating the Design Editor, Pattern Studio and Tech Pack as separate products, we designed them as different ways of working with the same garment.</p>
             </div>
           </div>
           <div class="book-page">
             <div class="body">
-              <p>Change the design and the production information stays connected. Adjust the pattern and the garment updates with it. Update materials and those details flow into the tech pack.</p>
-              <p>My job was to make that decision hold in the interface. I designed how the Design Editor, Pattern Studio and Tech Pack presented themselves as views of one garment rather than three tools — the navigation between them, a shared selection and editing model, and how a change made in one surfaced in the others.</p>
-              <p>It gave Fabra a much clearer product model:</p>
+              <p>A user can change the design and the production data stays connected. Adjust the pattern and the garment updates with it. Update a material and it flows into the tech pack.</p>
             </div>
-            <p class="principle">Design → Construct → Specify → Produce</p>
-            <div class="img-slot"><span>[Image] The same garment across Design Editor, Pattern Studio and Tech Pack — one change reflected in all three</span></div>
+            <p class="principle">Design → Construct → Specify → Produce<br/><span style="font-size:15px; font-style:normal; color:#777">3D Editor → Pattern Studio → Tech Pack → Export</span></p>
+            <div class="body">
+              <p>One garment, one source of truth, the whole way through. This gave us a much clearer model to build around. As Fabra grew, we could ask a simpler question of every new capability: where does it belong in the garment’s journey from idea to production?</p>
+            </div>
+            <div class="img-slot"><span>[Image] The four-stage flow with a real product screenshot beneath each stage — the most important structural decision in the case study</span></div>
           </div>
       </div>
     </section>
@@ -181,22 +187,20 @@
       <div class="book-inner">
           <div class="book-page">
             <p class="eyebrow">06 — Designing complexity in layers</p>
-            <h2>The interface needed to feel calm, even when the product became more complex.</h2>
+            <h2>A professional tool accumulates controls whether you want it to or not. The real question was when those controls earned a user’s attention.</h2>
             <div class="body">
-              <p>Users were quick to notice when something felt off. Unclear selection states, inconsistent click versus drag behaviour, panel overlap, lag or confusing zoom controls — small things that quickly knocked confidence. So before adding more capability, I focused on making the fundamentals predictable.</p>
-              <p>Selection needed to feel obvious. Common actions needed to behave consistently. The canvas needed to stay visually dominant. Advanced tools needed to show up when you needed them, not compete for attention all at once.</p>
-              <p>To make that hold as the product grew, we built a design system on a shadcn base, extending it with the interaction patterns Fabra needed. Engineers built from it directly, so a pattern decided once stayed consistent across the editor, Pattern Studio, Tech Pack and everything that came after.</p>
-              <p>The hardest call wasn’t about the UI. Performance wasn’t on the roadmap between private and public beta. Features were. But every session had someone waiting on the canvas, and every wait cost confidence in everything that came after. I kept bringing the recordings and the quotes back to the team until performance jumped the queue. It shipped fixed for public launch.</p>
+              <p>The canvas stayed at the centre of the experience. Tools and properties became contextual instead of permanent, showing up based on what someone was doing or had selected rather than sitting on screen all the time.</p>
+              <p>As the product grew, that same thinking had to extend beyond the editor into the design system itself.</p>
+              <p>We brought in an external designer for a month to establish the design system based on Fabra’s brand, while I focused on UX strategy. From there, I took ownership of evolving and extending the system as Fabra grew from one editor into eight interconnected tools.</p>
             </div>
           </div>
           <div class="book-page">
-            <p class="mini-eyebrow">How the work moved</p>
             <div class="body">
-              <p>With three engineers and no design team, the process had to be light and hard to ignore. Every design went through a review with Gloria before it went anywhere near engineering. Then it went out as Linear tickets with design annotations — and, because some engineers go straight to the file and skip the ticket, the same annotations lived on the Figma frames so nothing depended on which door they came through.</p>
-              <p>Feedback happened in real time, not in rounds. And every Tuesday at all-hands I brought what users had said that week. If an engineer had room, it was often fixed by Friday. If they didn’t, and I thought it mattered, I brought it back the next Tuesday, and the one after, until it was.</p>
+              <p>That meant introducing new components and interaction patterns as new problems emerged, while keeping the underlying experience consistent. Eight tools could do very different things without feeling like eight different products stitched together.</p>
+              <p>That came with real trade-offs. Some controls became less visible. Some workflows picked up an extra step. Not everything got to live permanently on the canvas. But the alternative was an interface where every feature fought for the same attention at once — and that was worse.</p>
+              <p>The goal was never to hide complexity. It was to show it at the moment it actually became useful.</p>
             </div>
-            <p class="pullquote">The goal was never to hide complexity. It was to reveal it at the right moment.</p>
-            <div class="img-slot"><span>[Image] Before / after — selection states, panel layout and tool visibility in the editor</span></div>
+            <div class="img-slot"><span>[Image] The properties panel in two states, nothing selected vs. something selected, annotated — “The panel only shows what’s relevant to the current selection.”</span></div>
           </div>
       </div>
     </section>
@@ -205,68 +209,90 @@
       <div class="book-inner">
           <div class="book-page">
             <p class="eyebrow">07 — Giving people a better starting point</p>
-            <h2>A blank canvas is flexible. It’s also intimidating.</h2>
+            <h2>A blank canvas is flexible. It’s also a little intimidating if you don’t already know what you’re doing.</h2>
             <div class="body">
-              <p>One of the biggest lessons from beta was that accessibility isn’t just about simplifying UI. It’s also about giving people somewhere useful to start.</p>
-              <p>So instead of forcing every designer into a blank canvas, I designed the entry points around base products, templates, presets and reusable assets.</p>
-              <p>A designer could start with an existing garment, understand how it was constructed, customise it and gradually move deeper into Fabra’s professional tools.</p>
+              <p>One of the bigger lessons from beta was that accessibility isn’t only about simplifying the UI. It’s also about giving people somewhere useful to start.</p>
+              <p>A blank canvas works well for an experienced designer, but it assumes a new user already understands what Fabra can do and how a garment gets built.</p>
+              <p>Instead of taking that flexibility away, we built more ways into the product: base products, templates, presets and reusable assets, with Blank Canvas still there for anyone who wanted full control from the first click.</p>
             </div>
           </div>
           <div class="book-page">
             <div class="body">
-              <p>This created a natural learning loop:</p>
+              <p>Someone could start with an existing garment, see how it was put together, customise it, then gradually work their way into the more professional tools. Multiple ways in, with one product underneath.</p>
+              <p>That created a learning loop that worked in our favour:</p>
             </div>
-            <p class="pullquote">Start with something familiar. Customise it. Understand how it works. Create independently.</p>
+            <p class="pullquote">Start with something familiar → Customise it → Understand how it works → Create independently</p>
             <div class="body">
-              <p>The product became part tool, part learning environment. Without turning onboarding into a course.</p>
+              <p>Fabra became part tool, part learning environment, without turning onboarding into a course.</p>
             </div>
-            <div class="img-slot"><span>[Image] Start screen — base products, templates and presets library</span></div>
-          </div>
-      </div>
-    </section>
-
-    <section class="case-slide" id="funnel">
-      <div class="book-inner">
-          <div class="book-page">
-            <p class="eyebrow">08 — From video to paying designer</p>
-            <h2>Designing the funnel, not just the product.</h2>
-            <div class="body">
-              <p>As Fabra moved from beta to public launch, the problem changed. We weren’t only designing a product anymore. We were designing a business around it.</p>
-              <p>Most designers found Fabra through video. So the funnel started long before the canvas:</p>
-            </div>
-            <p class="pullquote">Video → Landing page → Design tool → Share → Sign-up → Paid plan</p>
-            <div class="body">
-              <p>I owned the experience at each step. Landing pages built to be tested, so the growth lead and I could run variants without a redesign. Onboarding that got people to a first garment fast. Sharing that made a finished design worth showing. Activation moments that matched why people had turned up in the first place.</p>
-            </div>
-          </div>
-          <div class="book-page">
-            <div class="body">
-              <p>Then the same principles carried into billing. Our CGO set the pricing tiers. I designed the flows around them — plan selection, upgrade, billing settings — and QA’d them through to release so they shipped the way they were designed.</p>
-              <p>Free users needed enough freedom to understand Fabra’s value before being asked to pay. Starter and Pro plans needed to introduce meaningful capability rather than arbitrary restrictions. For AI features, we introduced a credit model so experimentation had a visible cost without forcing designers to make a purchasing decision every time they wanted to try an idea.</p>
-              <p>The goal was simple: make every step from curious to paying feel so natural that designers would tell other designers about it.</p>
-            </div>
-            <div class="img-slot"><span>[Image] Funnel diagram — video → landing page → design tool → share → sign-up → paid plan, with drop-off points</span></div>
-            <div class="img-slot"><span>[Image] Billing flows — plan selection, upgrade and billing settings screens</span></div>
+            <div class="img-slot"><span>[Image] Grid showing the entry-point picker, with Blank Canvas alongside templates, base products and presets</span></div>
           </div>
       </div>
     </section>
 
-    <section class="case-slide" id="shipped">
+    <section class="case-slide" id="focus">
       <div class="book-inner">
           <div class="book-page">
-            <p class="eyebrow">09 — Deciding what shipped</p>
-            <h2>With three engineers, every launch decision was a trade-off.</h2>
+            <p class="eyebrow">08 — Deciding what not to build</p>
+            <h2>The roadmap was always going to be bigger than three engineers and one designer could actually ship.</h2>
             <div class="body">
-              <p>The product became more complex over the year and so did the questions. Early beta users asked how things worked. As the experience matured, they started asking for more. Text on garments. Custom avatar measurements. Advanced layer controls.</p>
-              <p>We heard all of it and captured all of it. Then, with Gloria, I sorted every request against the funnel: did it block someone creating a first design, did it block them going deeper into a design they’d already started, or did it block them getting a garment out to production?</p>
+              <p>Research kept surfacing good ideas: custom avatars, advanced measurements, grading, text tools, collaboration, richer exports, better layers and deeper garment customisation. Most deserved to exist eventually. We just couldn’t build them all at once.</p>
+              <p>So prioritisation became part of the design process, not something that happened after it.</p>
             </div>
           </div>
           <div class="book-page">
             <div class="body">
-              <p>Anything in the first two groups was in scope for launch. Anything that made an already-good garment slightly better could wait, however loudly it was asked for.</p>
-              <p>The goal wasn’t to ship everything. It was to ship the right things first and build something worth adding to. What’s missing is already mapped. It’s a matter of when, not if.</p>
+              <p>Every request was weighed against the same four things: how often it came up in research, how critical it was to completing the Design → Construct → Specify → Produce loop, its strategic value to Fabra, and what it would cost the team to build properly.</p>
+              <p>Not every good idea was the next idea. The question was never, “Would this make Fabra better?” Almost everything would have. The question that mattered was:</p>
             </div>
-            <div class="img-slot"><span>[Image] Prioritisation board — requests sorted by first design / going deeper / production output, launch vs deferred</span></div>
+            <p class="pullquote">“What unlocks the next most important part of the workflow?”</p>
+            <div class="body">
+              <p>That helped protect the core experience while the product kept expanding around it.</p>
+            </div>
+            <div class="img-slot"><span>[Image] 4-axis prioritisation framework with 2–3 real examples from research</span></div>
+          </div>
+      </div>
+    </section>
+
+    <section class="case-slide" id="strategy">
+      <div class="book-inner">
+          <div class="book-page">
+            <p class="eyebrow">09 — Making UX part of the product strategy</p>
+            <h2>As the design advocate on the team, part of my role was making sure UX had a seat at the table, not just a queue of tickets to clear.</h2>
+            <div class="body">
+              <p>I presented UX OKRs and brought usability findings and recurring friction into planning conversations rather than leaving them inside design reviews.</p>
+              <p>When issues like the click-versus-drag inconsistency and keyboard shortcuts kept showing up in research, they had to compete for priority against new feature requests. That meant making the case with evidence, not just design opinion.</p>
+            </div>
+          </div>
+          <div class="book-page">
+            <div class="body">
+              <p>Over time, this helped make UX a clearer part of how we talked about product priorities across the team, rather than a collection of individual design fixes.</p>
+              <p>With three engineers and an ambitious roadmap, not everything could be addressed at once. One of the most challenging parts of design was making the case for what mattered now, what could wait and where improving the experience would create the most value for both users and the business.</p>
+            </div>
+            <div class="img-slot"><span>[Image] Slide or excerpt from a UX OKR deck or roadmap, redacted where needed — “Making the case with evidence, not just opinions.”</span></div>
+          </div>
+      </div>
+    </section>
+
+    <section class="case-slide" id="business">
+      <div class="book-inner">
+          <div class="book-page">
+            <p class="eyebrow">10 — From product to business</p>
+            <h2>We weren’t just designing a product anymore. We were designing a business around it.</h2>
+            <div class="body">
+              <p>As Fabra got closer to public launch, the problem changed shape again. My scope grew to cover onboarding, pricing, plans, credits, upgrade moments and billing.</p>
+              <p>The hard part was keeping the same sense of experimentation that made Fabra approachable in the first place. Free users needed enough room to actually feel the value before we asked them to pay. Starter and Pro needed to unlock capability that felt meaningful, not like arbitrary walls we’d put up.</p>
+            </div>
+          </div>
+          <div class="book-page">
+            <div class="body">
+              <p>For AI features specifically, we introduced credits so the cost of generation stayed visible and understandable without forcing a purchase decision every time someone wanted to try an idea.</p>
+            </div>
+            <p class="pullquote">Show value first. Introduce commitment when the value is already clear.</p>
+            <div class="body">
+              <p>The same logic applied everywhere else. The goal was for the whole path, from curious visitor to first design to returning designer to paying customer, to feel like one experience instead of a product with a business bolted onto it.</p>
+            </div>
+            <div class="img-slot"><span>[Image] Plan tiers, credit balance UI and an upgrade moment</span></div>
           </div>
       </div>
     </section>
@@ -274,34 +300,27 @@
     <section class="case-slide" id="result">
       <div class="book-inner">
           <div class="book-page">
-            <p class="eyebrow">10 — The result</p>
-            <h2>A complete fashion studio, running in the browser.</h2>
+            <p class="eyebrow">11 — The result</p>
+            <h2>Fabra came a long way: from a private beta into a full platform spanning 3D Design, Pattern Making, Tech Packs, Range Planning, Assets, Repeat Print Maker, AI and Billing.</h2>
             <div class="body">
-              <p>Fabra evolved from a private beta into an end-to-end platform spanning 3D Design, Pattern Making, Tech Packs, Range Planning, Assets, Print, AI, Onboarding and Billing.</p>
-              <p>My role evolved with it. In V1, I was deep in the product: the 3D canvas, pattern tools, interaction design, the design system holding it all together. In V2, the work shifted toward getting designers through the door — marketing site, onboarding, monetisation. The full journey from first impression to first paid plan.</p>
+              <p>My role grew with it. In V1, I was deep in the core experience: the 3D canvas, pattern tools, interaction models and the design system holding it together. Moving into V2 and monetisation, my scope expanded across the whole customer journey: marketing, acquisition, onboarding, activation, pricing and billing.</p>
+              <p>I went from designing how someone edits a garment to designing how they find Fabra, understand it, start creating and eventually decide to pay for it.</p>
             </div>
-            <p class="mini-eyebrow">Since public beta in November 2025</p>
+            <p class="mini-eyebrow">As of September 2026, Fabra sees roughly</p>
             <div class="stat-rows">
               <p class="stat-row"><span class="stat-num">232,000</span><span class="stat-label">monthly visitors</span></p>
-              <p class="stat-row"><span class="stat-num">17,600</span><span class="stat-label">sign-ups — a 7.6% visitor-to-sign-up rate</span></p>
-              <p class="stat-row"><span class="stat-num">48,400</span><span class="stat-label">designs created — around 2.75 per designer</span></p>
-              <p class="stat-row"><span class="stat-num">34 min</span><span class="stat-label">median time from sign-up to first design</span></p>
-              <p class="stat-row"><span class="stat-num">89.1%</span><span class="stat-label">day 1–7 retention among power users</span></p>
-              <p class="stat-row"><span class="stat-num">20.4</span><span class="stat-label">NPS, from a beta product with known performance issues</span></p>
+              <p class="stat-row"><span class="stat-num">17,600</span><span class="stat-label">sign-ups</span></p>
+              <p class="stat-row"><span class="stat-num">48,400</span><span class="stat-label">designs created</span></p>
             </div>
           </div>
           <div class="book-page">
             <div class="body">
-              <p>The retention numbers are where the design thesis shows up. Power users — about 10% of the active base — come back in weeks two to four and keep coming back in the months after. The people who go deep, stay. Simple by default got them in; powerful on demand kept them.</p>
-              <p>The same data is honest about the gap. Day 1–7 retention for everyone else is 14.9%. First-step adoption is strong: most people who sign up create a design. What happens after that first design is the next problem to solve.</p>
+              <p>Within that broader growth, I owned the design of key conversion and activation moments: how people entered the product, the dashboard experience and the journey to creating their first design.</p>
+              <p>But one of the more interesting signals was how the questions from designers changed. Early beta feedback was mostly about understanding how the product worked. As Fabra matured, designers started asking how far they could take it: custom avatar measurements, advanced layer controls, text on garments and deeper production functionality.</p>
+              <p>The conversation had shifted from “How do I use this?” to “Can I do this too?” Those questions became signals for where the product could go next.</p>
+              <p>With a small engineering team, every launch was a trade-off. The goal was never to ship everything. It was to ship the right things first, watch how people actually used them and build from there.</p>
             </div>
-            <p class="mini-eyebrow">What designers told us</p>
-            <p class="quote">“This is an amazing program! I’m so happy I found it. I just wish I could change the measurements of the bases specifically to my liking. But something is better than nothing. This is wonderful even without that.”</p>
-            <p class="quote">“What I found surprisingly good was how simple and intuitive the platform was, even for beginners. One improvement I would suggest is providing more customisation options and more guidance for users who are still developing their projects.”</p>
-            <div class="body">
-              <p>Both say the same thing the data does. Easy to start. Wanting more depth. Designers are opening a browser tab and building real garments, with no software setup and no sales call needed — and then asking what’s next.</p>
-            </div>
-            <div class="img-slot"><span>[Image] Activation funnel and retention curves — power users vs non-power users, D1–7 and weeks 2–4</span></div>
+            <div class="img-slot"><span>[Image] Stat callout with the three numbers, clearly dated September 2026</span></div>
           </div>
       </div>
     </section>
@@ -309,20 +328,20 @@
     <section class="case-slide" id="learned">
       <div class="book-inner">
           <div class="book-page">
-            <p class="eyebrow">11 — What I learned</p>
-            <h2>Simplifying a professional tool isn’t about removing complexity. It’s about deciding when people need to see it.</h2>
+            <p class="eyebrow">12 — What I learned</p>
+            <h2>Simplifying a professional tool isn’t about stripping out complexity. It’s about deciding when someone is ready to see it.</h2>
             <div class="body">
-              <p>Complex products don’t become approachable by stripping away functionality. They become approachable by being honest about sequence. What do you need first? What comes next? What can wait?</p>
-              <p>Designers didn’t need fewer capabilities. They needed them to show up at the right time. That shaped everything. The blank canvas. The templates. The way tools appear as you go deeper. The credit model. The onboarding flow.</p>
+              <p>That ended up being the thread running through almost every decision I made on Fabra.</p>
+              <p>Give someone too much too early and the product becomes intimidating. Hide too much and it stops being useful as they become more capable. The challenge is designing the space between those two things.</p>
             </div>
             <p class="pullquote">Keep the first action obvious. Keep the next action contextual. Keep the full power within reach.</p>
           </div>
           <div class="book-page">
             <div class="body">
-              <p>We got the first part right. Thirty-four minutes to a first garment, and most people who sign up make one.</p>
-              <p>What I’d do differently is design the second session as deliberately as the first. We spent a year making the blank canvas less intimidating and much less time on what brings someone back to a garment they’ve already started. The 14.9% says so. If I were starting again, the return visit would be a first-class design problem from private beta, not a finding from the analytics after launch.</p>
-              <p>If we get that right, a designer could start with their first garment and still find Fabra useful years later. That still feels worth building.</p>
+              <p>Get that right, and someone can build their first garment without knowing anything about 3D, while still finding new depth in the product as their skills and needs grow.</p>
+              <p>If you’re building a product with a complicated problem underneath a simple experience, I’d love to hear about it. Let’s chat on <a href="https://www.linkedin.com/in/jacquelinetenges" target="_blank" rel="noopener" style="text-decoration:underline">LinkedIn</a> or email me at <a href="mailto:jxcquie@gmail.com" style="text-decoration:underline">jxcquie@gmail.com</a>.</p>
             </div>
+            <div class="img-slot"><span>[Image] Full-bleed shot of the finished editor in use, bookending the opening hero</span></div>
             <a class="case-next" href="contact.html">Let’s work together →</a>
           </div>
       </div>
@@ -351,18 +370,19 @@
   <nav class="toc-sheet" id="tocSheet" aria-label="Contents" hidden>
     <a href="#overview">Overview</a>
     <a href="#challenge">01 — The challenge</a>
-    <a href="#scope">02 — Scope</a>
-    <a href="#signal">03 — The early signal</a>
+    <a href="#signal">02 — The early signal</a>
+    <a href="#friction">03 — Where simplicity broke down</a>
     <a href="#insight">04 — The key insight</a>
     <a href="#structure">05 — Product structure</a>
     <a href="#layers">06 — Complexity in layers</a>
     <a href="#start">07 — A better starting point</a>
-    <a href="#funnel">08 — Video to paying designer</a>
-    <a href="#shipped">09 — Deciding what shipped</a>
-    <a href="#result">10 — The result</a>
-    <a href="#learned">11 — What I learned</a>
+    <a href="#focus">08 — Deciding what not to build</a>
+    <a href="#strategy">09 — UX as product strategy</a>
+    <a href="#business">10 — From product to business</a>
+    <a href="#result">11 — The result</a>
+    <a href="#learned">12 — What I learned</a>
   </nav>
 
-  <script src="js/main.js?v=38"></script>
+  <script src="js/main.js?v=39"></script>
 </body>
 </html>

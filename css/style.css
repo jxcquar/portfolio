@@ -760,6 +760,15 @@ body.case-light { background: #ffffff; }
 }
 /* ---------------- Case study: content blocks ---------------- */
 
+.flow-list {
+  list-style: none;
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: -0.02em;
+  color: var(--ink-soft);
+}
+.flow-list li::before { content: "–  "; color: var(--ink-faint); }
+
 /* repaginated pages: paragraphs flow as individual blocks */
 .book-page--flow { gap: 16px; }
 .book-page--flow h2 { margin: 6px 0 12px; }
