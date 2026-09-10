@@ -327,6 +327,36 @@ body.leave .pill-nav {
 
 a.project-card { cursor: pointer; }
 
+/* in-card visual collage (FABRA): app screenshot with garment cutouts */
+.card-visual {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.card-visual .cv-shot {
+  position: absolute;
+  left: 8.8%;
+  top: 24.5%;
+  width: 82.5%;
+  border-radius: 6px;
+  box-shadow: 0 12px 32px rgba(0, 20, 0, 0.28);
+}
+.card-visual .cv-vest {
+  position: absolute;
+  left: 71%;
+  top: 14.5%;
+  width: 28%;
+  filter: drop-shadow(0 8px 14px rgba(0, 20, 0, 0.25));
+}
+.card-visual .cv-hoodie {
+  position: absolute;
+  left: 0.5%;
+  top: 38.5%;
+  width: 35%;
+  rotate: -18deg;
+  filter: drop-shadow(0 8px 14px rgba(0, 20, 0, 0.25));
+}
+
 .hero-copy { will-change: transform, opacity; }
 
 /* Arriving straight at #work (e.g. nav from another page): skip the hero intro */

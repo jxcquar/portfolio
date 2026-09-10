@@ -317,19 +317,20 @@
   /* ---------- Case study: Apple Books-style pager ---------- */
   if (document.body.dataset.page === "case" && !isReader) {
     const initPager = () => {
-    // Repaginate like a real book: any content that overflows its page
-    // flows onto new pages, and every two pages become a new spread.
+    // Repaginate like a real book: one continuous flow. Content that
+    // overflows a page moves to the next page; a new chapter starts on the
+    // next fresh page — including the facing page of a half-empty spread.
     const paginateBook = () => {
       const stage = document.querySelector(".book--stage");
-      [...stage.querySelectorAll(".case-slide")].forEach((slide) => {
-        const pages = [...slide.querySelectorAll(".book-page")];
-        if (!pages.length) return;
-        if (!pages.some((p) => p.scrollHeight > p.clientHeight + 4)) return; // fits already
+      const allSlides = [...stage.querySelectorAll(".case-slide")];
+      if (allSlides.length < 2) return {};
+      const overview = allSlides[0]; // keeps its bespoke spread
+      const sectionSlides = allSlides.slice(1);
 
-        // flatten the section into ordered blocks; paragraphs leave their
-        // .body wrappers so they can break across pages individually
+      // collect each section's ordered blocks (paragraphs leave .body wrappers)
+      const secs = sectionSlides.map((slide) => {
         const blocks = [];
-        pages.forEach((pg) => {
+        slide.querySelectorAll(".book-page").forEach((pg) => {
           [...pg.children].forEach((el) => {
             if (el.classList.contains("body")) {
               [...el.children].forEach((ch) => {
@@ -341,61 +342,86 @@
             }
           });
         });
+        const eyebrow = slide.querySelector(".eyebrow");
+        return { id: slide.id, label: eyebrow ? eyebrow.textContent : "", blocks };
+      });
+      sectionSlides.forEach((s) => s.remove());
 
-        const eyebrowEl = slide.querySelector(".eyebrow");
-        const contLabel = eyebrowEl ? eyebrowEl.textContent + " · continued" : "";
+      let lastSlide = overview;
+      let currentInner = null;
+      let pagesInSpread = 2; // forces a fresh spread for the first page
+      let curPage = null;
+      let pendingEyebrow = null;
+      const sectionMap = {};
 
-        let lastSlide = slide;
-        let currentInner = slide.querySelector(".book-inner");
-        currentInner.textContent = "";
-        let pagesInSpread = 0;
-        let pendingEyebrow = null;
+      const newPage = () => {
+        if (pagesInSpread === 2) {
+          const sec = document.createElement("section");
+          sec.className = "case-slide";
+          const ni = document.createElement("div");
+          ni.className = "book-inner";
+          sec.appendChild(ni);
+          lastSlide.after(sec);
+          lastSlide = sec;
+          currentInner = ni;
+          pagesInSpread = 0;
+        }
+        const p = document.createElement("div");
+        p.className = "book-page book-page--flow";
+        currentInner.appendChild(p);
+        pagesInSpread++;
+        if (pendingEyebrow) {
+          p.appendChild(pendingEyebrow);
+          pendingEyebrow = null;
+        }
+        return p;
+      };
 
-        const newPage = () => {
-          if (pagesInSpread === 2) {
-            const sec = document.createElement("section");
-            sec.className = "case-slide";
-            const ni = document.createElement("div");
-            ni.className = "book-inner";
-            sec.appendChild(ni);
-            lastSlide.after(sec);
-            lastSlide = sec;
-            currentInner = ni;
-            pagesInSpread = 0;
-            if (contLabel) {
+      secs.forEach((sec) => {
+        // chapters begin on a fresh page (left or right, whichever is next)
+        pendingEyebrow = null;
+        if (!curPage || curPage.children.length > 0) curPage = newPage();
+        curPage.dataset.section = sec.id;
+        sectionMap[sec.id] = curPage.closest(".case-slide");
+
+        sec.blocks.forEach((b) => {
+          curPage.appendChild(b);
+          if (curPage.scrollHeight > curPage.clientHeight + 2 && curPage.children.length > 1) {
+            curPage.removeChild(b);
+            // a spread that begins mid-section gets a "continued" eyebrow
+            if (pagesInSpread === 2 && sec.label) {
               pendingEyebrow = document.createElement("p");
               pendingEyebrow.className = "eyebrow";
-              pendingEyebrow.textContent = contLabel;
+              pendingEyebrow.textContent = sec.label + " \u00b7 continued";
             }
-          }
-          const p = document.createElement("div");
-          p.className = "book-page book-page--flow";
-          currentInner.appendChild(p);
-          pagesInSpread++;
-          if (pendingEyebrow) {
-            p.appendChild(pendingEyebrow);
-            pendingEyebrow = null;
-          }
-          return p;
-        };
-
-        let pg = newPage();
-        blocks.forEach((b) => {
-          pg.appendChild(b);
-          if (pg.scrollHeight > pg.clientHeight + 2 && pg.children.length > 1) {
-            pg.removeChild(b);
-            pg = newPage();
-            pg.appendChild(b);
+            curPage = newPage();
+            curPage.appendChild(b);
           }
         });
-        // a lone page on the last spread gets a blank facing page
-        if (pagesInSpread === 1) newPage();
       });
+      if (pagesInSpread === 1) newPage(); // blank facing page at the very end
+
+      return sectionMap;
     };
-    paginateBook();
+    const sectionMap = paginateBook();
 
     const slides = [...document.querySelectorAll(".case-slide")];
     const caseLinks = [...document.querySelectorAll(".case-nav a")];
+    const slideSection = slides.map((s) => {
+      let id = s.id || null;
+      s.querySelectorAll(".book-page").forEach((p) => {
+        if (p.dataset.section) id = p.dataset.section;
+      });
+      return id;
+    });
+    for (let k = 1; k < slideSection.length; k++) {
+      if (!slideSection[k]) slideSection[k] = slideSection[k - 1];
+    }
+    const slideForId = (id) => {
+      if (sectionMap[id]) return slides.indexOf(sectionMap[id]);
+      const el = document.getElementById(id);
+      return el ? slides.indexOf(el) : -1;
+    };
     const prevBtn = document.getElementById("pagerPrev");
     const nextBtn = document.getElementById("pagerNext");
     const dotsWrap = document.getElementById("pagerDots");
@@ -450,10 +476,7 @@
         s.classList.toggle("is-active", k === i);
         s.classList.toggle("is-before", k < i);
       });
-      let ownId = "";
-      for (let k = i; k >= 0; k--) {
-        if (slides[k].id) { ownId = slides[k].id; break; }
-      }
+      const ownId = slideSection[i] || "";
       caseLinks.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === "#" + ownId));
       dots.forEach((d, k) => d.classList.toggle("active", k === i));
       prevBtn.disabled = i === 0;
@@ -489,7 +512,7 @@
     caseLinks.forEach((a) =>
       a.addEventListener("click", (e) => {
         e.preventDefault();
-        const idx = slides.findIndex((s) => s.id === a.getAttribute("href").slice(1));
+        const idx = slideForId(a.getAttribute("href").slice(1));
         if (idx >= 0) go(idx);
       })
     );
@@ -559,7 +582,7 @@
     );
 
     const startId = location.hash.slice(1);
-    const startIndex = startId ? Math.max(0, slides.findIndex((s) => s.id === startId)) : 0;
+    const startIndex = startId ? Math.max(0, slideForId(startId)) : 0;
     go(startIndex, true);
     };
 
