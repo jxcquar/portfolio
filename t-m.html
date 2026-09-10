@@ -5,17 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fabra — Case Study — Jacqueline Tenges</title>
   <meta name="description" content="Case study: designing the 0→1 product ecosystem that took Fabra from private beta to 17,600 designers — as the only designer on the team." />
-  <meta name="theme-color" content="#ffffff" />
+  <meta name="theme-color" media="(max-width: 900px)" content="#ffffff" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌼</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,500;1,600&family=Crimson+Text:ital@0;1&family=Inter:wght@400;500;600;700;800&family=Roboto:wght@500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=33" />
+  <link rel="stylesheet" href="css/style.css?v=32" />
 </head>
-<body class="pager case-light" data-page="case">
+<body class="pager" data-page="case">
 
   <div class="bg">
-    <img src="assets/collage.jpg" alt="" aria-hidden="true" />
+    <img src="assets/hills.jpg" alt="" aria-hidden="true" />
   </div>
 
   <nav class="pill-nav pill-nav--top" aria-label="Main navigation">
@@ -363,6 +363,7 @@
     <a href="#learned">11 — What I learned</a>
   </nav>
 
-  <script src="js/main.js?v=33"></script>
+  <script src="js/main.js?v=32"></script>
+  <script>window.addEventListener('load', () => setTimeout(() => { const slides=[...document.querySelectorAll('.case-slide')]; const d=document.createElement('div'); d.textContent = 'MEAS slides=' + slides.length + ' imgslots=' + document.querySelectorAll('.img-slot').length + ' overflowing=' + [...document.querySelectorAll('.book-page')].filter(p=>p.scrollHeight>p.clientHeight+4).length; document.body.appendChild(d); }, 500));</script>
 </body>
 </html>

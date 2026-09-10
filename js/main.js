@@ -316,6 +316,84 @@
 
   /* ---------- Case study: Apple Books-style pager ---------- */
   if (document.body.dataset.page === "case" && !isReader) {
+    const initPager = () => {
+    // Repaginate like a real book: any content that overflows its page
+    // flows onto new pages, and every two pages become a new spread.
+    const paginateBook = () => {
+      const stage = document.querySelector(".book--stage");
+      [...stage.querySelectorAll(".case-slide")].forEach((slide) => {
+        const pages = [...slide.querySelectorAll(".book-page")];
+        if (!pages.length) return;
+        if (!pages.some((p) => p.scrollHeight > p.clientHeight + 4)) return; // fits already
+
+        // flatten the section into ordered blocks; paragraphs leave their
+        // .body wrappers so they can break across pages individually
+        const blocks = [];
+        pages.forEach((pg) => {
+          [...pg.children].forEach((el) => {
+            if (el.classList.contains("body")) {
+              [...el.children].forEach((ch) => {
+                ch.classList.add("flow");
+                blocks.push(ch);
+              });
+            } else {
+              blocks.push(el);
+            }
+          });
+        });
+
+        const eyebrowEl = slide.querySelector(".eyebrow");
+        const contLabel = eyebrowEl ? eyebrowEl.textContent + " · continued" : "";
+
+        let lastSlide = slide;
+        let currentInner = slide.querySelector(".book-inner");
+        currentInner.textContent = "";
+        let pagesInSpread = 0;
+        let pendingEyebrow = null;
+
+        const newPage = () => {
+          if (pagesInSpread === 2) {
+            const sec = document.createElement("section");
+            sec.className = "case-slide";
+            const ni = document.createElement("div");
+            ni.className = "book-inner";
+            sec.appendChild(ni);
+            lastSlide.after(sec);
+            lastSlide = sec;
+            currentInner = ni;
+            pagesInSpread = 0;
+            if (contLabel) {
+              pendingEyebrow = document.createElement("p");
+              pendingEyebrow.className = "eyebrow";
+              pendingEyebrow.textContent = contLabel;
+            }
+          }
+          const p = document.createElement("div");
+          p.className = "book-page book-page--flow";
+          currentInner.appendChild(p);
+          pagesInSpread++;
+          if (pendingEyebrow) {
+            p.appendChild(pendingEyebrow);
+            pendingEyebrow = null;
+          }
+          return p;
+        };
+
+        let pg = newPage();
+        blocks.forEach((b) => {
+          pg.appendChild(b);
+          if (pg.scrollHeight > pg.clientHeight + 2 && pg.children.length > 1) {
+            pg.removeChild(b);
+            pg = newPage();
+            pg.appendChild(b);
+          }
+        });
+        // a lone page on the last spread gets a blank facing page
+        if (pagesInSpread === 1) newPage();
+      });
+    };
+    paginateBook();
+
     const slides = [...document.querySelectorAll(".case-slide")];
     const caseLinks = [...document.querySelectorAll(".case-nav a")];
     const prevBtn = document.getElementById("pagerPrev");
@@ -372,11 +450,15 @@
         s.classList.toggle("is-active", k === i);
         s.classList.toggle("is-before", k < i);
       });
-      caseLinks.forEach((a, k) => a.classList.toggle("active", k === i));
+      let ownId = "";
+      for (let k = i; k >= 0; k--) {
+        if (slides[k].id) { ownId = slides[k].id; break; }
+      }
+      caseLinks.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === "#" + ownId));
       dots.forEach((d, k) => d.classList.toggle("active", k === i));
       prevBtn.disabled = i === 0;
       nextBtn.disabled = i === slides.length - 1;
-      history.replaceState(null, "", "#" + slides[i].id);
+      if (ownId) history.replaceState(null, "", "#" + ownId);
 
       if (!instant) {
         locked = true;
@@ -404,10 +486,11 @@
     prevBtn.addEventListener("click", () => go(current - 1));
     nextBtn.addEventListener("click", () => go(current + 1));
 
-    caseLinks.forEach((a, i) =>
+    caseLinks.forEach((a) =>
       a.addEventListener("click", (e) => {
         e.preventDefault();
-        go(i);
+        const idx = slides.findIndex((s) => s.id === a.getAttribute("href").slice(1));
+        if (idx >= 0) go(idx);
       })
     );
 
@@ -476,7 +559,15 @@
     );
 
     const startId = location.hash.slice(1);
-    const startIndex = Math.max(0, slides.findIndex((s) => s.id === startId));
+    const startIndex = startId ? Math.max(0, slides.findIndex((s) => s.id === startId)) : 0;
     go(startIndex, true);
+    };
+
+    // paginate with the real fonts: fallback-font metrics under-measure
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(initPager);
+    } else {
+      initPager();
+    }
   }
 })();

@@ -711,7 +711,39 @@ body.pager {
 }
 .case-next:hover { border-color: var(--ink); translate: 4px 0; }
 
+/* Light collage theme for the case study (white bg, dark chrome) */
+body.case-light { background: #ffffff; }
+.case-light .bg::after { display: none; }
+.case-light .pill-nav::before {
+  background: rgba(250, 250, 252, 0.72);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+.case-light .pill-nav a { color: #1a1a1a; }
+.case-light .case-nav {
+  left: 26px;
+  text-align: left;
+}
+.case-light .case-nav a {
+  color: #a2a2aa;
+  text-shadow: none;
+}
+.case-light .case-nav a.active,
+.case-light .case-nav a:hover { color: #111; }
+.case-light .book {
+  box-shadow: 0 30px 70px -30px rgba(20, 20, 40, 0.25);
+}
 /* ---------------- Case study: content blocks ---------------- */
+
+/* repaginated pages: paragraphs flow as individual blocks */
+.book-page--flow { gap: 16px; }
+.book-page--flow h2 { margin: 6px 0 12px; }
+.book-page--flow .eyebrow { margin-bottom: 2px; }
+.book-page .flow {
+  font-size: 16px;
+  line-height: 1.55;
+  letter-spacing: -0.02em;
+  color: var(--ink-soft);
+}
 
 .img-slot {
   width: 100%;
