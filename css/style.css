@@ -716,48 +716,9 @@ body.pager {
 
 /* Light collage theme for the case study (white bg, dark chrome) */
 body.case-light { background: #ffffff; }
-.case-light .book {
-  background: #ffffff;
-  border: none;
-  padding: 0;
-  border-radius: 20px;
-}
-.case-light .case-slide { inset: 0; }
-.case-light .book-inner {
-  position: relative;
-  gap: 0;
-  border-radius: 20px;
-}
-.case-light .book-inner::after {
-  /* soft spine down the centre of the open book */
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 90px;
-  translate: -50% 0;
-  background: linear-gradient(to right, rgba(20, 20, 40, 0) 0%, rgba(20, 20, 40, 0.045) 47%, rgba(20, 20, 40, 0.09) 50%, rgba(20, 20, 40, 0.045) 53%, rgba(20, 20, 40, 0) 100%);
-  pointer-events: none;
-}
-.case-light .page-leaf { top: 0; bottom: 0; right: 0; }
-.case-light .pager-arrow {
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  color: #4a4a4a;
-  width: 40px;
-  height: 60px;
-  opacity: 0.8;
-}
-.case-light .pager-arrow:hover {
-  background: transparent;
-  box-shadow: none;
-  color: #000;
-  opacity: 1;
-}
 .case-light .case-nav {
   background: #f2f77b;
+  border: 1.5px dashed rgba(20, 20, 20, 0.65);
   padding: 12px 16px 12px 14px;
   border-radius: 2px;
   box-shadow: 2px 3px 0 rgba(0, 0, 0, 0.08);
