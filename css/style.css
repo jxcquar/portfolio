@@ -441,8 +441,19 @@ body.pager {
 
 .case-slide .book-inner {
   height: 100%;
-  overflow-y: auto;
+  overflow: hidden;
+  align-items: stretch;
   min-height: 0;
+}
+.case-slide .book-page {
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+}
+/* fixed width from the moment a flow page is created — during pagination a
+   lone page would otherwise stretch to the full spread and under-measure */
+.case-slide .book-page--flow {
+  flex: 0 0 calc(50% - 2px);
 }
 
 /* Page-edge tabs with thin chevrons, centred on the book's edges */
@@ -1131,6 +1142,7 @@ body.canvas-page {
 
   .book-inner { flex-direction: column; min-height: 0; }
   .book-page { padding: 36px 28px; }
+  .book-page--flow { flex: none; }
   .book-page--blank { display: none; }
 
   /* Work: horizontal swipe carousel, next card peeking in (per mobile design) */

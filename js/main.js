@@ -563,11 +563,46 @@
     go(startIndex, true);
     };
 
-    // paginate with the real fonts: fallback-font metrics under-measure
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(initPager);
+    // show the opening spread immediately while fonts load
+    const firstSlide = document.querySelector(".case-slide");
+    if (firstSlide) firstSlide.classList.add("is-active");
+
+    // paginate with the REAL fonts. fonts.ready can resolve before the
+    // faces even start loading (they load lazily on first paint), so we
+    // force-load every face the book uses, then measure.
+    const startPager = () => {
+      if (document.fonts && document.fonts.load) {
+        Promise.all([
+          document.fonts.load('16px Inter'),
+          document.fonts.load('600 14px Inter'),
+          document.fonts.load('500 14px Inter'),
+          document.fonts.load('400 28px "Playfair Display"'),
+          document.fonts.load('italic 500 22px "Playfair Display"'),
+          document.fonts.load('italic 19px "Crimson Text"'),
+        ])
+          .then(() => document.fonts.ready)
+          .then(initPager)
+          .catch(initPager);
+      } else {
+        initPager();
+      }
+    };
+    if (document.readyState === "complete") {
+      startPager();
     } else {
-      initPager();
+      window.addEventListener("load", startPager);
     }
+
+    // page sizes are fixed to the book, so a big viewport change needs a
+    // fresh pagination pass — reload into the same section
+    let rw = window.innerWidth, rh = window.innerHeight, rTimer;
+    window.addEventListener("resize", () => {
+      clearTimeout(rTimer);
+      rTimer = setTimeout(() => {
+        if (Math.abs(window.innerWidth - rw) > 140 || Math.abs(window.innerHeight - rh) > 140) {
+          location.reload();
+        }
+      }, 500);
+    });
   }
 })();
