@@ -27,7 +27,7 @@ python3 -m http.server 4173
   (arrows, dots, yellow sticky-note section nav, page-flip leaf with two-sided content
   preview), and an Apple-Books-style scrolling reader on mobile (≤900px: white page,
   light nav, Contents pill with progress % and a TOC sheet).
-- `case-freelancer.html`, `case-fitfocus.html` — same machinery with scaffold copy
+- `case-freelancer.html`, `case-zookal.html` — same machinery with scaffold copy
   (prompts describing what to write); awaiting real case studies.
 - `about.html` — pannable canvas "world" (drag/wheel with fling momentum), pulsing
   pointers opening glass bubbles; on mobile bubbles re-parent to <body> as fixed
@@ -72,4 +72,4 @@ of a page.
 - LinkedIn/YouTube URLs are placeholders (`linkedin.com/in/jacquelinetenges`,
   `youtube.com/@jacquelinetenges`) in about.html + contact.html + case-fabra.html.
 - Case-study `[Image]` slots (`.img-slot`) await real screenshots.
-- Freelancer.com and FitFocus case studies await real copy.
+- Freelancer.com and Zookal case studies await real copy.
