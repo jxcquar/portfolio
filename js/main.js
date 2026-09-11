@@ -324,8 +324,11 @@
       const stage = document.querySelector(".book--stage");
       const allSlides = [...stage.querySelectorAll(".case-slide")];
       if (allSlides.length < 2) return {};
-      const overview = allSlides[0]; // keeps its bespoke spread
-      const sectionSlides = allSlides.slice(1);
+      // bespoke spreads (overview, details page, ...) stay untouched; the
+      // continuous flow starts after the last of them
+      const keep = allSlides.filter((s, i) => i === 0 || s.classList.contains("case-slide--static"));
+      const sectionSlides = allSlides.filter((s) => !keep.includes(s));
+      const overview = keep[keep.length - 1];
 
       // collect each section's ordered blocks (paragraphs leave .body wrappers)
       const secs = sectionSlides.map((slide) => {

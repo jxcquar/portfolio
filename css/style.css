@@ -878,6 +878,9 @@ body.case-light { background: #ffffff; }
   display: block;
 }
 .meta-rows .v { color: var(--ink-soft); }
+.meta-rows--roomy { gap: 30px; font-size: 16px; max-width: 400px; }
+.meta-rows--roomy .k { font-size: 12.5px; margin-bottom: 6px; }
+.meta-rows--roomy .v { line-height: 1.65; }
 
 .mini-eyebrow {
   font-size: 12.5px;
