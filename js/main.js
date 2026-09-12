@@ -3,6 +3,16 @@
 (function () {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* ---------- Autoplay insurance ---------- */
+  // iOS Low Power Mode (and some in-app browsers) block video autoplay,
+  // leaving the hero loop frozen — nudge playback on the first touch/click.
+  const heroVids = document.querySelectorAll("video[autoplay]");
+  if (heroVids.length) {
+    const kick = () => heroVids.forEach((v) => { if (v.paused) v.play().catch(() => {}); });
+    window.addEventListener("touchstart", kick, { once: true, passive: true });
+    window.addEventListener("click", kick, { once: true });
+  }
+
   /* ---------- Reveal elements as they enter the viewport ---------- */
   const revealables = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && revealables.length) {
