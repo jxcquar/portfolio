@@ -255,9 +255,17 @@
   }
 
   /* ---------- Case study, mobile: Apple Books reading mode ---------- */
-  const isReader =
-    document.body.dataset.page === "case" &&
-    window.matchMedia("(max-width: 900px)").matches;
+  const readerMq = window.matchMedia("(max-width: 900px)");
+  const isReader = document.body.dataset.page === "case" && readerMq.matches;
+
+  // In-app browsers (Messenger etc.) can settle the viewport after scripts
+  // run, leaving the reader CSS paired with the desktop pager or vice versa.
+  // Crossing the mode boundary always reloads into the right experience.
+  if (document.body.dataset.page === "case") {
+    const remode = () => location.reload();
+    if (readerMq.addEventListener) readerMq.addEventListener("change", remode);
+    else if (readerMq.addListener) readerMq.addListener(remode);
+  }
 
   if (isReader) {
     const progress = document.getElementById("readerProgress");

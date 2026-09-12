@@ -266,8 +266,15 @@ body.leave .pill-nav {
   border: 1px solid rgba(255, 255, 255, 0.12);
   overflow: hidden;
   position: relative;
+  isolation: isolate;
   will-change: transform;
   transition: transform 0.6s var(--ease-out), box-shadow 0.6s var(--ease-out);
+}
+/* iOS WebKit fails to clip filtered children to a rounded overflow box,
+   painting the blurred moss square over the card corners — masking forces
+   the rounded clip. iOS-only: the mask also swallows outer box-shadows. */
+@supports (-webkit-touch-callout: none) {
+  .project-card { -webkit-mask-image: -webkit-radial-gradient(white, black); }
 }
 /* Frosted glass baked into each card (its own blurred moss layer) instead of
    backdrop-filter: adjacent live backdrops smear each other in Chromium when
@@ -878,7 +885,7 @@ body.case-light { background: #ffffff; }
   display: block;
 }
 .meta-rows .v { color: var(--ink-soft); }
-.meta-rows--roomy { gap: 30px; font-size: 16px; max-width: 400px; }
+.meta-rows--roomy { gap: min(30px, 3.6svh); font-size: 16px; max-width: 400px; }
 .meta-rows--roomy .k { font-size: 12.5px; margin-bottom: 6px; }
 .meta-rows--roomy .v { line-height: 1.65; }
 
@@ -1235,6 +1242,11 @@ body.canvas-page {
     translate: none;
     width: 100%;
     height: auto;
+    /* undo the desktop hard-caps: with max-height + contain:paint still
+       active the whole case study collapses into one clipped screen */
+    max-width: none;
+    max-height: none;
+    contain: none;
     padding: 0;
     background: #fff;
     border: none;
@@ -1257,6 +1269,17 @@ body.canvas-page {
     overflow: visible;
     border-radius: 0;
     min-height: 0;
+  }
+  /* undo the desktop book clamps (fixed page heights + overflow clipping)
+     at full selector strength — in reading mode the page grows with its
+     text. Without this, pages collapse and clip to a few lines. */
+  .case-slide .book-page,
+  .case-slide .book-page--flow {
+    height: auto;
+    max-height: none;
+    min-height: 0;
+    flex: none;
+    overflow: visible;
   }
   .book-page { padding: 40px 26px 8px; }
   .case-slide:first-of-type .book-page { padding-top: 110px; }
@@ -1336,6 +1359,9 @@ body.canvas-page {
     flex: 0 0 auto;
     scroll-snap-align: start;
   }
+
+  /* Case book on tablets: use more of the screen than 71vw */
+  body.pager { --bookw: min(86vw, 1300px); }
 }
 
 /* ---------------- Reduced motion ---------------- */
