@@ -846,6 +846,16 @@ body.case-light { background: #ffffff; }
   border-radius: 10px;
   background: #fafafc;
 }
+/* In-page product recording: shown whole (no crop), centred on its page */
+.case-video {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+  background: #fafafc;
+  flex: none;
+}
 
 .pullquote {
   font-family: var(--font-display);
