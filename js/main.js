@@ -33,13 +33,6 @@
     zoomables.forEach((fig) => {
       const img = fig.querySelector("img");
       if (!img) return;
-      // the in-frame 2x magnifier follows the cursor
-      fig.addEventListener("mousemove", (e) => {
-        const r = fig.getBoundingClientRect();
-        img.style.transformOrigin =
-          ((e.clientX - r.left) / r.width) * 100 + "% " + ((e.clientY - r.top) / r.height) * 100 + "%";
-      });
-      fig.addEventListener("mouseleave", () => { img.style.transformOrigin = "50% 50%"; });
       fig.addEventListener("click", () => {
         lbImg.src = img.currentSrc || img.src;
         lbImg.alt = img.alt || "";

@@ -861,14 +861,15 @@ body.case-light { background: #ffffff; }
   background: #fff;
   line-height: 0;
   cursor: zoom-in;
+  /* never squash to fit a page: keep the full image and let the
+     paginator move it to the next page instead (overflow:hidden would
+     otherwise let flex shrink this to any height) */
+  flex-shrink: 0;
 }
-.zoomable .case-figure {
-  transition: transform 0.45s var(--ease-out);
-  transform-origin: 50% 50%;
-}
-/* Desktop: hovering magnifies 2x inside the frame, following the cursor */
+.zoomable .case-figure { transition: transform 0.45s var(--ease-out); }
+/* hover is just an invitation — the real zoom opens centred on screen */
 @media (hover: hover) {
-  .zoomable:hover .case-figure { transform: scale(2); }
+  .zoomable:hover .case-figure { transform: scale(1.02); }
 }
 
 /* Click-to-zoom overlay (all devices) */
@@ -885,10 +886,11 @@ body.case-light { background: #ffffff; }
   overscroll-behavior: contain;
 }
 .lightbox img {
-  max-width: min(94vw, 1600px);
-  max-height: 92vh;
+  max-width: min(96vw, 1600px);
+  max-height: 94vh;
   width: auto;
   height: auto;
+  margin: auto; /* centres both ways; keeps every edge reachable when panning */
   border-radius: 10px;
   box-shadow: 0 30px 90px rgba(0, 0, 0, 0.5);
 }
@@ -908,9 +910,10 @@ body.case-light { background: #ffffff; }
   z-index: 61;
 }
 @media (max-width: 900px) {
-  /* phone: the tapped image opens at 2x width and pans by touch */
-  .lightbox { display: block; overflow: auto; -webkit-overflow-scrolling: touch; }
-  .lightbox img { max-width: none; max-height: none; width: 200vw; border-radius: 0; box-shadow: none; }
+  /* phone: the tapped image opens at 2x width, vertically centred in the
+     viewport, and pans sideways by touch */
+  .lightbox { overflow: auto; -webkit-overflow-scrolling: touch; }
+  .lightbox img { max-width: none; max-height: none; width: 200vw; border-radius: 6px; box-shadow: none; }
 }
 
 /* In-page product recording: shown whole (no crop), centred on its page */
