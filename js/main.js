@@ -13,6 +13,48 @@
     window.addEventListener("click", kick, { once: true });
   }
 
+  /* ---------- Case figures: hover magnify (desktop) + tap-to-zoom lightbox ---------- */
+  const zoomables = document.querySelectorAll(".zoomable");
+  if (zoomables.length) {
+    const lb = document.createElement("div");
+    lb.className = "lightbox";
+    lb.hidden = true;
+    lb.innerHTML = '<button class="lightbox-close" aria-label="Close image">×</button><img alt="" />';
+    document.body.appendChild(lb);
+    const lbImg = lb.querySelector("img");
+    const closeLb = () => { lb.hidden = true; };
+    lb.addEventListener("click", closeLb);
+    // keep zoom gestures from reaching the page-flip machinery underneath
+    lb.addEventListener("wheel", (e) => e.stopPropagation(), { passive: true });
+    lb.addEventListener("touchstart", (e) => e.stopPropagation(), { passive: true });
+    lb.addEventListener("touchmove", (e) => e.stopPropagation(), { passive: true });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLb(); });
+
+    zoomables.forEach((fig) => {
+      const img = fig.querySelector("img");
+      if (!img) return;
+      // the in-frame 2x magnifier follows the cursor
+      fig.addEventListener("mousemove", (e) => {
+        const r = fig.getBoundingClientRect();
+        img.style.transformOrigin =
+          ((e.clientX - r.left) / r.width) * 100 + "% " + ((e.clientY - r.top) / r.height) * 100 + "%";
+      });
+      fig.addEventListener("mouseleave", () => { img.style.transformOrigin = "50% 50%"; });
+      fig.addEventListener("click", () => {
+        lbImg.src = img.currentSrc || img.src;
+        lbImg.alt = img.alt || "";
+        lb.hidden = false;
+        // phone: open the 2x view centred, then pan by touch
+        if (window.matchMedia("(max-width: 900px)").matches) {
+          requestAnimationFrame(() => {
+            lb.scrollLeft = (lb.scrollWidth - lb.clientWidth) / 2;
+            lb.scrollTop = (lb.scrollHeight - lb.clientHeight) / 2;
+          });
+        }
+      });
+    });
+  }
+
   /* ---------- Reveal elements as they enter the viewport ---------- */
   const revealables = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && revealables.length) {

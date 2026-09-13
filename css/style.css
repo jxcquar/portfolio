@@ -846,13 +846,70 @@ body.case-light { background: #ffffff; }
   border-radius: 10px;
   background: #fafafc;
 }
-/* Figures dropped into the flow (diagrams, slides) */
+/* Figures dropped into the flow (diagrams, slides): never cropped —
+   full image at natural aspect ratio */
 .case-figure {
+  display: block;
   width: 100%;
   height: auto;
+}
+.zoomable {
+  margin: 0;
+  overflow: hidden;
   border-radius: 8px;
   border: 1px solid #ececf2;
   background: #fff;
+  line-height: 0;
+  cursor: zoom-in;
+}
+.zoomable .case-figure {
+  transition: transform 0.45s var(--ease-out);
+  transform-origin: 50% 50%;
+}
+/* Desktop: hovering magnifies 2x inside the frame, following the cursor */
+@media (hover: hover) {
+  .zoomable:hover .case-figure { transform: scale(2); }
+}
+
+/* Click-to-zoom overlay (all devices) */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(14, 14, 18, 0.86);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+  overscroll-behavior: contain;
+}
+.lightbox img {
+  max-width: min(94vw, 1600px);
+  max-height: 92vh;
+  width: auto;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.5);
+}
+.lightbox-close {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 61;
+}
+@media (max-width: 900px) {
+  /* phone: the tapped image opens at 2x width and pans by touch */
+  .lightbox { display: block; overflow: auto; -webkit-overflow-scrolling: touch; }
+  .lightbox img { max-width: none; max-height: none; width: 200vw; border-radius: 0; box-shadow: none; }
 }
 
 /* In-page product recording: shown whole (no crop), centred on its page */
