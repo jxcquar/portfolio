@@ -444,12 +444,8 @@
           curPage.appendChild(b);
           if (curPage.scrollHeight > curPage.clientHeight + 2 && curPage.children.length > 1) {
             curPage.removeChild(b);
-            // a spread that begins mid-section gets a "continued" eyebrow
-            if (pagesInSpread === 2 && sec.label) {
-              pendingEyebrow = document.createElement("p");
-              pendingEyebrow.className = "eyebrow";
-              pendingEyebrow.textContent = sec.label + " \u00b7 continued";
-            }
+            // continuation pages carry no repeated header \u2014 each chapter
+            // title appears once, where the chapter starts
             curPage = newPage();
             curPage.appendChild(b);
           }
