@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,500;1,600&family=Crimson+Text:ital@0;1&family=Inter:wght@400;500;600;700;800&family=Roboto:wght@500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=53" />
+  <link rel="stylesheet" href="css/style.css?v=54" />
 </head>
 <body data-page="about" class="canvas-page">
 
@@ -63,19 +63,55 @@
       </div>
     </div>
 
-    <div class="bubble bubble--mini" id="bub1" role="dialog" hidden style="left:35.5%; top:26%"><p class="bubble-mini-text">Iced matcha</p><button class="bubble-close" data-close aria-label="Close">×</button></div>
-    <div class="bubble bubble--mini" id="bub2" role="dialog" hidden style="left:69.5%; top:31%"><p class="bubble-mini-text">MacBook Pro</p><button class="bubble-close" data-close aria-label="Close">×</button></div>
-    <div class="bubble bubble--mini" id="bub3" role="dialog" hidden style="left:35.5%; top:46.5%"><p class="bubble-mini-text">Iced coffee</p><button class="bubble-close" data-close aria-label="Close">×</button></div>
-    <div class="bubble bubble--mini" id="bub4" role="dialog" hidden style="left:82%;   top:38%"><p class="bubble-mini-text">Headphones</p><button class="bubble-close" data-close aria-label="Close">×</button></div>
-    <div class="bubble bubble--mini" id="bub5" role="dialog" hidden style="left:35.5%; top:74%"><p class="bubble-mini-text">Sushi</p><button class="bubble-close" data-close aria-label="Close">×</button></div>
-    <div class="bubble bubble--mini" id="bub6" role="dialog" hidden style="left:68.2%; top:53%"><p class="bubble-mini-text">Corgi</p><button class="bubble-close" data-close aria-label="Close">×</button></div>
-    <div class="bubble bubble--mini" id="bub7" role="dialog" hidden style="left:19.5%; top:33%"><p class="bubble-mini-text">Australian passport</p><button class="bubble-close" data-close aria-label="Close">×</button></div>
-    <div class="bubble bubble--mini" id="bub8" role="dialog" hidden style="left:22%;   top:58%"><p class="bubble-mini-text">Headphones</p><button class="bubble-close" data-close aria-label="Close">×</button></div>
-    <div class="bubble bubble--mini" id="bub9" role="dialog" hidden style="left:80.2%; top:70%"><p class="bubble-mini-text">Teh Cap</p><button class="bubble-close" data-close aria-label="Close">×</button></div>
+    <div class="bubble bio-card bio-card--mini" id="bub1" role="dialog" aria-label="Iced matcha" hidden style="left:35.5%; top:26%">
+      <button class="bubble-close" data-close aria-label="Close">×</button>
+      <h2>Iced matcha, always</h2>
+      <p>The default order — at this point it's a personality trait. If a café does a proper one, I'm a regular.</p>
+    </div>
+    <div class="bubble bio-card bio-card--mini" id="bub2" role="dialog" aria-label="MacBook Pro" hidden style="left:69.5%; top:31%">
+      <button class="bubble-close" data-close aria-label="Close">×</button>
+      <h2>The whole studio</h2>
+      <p>Figma, prototypes, video edits and roughly forty tabs of design references. Everything I make ships from this laptop.</p>
+    </div>
+    <div class="bubble bio-card bio-card--mini" id="bub3" role="dialog" aria-label="Iced coffee" hidden style="left:35.5%; top:46.5%">
+      <button class="bubble-close" data-close aria-label="Close">×</button>
+      <h2>The backup order</h2>
+      <p>For the days matcha isn't enough. Sydney coffee has ruined every other city's coffee for me, and I've made peace with that.</p>
+    </div>
+    <div class="bubble bio-card bio-card--mini" id="bub4" role="dialog" aria-label="Headphones" hidden style="left:82%;   top:38%">
+      <button class="bubble-close" data-close aria-label="Close">×</button>
+      <h2>Deep-work mode</h2>
+      <p>Noise cancelling on, playlist running, and the canvas gets my undivided attention for hours.</p>
+    </div>
+    <div class="bubble bio-card bio-card--mini" id="bub5" role="dialog" aria-label="Sushi" hidden style="left:35.5%; top:74%">
+      <button class="bubble-close" data-close aria-label="Close">×</button>
+      <h2>Fuel of choice</h2>
+      <p>The reward for shipping. Big milestones get the good omakase; small wins get a salmon roll at my desk.</p>
+    </div>
+    <div class="bubble bio-card bio-card--mini" id="bub6" role="dialog" aria-label="Corgi" hidden style="left:68.2%; top:53%">
+      <button class="bubble-close" data-close aria-label="Close">×</button>
+      <h2>Chief morale officer</h2>
+      <p>Zero notes on my designs, strong opinions on when it's time to take a break. Every studio needs one.</p>
+    </div>
+    <div class="bubble bio-card bio-card--mini" id="bub7" role="dialog" aria-label="Australian passport" hidden style="left:19.5%; top:33%">
+      <button class="bubble-close" data-close aria-label="Close">×</button>
+      <h2>Sydney-based, travel-ready</h2>
+      <p>Home base is Sydney, but good design happens anywhere with wifi. Always up for the next stamp.</p>
+    </div>
+    <div class="bubble bio-card bio-card--mini" id="bub8" role="dialog" aria-label="Headphones" hidden style="left:22%;   top:58%">
+      <button class="bubble-close" data-close aria-label="Close">×</button>
+      <h2>Always listening</h2>
+      <p>Design psychology podcasts and video essays on long walks — most of my YouTube ideas start with these on.</p>
+    </div>
+    <div class="bubble bio-card bio-card--mini" id="bub9" role="dialog" aria-label="Teh Cap" hidden style="left:80.2%; top:70%">
+      <button class="bubble-close" data-close aria-label="Close">×</button>
+      <h2>Teh &amp; heritage</h2>
+      <p>A taste of home. I love it when design carries culture — the packaging, the ritual, the memory that comes with it.</p>
+    </div>
   </div>
 
   <p class="pan-hint" id="panHint">Scroll or drag to look around</p>
 
-  <script src="js/main.js?v=53"></script>
+  <script src="js/main.js?v=54"></script>
 </body>
 </html>
