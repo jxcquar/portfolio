@@ -846,6 +846,15 @@ body.case-light { background: #ffffff; }
   border-radius: 10px;
   background: #fafafc;
 }
+/* Figures dropped into the flow (diagrams, slides) */
+.case-figure {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid #ececf2;
+  background: #fff;
+}
+
 /* In-page product recording: shown whole (no crop), centred on its page */
 .case-video {
   width: 100%;
