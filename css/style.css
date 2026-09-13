@@ -872,6 +872,7 @@ body.case-light { background: #ffffff; }
 }
 
 /* Click-to-zoom overlay (all devices) */
+.lightbox[hidden] { display: none !important; }
 .lightbox {
   position: fixed;
   inset: 0;
