@@ -1399,12 +1399,10 @@ body.canvas-page {
   .reader-hint { display: block; }
 
   /* Mobile About: pure swipe/drag exploration — big centred Jacqueline,
-     items bleeding off the edges. The Figma & Redbubble icons are dropped
-     here (no cards, and too crowded at phone sizes). */
-  .world img:nth-of-type(9),
-  .world img:nth-of-type(10) { display: none !important; }
-
+     items bleeding off the edges. */
   /* pointers repositioned to match the mobile arrangement */
+  .poi[aria-controls="bub10"] { left: 22.5% !important; top: 36.5% !important; } /* figma */
+  .poi[aria-controls="bub11"] { left: 68.5% !important; top: 71.5% !important; } /* redbubble */
   .poi[aria-controls="bub1"] { left: 38.3% !important; top: 26.8% !important; } /* matcha */
   .poi[aria-controls="bub3"] { left: 41.6% !important; top: 84.4% !important; } /* coffee */
   .poi[aria-controls="bub9"] { left: 24.5% !important; top: 78.3% !important; } /* jasmine tea */
@@ -1424,6 +1422,8 @@ body.canvas-page {
   .world img:nth-of-type(6)  { left: 56.5%  !important; top: 52%   !important; width: 9.5% !important; } /* corgi, bleeds right */
   .world img:nth-of-type(7)  { left: 32%    !important; top: 54%   !important; width: 7%   !important; } /* macbook, bleeds left */
   .world img:nth-of-type(8)  { left: 58.5%  !important; top: 24.5% !important; width: 4.8% !important; } /* headphones */
+  .world img:nth-of-type(9)  { left: 20%    !important; top: 33%   !important; width: 4.5% !important; } /* figma, bleeds left */
+  .world img:nth-of-type(10) { left: 66%    !important; top: 68%   !important; width: 4.5% !important; } /* redbubble */
 }
 
 @media (max-width: 900px) {
