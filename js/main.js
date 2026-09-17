@@ -31,11 +31,49 @@
       document.documentElement.classList.remove("lb-open");
       window.scrollTo(0, lbScrollY);
     };
-    lb.addEventListener("click", closeLb);
+    // phone: the 2x view pans via transforms. A native scroller inside the
+    // overlay made iOS widen the layout viewport (the page came back shoved
+    // sideways with the left cropped), so no element scrolls natively at all.
+    let panW = 0, panH = 0, px = 0, py = 0;
+    let panPid = null, sx = 0, sy = 0, spx = 0, spy = 0, panMoved = false;
+    const applyPan = () => { lbImg.style.transform = "translate(" + px + "px," + py + "px)"; };
+    const setupPan = () => {
+      if (!window.matchMedia("(max-width: 900px)").matches) return;
+      const vw = window.innerWidth, vh = window.innerHeight;
+      const ratio = lbImg.naturalHeight / (lbImg.naturalWidth || 1);
+      const w = vw * 2, h = w * ratio;
+      lbImg.style.width = w + "px";
+      lbImg.style.height = h + "px";
+      panW = Math.max(0, w - vw);
+      panH = Math.max(0, h - vh);
+      px = -panW / 2;
+      py = -panH / 2 + Math.max(0, (vh - h) / 2); // centred when shorter than the screen
+      applyPan();
+    };
+    lb.addEventListener("pointerdown", (e) => {
+      if (!panW && !panH) return;
+      panPid = e.pointerId; sx = e.clientX; sy = e.clientY; spx = px; spy = py;
+      panMoved = false;
+    });
+    lb.addEventListener("pointermove", (e) => {
+      if (panPid !== e.pointerId) return;
+      const dx = e.clientX - sx, dy = e.clientY - sy;
+      if (Math.abs(dx) + Math.abs(dy) > 8) panMoved = true;
+      px = Math.min(0, Math.max(-panW, spx + dx));
+      if (panH > 0) py = Math.min(0, Math.max(-panH, spy + dy));
+      applyPan();
+    });
+    const endPan = (e) => { if (panPid === e.pointerId) panPid = null; };
+    lb.addEventListener("pointerup", endPan);
+    lb.addEventListener("pointercancel", endPan);
+    lb.addEventListener("click", () => {
+      if (panMoved) { panMoved = false; return; } // a pan is not a tap-to-close
+      closeLb();
+    });
     // keep zoom gestures from reaching the page-flip machinery underneath
     lb.addEventListener("wheel", (e) => e.stopPropagation(), { passive: true });
     lb.addEventListener("touchstart", (e) => e.stopPropagation(), { passive: true });
-    lb.addEventListener("touchmove", (e) => e.stopPropagation(), { passive: true });
+    lb.addEventListener("touchmove", (e) => { e.stopPropagation(); e.preventDefault(); }, { passive: false });
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLb(); });
 
     zoomables.forEach((fig) => {
@@ -47,13 +85,10 @@
         lbScrollY = window.scrollY;
         document.documentElement.classList.add("lb-open");
         lb.hidden = false;
-        // phone: open the 2x view centred, then pan by touch
-        if (window.matchMedia("(max-width: 900px)").matches) {
-          requestAnimationFrame(() => {
-            lb.scrollLeft = (lb.scrollWidth - lb.clientWidth) / 2;
-            lb.scrollTop = (lb.scrollHeight - lb.clientHeight) / 2;
-          });
-        }
+        panW = panH = 0;
+        lbImg.style.width = lbImg.style.height = lbImg.style.transform = "";
+        if (lbImg.complete && lbImg.naturalWidth) setupPan();
+        else lbImg.onload = setupPan;
       });
     });
   }
