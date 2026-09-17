@@ -202,7 +202,7 @@ body { animation: page-in 0.7s var(--ease-soft) both; }
   transition: transform 0.7s var(--ease-out);
 }
 .page-veil--night {
-  background: radial-gradient(120% 90% at 50% 12%, #232a4d 0%, #171c36 52%, #101427 100%);
+  background: radial-gradient(120% 90% at 50% 12%, #f3f3f5 0%, #e9e9ed 52%, #dedee4 100%);
 }
 body.leave.leave-sky .page-veil--sky,
 body.leave.leave-night .page-veil--night {
@@ -1491,9 +1491,16 @@ body.showcase-page {
   height: 100vh;
   height: 100svh;
   overflow: hidden;
-  background: radial-gradient(120% 90% at 50% 12%, #232a4d 0%, #171c36 52%, #101427 100%);
-  color: #fff;
+  background: radial-gradient(120% 90% at 50% 12%, #f3f3f5 0%, #e9e9ed 52%, #dedee4 100%);
+  color: #1a1a1a;
 }
+
+/* light ground needs a light nav pill (default pill assumes a dark scene) */
+.showcase-page .pill-nav::before {
+  background: rgba(250, 250, 252, 0.72);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+.showcase-page .pill-nav a { color: #1a1a1a; }
 
 .deck-head {
   position: fixed;
@@ -1515,7 +1522,7 @@ body.showcase-page {
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.04em;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(20, 20, 25, 0.5);
   display: inline-flex;
   align-items: center;
   gap: 7px;
@@ -1523,9 +1530,9 @@ body.showcase-page {
 .deck-sub-icon {
   width: 11px;
   height: 13px;
-  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  border: 1.5px solid rgba(20, 20, 25, 0.45);
   border-radius: 2px 4px 4px 2px;
-  box-shadow: 2.5px -2.5px 0 -0.5px rgba(255, 255, 255, 0.28);
+  box-shadow: 2.5px -2.5px 0 -0.5px rgba(20, 20, 25, 0.24);
 }
 
 .deck-stage {
@@ -1557,11 +1564,11 @@ body.showcase-page {
   transform-origin: 50% 62%;
   border-radius: 16px;
   /* glass: frosted translucent pane over the night sky (and the pages behind) */
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.07));
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.26));
   backdrop-filter: blur(22px) saturate(1.25);
   -webkit-backdrop-filter: blur(22px) saturate(1.25);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  box-shadow: 0 28px 60px rgba(4, 8, 24, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 26px 54px rgba(40, 44, 70, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.85);
   display: flex;
   flex-direction: column;
   padding: clamp(10px, 1.1vw, 14px);
@@ -1621,7 +1628,7 @@ body.showcase-page {
   font-family: "Crimson Text", serif;
   font-style: italic;
   font-size: 17px;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(20, 20, 25, 0.8);
   pointer-events: none;
   z-index: 5;
 }
@@ -1638,7 +1645,7 @@ body.showcase-page {
 
 /* no backdrop-filter support: a soberer translucent pane so pages stay legible */
 @supports not (backdrop-filter: blur(1px)) {
-  .deck-card { background: rgba(44, 50, 86, 0.92); }
+  .deck-card { background: rgba(255, 255, 255, 0.92); }
 }
 
 
@@ -1656,15 +1663,15 @@ body.showcase-page {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
+  border: 1px solid rgba(20, 20, 25, 0.22);
+  background: rgba(255, 255, 255, 0.55);
+  color: #1a1a1a;
   font-size: 19px;
   cursor: pointer;
   transition: background 0.25s ease, transform 0.25s ease;
 }
 @media (hover: hover) {
-  .deck-arrow:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.06); }
+  .deck-arrow:hover { background: rgba(255, 255, 255, 0.95); transform: scale(1.06); }
 }
 .deck-counter {
   min-width: 64px;
@@ -1672,7 +1679,7 @@ body.showcase-page {
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.05em;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(20, 20, 25, 0.55);
   font-variant-numeric: tabular-nums;
 }
 
@@ -1683,7 +1690,7 @@ body.showcase-page {
   bottom: 14px;
   text-align: center;
   font-size: 12.5px;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(20, 20, 25, 0.35);
   pointer-events: none;
   transition: opacity 0.6s ease;
 }
