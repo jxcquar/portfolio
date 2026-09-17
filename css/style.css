@@ -877,6 +877,10 @@ body.case-light { background: #ffffff; }
 }
 
 /* Click-to-zoom overlay (all devices) */
+/* page scroll is frozen while the lightbox is open (see main.js) */
+html.lb-open,
+html.lb-open body { overflow: hidden; }
+
 .lightbox[hidden] { display: none !important; }
 .lightbox {
   position: fixed;

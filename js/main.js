@@ -22,7 +22,15 @@
     lb.innerHTML = '<button class="lightbox-close" aria-label="Close image">×</button><img alt="" />';
     document.body.appendChild(lb);
     const lbImg = lb.querySelector("img");
-    const closeLb = () => { lb.hidden = true; };
+    // iOS in-app browsers chain the 2x-image pan to the document (overscroll-
+    // behavior is ignored there), leaving the whole page shoved sideways after
+    // closing — lock the page while open, restore the exact spot on close.
+    let lbScrollY = 0;
+    const closeLb = () => {
+      lb.hidden = true;
+      document.documentElement.classList.remove("lb-open");
+      window.scrollTo(0, lbScrollY);
+    };
     lb.addEventListener("click", closeLb);
     // keep zoom gestures from reaching the page-flip machinery underneath
     lb.addEventListener("wheel", (e) => e.stopPropagation(), { passive: true });
@@ -36,6 +44,8 @@
       fig.addEventListener("click", () => {
         lbImg.src = img.currentSrc || img.src;
         lbImg.alt = img.alt || "";
+        lbScrollY = window.scrollY;
+        document.documentElement.classList.add("lb-open");
         lb.hidden = false;
         // phone: open the 2x view centred, then pan by touch
         if (window.matchMedia("(max-width: 900px)").matches) {
