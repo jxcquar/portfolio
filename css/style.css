@@ -1725,6 +1725,19 @@ body.case-paper {
 }
 .case-paper .case-nav a { color: #929292; }
 .case-paper .meta-rows--roomy { gap: min(30px, 1.6svh); }
+/* figures on static spreads scale to the page instead of forcing overflow
+   (flow pages measure figures during pagination, so those never need this) */
+.book-page--center .zoomable {
+  flex-shrink: 1;
+  min-height: 0;
+  display: flex;
+  justify-content: center;
+}
+.book-page--center .zoomable img {
+  width: auto;
+  max-width: 100%;
+  max-height: min(52svh, 560px);
+}
 .case-paper .book-page--center { padding: min(48px, 5.6svh); }
 .case-paper .case-nav a.active { color: #111; font-weight: 700; }
 @media (hover: hover) {
