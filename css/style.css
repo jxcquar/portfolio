@@ -1556,8 +1556,12 @@ body.showcase-page {
   margin: 0;
   transform-origin: 50% 62%;
   border-radius: 16px;
-  background: #f7f5f0;
-  box-shadow: 0 28px 60px rgba(4, 8, 24, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  /* glass: frosted translucent pane over the night sky (and the pages behind) */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.07));
+  backdrop-filter: blur(22px) saturate(1.25);
+  -webkit-backdrop-filter: blur(22px) saturate(1.25);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 28px 60px rgba(4, 8, 24, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.25);
   display: flex;
   flex-direction: column;
   padding: clamp(10px, 1.1vw, 14px);
@@ -1585,8 +1589,10 @@ body.showcase-page {
   max-width: 84%;
   padding: 8px 20px;
   border-radius: 999px;
-  background: rgba(23, 20, 12, 0.78);
-  color: #f7f3ea;
+  background: rgba(12, 15, 32, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #f2f3f8;
   font-family: "Crimson Text", serif;
   font-style: italic;
   font-size: clamp(15px, 1.3vw, 19px);
@@ -1629,6 +1635,12 @@ body.showcase-page {
   to { opacity: 1; transform: none; }
 }
 .deck-card:not(.is-current) { cursor: pointer; }
+
+/* no backdrop-filter support: a soberer translucent pane so pages stay legible */
+@supports not (backdrop-filter: blur(1px)) {
+  .deck-card { background: rgba(44, 50, 86, 0.92); }
+}
+
 
 .deck-controls {
   position: fixed;
