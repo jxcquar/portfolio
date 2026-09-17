@@ -122,7 +122,13 @@ opens a centred lightbox; 2x pannable on mobile):
 - **Lightbox**: built in main.js for `.zoomable` figures. `display:flex` on `.lightbox`
   would override the `hidden` attribute — `.lightbox[hidden]{display:none!important}`
   keeps it closed (another shipped bug). It stops wheel/touch propagation so zooming
-  never flips book pages.
+  never flips book pages. **The mobile 2x pan is transform-driven, never a native
+  scroller**: a 200vw image inside an overflow:auto overlay made iOS (in-app
+  browsers especially) widen the layout viewport — the page came back shoved
+  sideways with fixed elements offset (a third shipped bug). Pointer events move
+  the image via translate, touch gestures in the overlay are preventDefault-ed,
+  the page is scroll-locked while open (`html.lb-open`), and scroll position is
+  restored on close. A drag-release is not a tap-to-close (`panMoved` guard).
 - **iOS quirks already handled** (don't regress): nav glass lives on `.pill-nav::before`
   (backdrop-filter directly on a fixed element breaks position:fixed on iOS);
   About page body is `position:fixed` (an overflowing world otherwise makes iOS zoom
