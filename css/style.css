@@ -1568,7 +1568,7 @@ body.showcase-page {
   backdrop-filter: blur(22px) saturate(1.25);
   -webkit-backdrop-filter: blur(22px) saturate(1.25);
   border: 1px solid rgba(255, 255, 255, 0.65);
-  box-shadow: 0 26px 54px rgba(40, 44, 70, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  box-shadow: 0 16px 36px rgba(125, 127, 133, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.85);
   display: flex;
   flex-direction: column;
   padding: clamp(10px, 1.1vw, 14px);
@@ -1710,15 +1710,16 @@ body.showcase-page {
    synthesized in PIL, deco alpha-composited from a 2x headless capture) */
 
 .case-paper .case-nav {
-  background: #fdfdfc;
-  border: 1px dashed rgba(20, 20, 20, 0.5);
+  background: #fdfdfd;
+  border: 1px dashed rgba(0, 0, 0, 0.8);
   box-shadow: none;
-  border-radius: 2px;
-  padding: 14px 18px 14px 16px;
-  gap: 7px;
-  font-size: 12.5px;
+  border-radius: 4px;
+  padding: 16px;
+  gap: 6px;
+  font-size: 11.5px;
+  letter-spacing: -0.02em;
 }
-.case-paper .case-nav a { color: #8a8a86; }
+.case-paper .case-nav a { color: #929292; }
 .case-paper .case-nav a.active { color: #111; font-weight: 700; }
 @media (hover: hover) {
   .case-paper .case-nav a:hover { color: #111; }
@@ -1729,29 +1730,30 @@ body.showcase-page {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 20px;
-  max-width: 46ch;
+  gap: 34px;
+  max-width: 400px;
 }
 .ov-intro h2 {
   font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(24px, 2.3vw, 34px);
-  line-height: 1.28;
+  font-weight: 400;
+  font-size: clamp(23px, 2vw, 28px);
+  line-height: 1.32;
 }
 .ov-wordmark {
-  width: min(200px, 46%);
+  width: 134px;
   height: auto;
-  margin-top: 4px;
+  margin-bottom: -20px; /* wordmark sits 12px above the body inside a 34px-gap stack */
 }
 .ov-body {
-  font-size: 15px;
-  line-height: 1.55;
-  color: var(--ink-soft);
+  font-size: 16px;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+  color: #7a7a7a;
 }
 .ov-meta {
-  margin-top: 12px;
-  font-size: 12.5px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.02em;
-  color: #3a3a38;
+  text-transform: uppercase;
+  color: #777;
 }
