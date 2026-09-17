@@ -918,6 +918,10 @@ html.lb-open body { overflow: hidden; }
   z-index: 61;
 }
 @media (max-width: 900px) {
+  /* phones: the document itself must never scroll or zoom sideways — clip
+     (not hidden) adds no scroll container for iOS to pan */
+  html { overflow-x: clip; }
+
   /* phone: the tapped image opens at 2x width, vertically centred in the
      viewport, and pans sideways by touch */
   .lightbox { overflow: hidden; touch-action: none; }
