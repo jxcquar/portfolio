@@ -46,7 +46,8 @@ python3 -m http.server 4173
   positioned — **image order in the HTML matters**); Figma/Redbubble icons sit outside
   the initial viewport there, discovered by panning.
 - `showcase.html` — "Showcase": a 3D fanned deck of "journal pages" (Pinterest-pin
-  reference the owner supplied — the *paper* journal app look). Dark navy stage; each
+  reference the owner supplied — the *paper* journal app look). Light grey stage,
+  glassmorphism cards; each
   `.deck-card` is a paper-mounted image + italic caption, images never cropped
   (object-fit: contain). All card transforms come from JS (`data-page === "showcase"`
   block in main.js): fractional-position render → drag follows the finger, then snaps.
