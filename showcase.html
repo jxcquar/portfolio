@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Showcase — Jacqueline Tenges</title>
+  <meta name="description" content="Showcase — a flip-through deck of visual work by Jacqueline Tenges, senior product designer." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌼</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,500;1,600&family=Crimson+Text:ital@0;1&family=Inter:wght@400;500;600;700;800&family=Roboto:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=68" />
+</head>
+<body data-page="showcase" class="showcase-page">
+
+  <nav class="pill-nav pill-nav--top" aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="index.html#work">Work</a>
+    <a href="showcase.html" aria-current="page">Showcase</a>
+    <a href="about.html">About</a>
+  </nav>
+
+  <header class="deck-head">
+    <h1>Showcase</h1>
+    <p class="deck-sub"><span class="deck-sub-icon" aria-hidden="true"></span><span id="deckCount">10 pages</span></p>
+  </header>
+
+  <main class="deck-stage" id="deckStage" aria-label="Showcase deck — flip through the pages">
+    <div class="deck" id="deck">
+      <!-- One .deck-card per page. To add a page: copy a block, point it at a
+           1400px-wide JPEG in assets/, keep real width/height. Order = deck order. -->
+      <figure class="deck-card">
+        <img src="assets/sc-overview.jpg" width="1400" height="909" alt="Fabra design overview board" draggable="false" />
+        <figcaption>Fabra, at a glance</figcaption>
+      </figure>
+      <figure class="deck-card">
+        <img src="assets/sc-create-new-design.jpg" width="1400" height="909" alt="Starting a new design in Fabra" draggable="false" />
+        <figcaption>Starting a new design</figcaption>
+      </figure>
+      <figure class="deck-card">
+        <img src="assets/sc-editor-panels.jpg" width="1400" height="909" alt="The Fabra 3D editor with left and right panels" draggable="false" />
+        <figcaption>Inside the 3D editor</figcaption>
+      </figure>
+      <figure class="deck-card">
+        <img src="assets/sc-pattern-studio.jpg" width="1400" height="909" alt="Pattern Studio in Fabra" draggable="false" />
+        <figcaption>Pattern Studio</figcaption>
+      </figure>
+      <figure class="deck-card">
+        <img src="assets/sc-design-system.jpg" width="1400" height="848" alt="The Fabra design system" draggable="false" />
+        <figcaption>The design system</figcaption>
+      </figure>
+      <figure class="deck-card">
+        <img src="assets/tech-pack-early.jpg" width="1214" height="872" alt="An early generated tech pack" draggable="false" />
+        <figcaption>Tech packs, generated</figcaption>
+      </figure>
+      <figure class="deck-card">
+        <img src="assets/fashion-evolution.jpg" width="1600" height="716" alt="How fashion design evolved across eras" draggable="false" />
+        <figcaption>How fashion design evolved</figcaption>
+      </figure>
+      <figure class="deck-card">
+        <img src="assets/modules.png" width="1590" height="652" alt="Fabra's core modules" draggable="false" />
+        <figcaption>Fabra&rsquo;s core modules</figcaption>
+      </figure>
+      <figure class="deck-card">
+        <img src="assets/fabra-sessions.jpg" width="1600" height="836" alt="A grid of private beta user sessions" draggable="false" />
+        <figcaption>Private beta sessions</figcaption>
+      </figure>
+      <figure class="deck-card">
+        <img src="assets/sc-panel-figma.jpg" width="1400" height="840" alt="Editor panel explorations in Figma" draggable="false" />
+        <figcaption>Panel explorations in Figma</figcaption>
+      </figure>
+    </div>
+  </main>
+
+  <div class="deck-controls">
+    <button class="deck-arrow" id="deckPrev" aria-label="Previous page">&#8592;</button>
+    <span class="deck-counter" id="deckCounter" aria-live="polite">1 / 10</span>
+    <button class="deck-arrow" id="deckNext" aria-label="Next page">&#8594;</button>
+  </div>
+
+  <p class="deck-hint" id="deckHint">Drag, scroll or use the arrows to flip</p>
+
+  <script src="js/main.js?v=68"></script>
+</body>
+</html>

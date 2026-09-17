@@ -680,4 +680,106 @@
       }, 500);
     });
   }
+
+  /* ---------- Showcase: fanned page deck ---------- */
+  if (document.body.dataset.page === "showcase") {
+    const stage = document.getElementById("deckStage");
+    const cards = Array.from(document.querySelectorAll(".deck-card"));
+    const counter = document.getElementById("deckCounter");
+    const countEl = document.getElementById("deckCount");
+    const hint = document.getElementById("deckHint");
+    const n = cards.length;
+    if (countEl) countEl.textContent = n + " pages";
+
+    // per-card scatter so the fan reads hand-placed, not mechanical
+    const jitZ = cards.map((_, i) => [ -3.4, 2.6, -1.8, 3.2, -2.6, 1.9, -3.1, 2.3, -2.1, 3.5 ][i % 10]);
+    const jitY = cards.map((_, i) => [ 8, -6, 10, -9, 6, -8, 9, -5, 7, -10 ][i % 10]);
+
+    let cur = 0;
+    const cardW = () => cards[0].getBoundingClientRect().width || 600;
+
+    // pos may be fractional mid-drag; every term is continuous in o
+    function render(pos) {
+      const cw = cardW();
+      cards.forEach((card, i) => {
+        const o = i - pos;
+        const ao = Math.abs(o);
+        const dir = Math.sign(o);
+        const e = Math.min(ao, 1); // 0 at centre → 1 once fully a side page
+        const x = dir * cw * (0.46 * e + 0.15 * Math.min(Math.max(ao - 1, 0), 3.5) + 0.035 * Math.max(ao - 4.5, 0));
+        const y = jitY[i] * e;
+        const ry = dir * -20 * e;
+        const rz = jitZ[i] * e;
+        const s = 1 - 0.16 * e - 0.014 * Math.max(ao - 1, 0);
+        card.style.transform =
+          "translate(-50%, -50%) translate3d(" + x + "px," + y + "px," + (-90 * e - 26 * Math.max(ao - 1, 0)) + "px)" +
+          " rotateY(" + ry + "deg) rotateZ(" + rz + "deg) scale(" + Math.max(s, 0.55) + ")";
+        card.style.zIndex = String(200 - Math.round(ao * 2));
+        card.style.opacity = ao > 6.5 ? "0" : "1";
+        card.classList.toggle("is-current", Math.round(pos) === i);
+      });
+      if (counter) counter.textContent = (Math.round(Math.min(Math.max(pos, 0), n - 1)) + 1) + " / " + n;
+    }
+
+    function go(idx) {
+      cur = Math.min(Math.max(idx, 0), n - 1);
+      render(cur);
+      if (hint) hint.classList.add("fade");
+    }
+
+    render(0);
+
+    document.getElementById("deckPrev").addEventListener("click", () => go(cur - 1));
+    document.getElementById("deckNext").addEventListener("click", () => go(cur + 1));
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") go(cur - 1);
+      if (e.key === "ArrowRight") go(cur + 1);
+    });
+
+    // trackpad / wheel: accumulate horizontal (or shift-vertical) intent
+    let wheelAcc = 0, wheelLock = false;
+    stage.addEventListener("wheel", (e) => {
+      e.preventDefault();
+      const d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+      wheelAcc += d;
+      if (wheelLock) { if (Math.abs(wheelAcc) < 12) wheelLock = false; else return; }
+      if (Math.abs(wheelAcc) > 60) {
+        go(cur + (wheelAcc > 0 ? 1 : -1));
+        wheelAcc = 0;
+        wheelLock = true;
+      }
+    }, { passive: false });
+
+    // drag / swipe with live fractional follow
+    let dragging = false, moved = false, startX = 0;
+    stage.addEventListener("pointerdown", (e) => {
+      dragging = true; moved = false; startX = e.clientX;
+      stage.classList.add("dragging");
+      stage.setPointerCapture(e.pointerId);
+    });
+    stage.addEventListener("pointermove", (e) => {
+      if (!dragging) return;
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 6) moved = true;
+      render(cur - dx / (cardW() * 0.5));
+    });
+    const endDrag = (e) => {
+      if (!dragging) return;
+      dragging = false;
+      stage.classList.remove("dragging");
+      const dx = e.clientX - startX;
+      let step = Math.round(dx / (cardW() * 0.5));
+      if (step === 0 && Math.abs(dx) > 40) step = Math.sign(dx);
+      go(cur - step);
+    };
+    stage.addEventListener("pointerup", endDrag);
+    stage.addEventListener("pointercancel", endDrag);
+
+    // tap a side page to bring it to the front (ignore drag-release clicks)
+    cards.forEach((card, i) => {
+      card.addEventListener("click", () => { if (!moved && i !== cur) go(i); });
+    });
+
+    window.addEventListener("resize", () => render(cur));
+  }
 })();

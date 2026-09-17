@@ -39,7 +39,19 @@ python3 -m http.server 4173
   work items right. Mobile uses its own scatter in the ≤900px block (nth-of-type
   positioned — **image order in the HTML matters**); Figma/Redbubble icons sit outside
   the initial viewport there, discovered by panning.
+- `showcase.html` — "Showcase": a 3D fanned deck of "journal pages" (Pinterest-pin
+  reference the owner supplied — the *paper* journal app look). Dark navy stage; each
+  `.deck-card` is a paper-mounted image + italic caption, images never cropped
+  (object-fit: contain). All card transforms come from JS (`data-page === "showcase"`
+  block in main.js): fractional-position render → drag follows the finger, then snaps.
+  Flip via arrows, ←/→ keys, trackpad wheel, drag/swipe, or tapping a side page.
+  To add a page: copy a `.deck-card` block in the HTML (order = deck order), point it
+  at a ~1400px-wide JPEG (`assets/sc-*.jpg` are deck-optimised copies of larger PNGs);
+  the page count and counter update themselves.
 - `contact.html` — hero with Email/LinkedIn/YouTube pills.
+
+Every page's pill nav is Home / Work / Showcase / About (add new nav items to all
+seven HTML files — and the cache-bust bump below applies to all seven too).
 
 ## Media pipeline (videos & images)
 
