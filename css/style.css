@@ -1761,12 +1761,12 @@ body.case-paper {
 }
 /* positions = the Figma frame's exact geometry (1920x1080), edge-anchored so
    short windows crop nothing off */
-.bg--zk .zk-pen    { left: 10%;    top: -1.4%;    width: 11.25%; transform: scaleX(-1); }
-.bg--zk .zk-spark  { left: 15.4%;  top: 6.4%;     width: 10.6%;  transform: rotate(-54.35deg); }
-.bg--zk .zk-star   { left: 19.3%;  top: 8.4%;     width: 10.64%; }
-.bg--zk .zk-key    { right: 6.05%; top: 8.9%;     width: 23.25%; transform: rotate(-45.32deg); }
-.bg--zk .zk-bag    { left: 11.7%;  bottom: 5.95%; width: 16.35%; transform: rotate(10.1deg); }
-.bg--zk .zk-flower { right: 13.3%; bottom: 10.4%; width: 12.6%;  transform: rotate(9.67deg); }
+.bg--zk .zk-pen    { left: 4.1%;   top: -1.4%;   width: 11.25%; transform: scaleX(-1); }
+.bg--zk .zk-spark  { left: 9.5%;   top: 6.4%;    width: 10.6%;  transform: rotate(-54.35deg); }
+.bg--zk .zk-star   { left: 13.4%;  top: 8.4%;    width: 10.64%; }
+.bg--zk .zk-key    { right: -2%;   top: 3.6%;    width: 25.7%;  transform: rotate(-53.94deg); }
+.bg--zk .zk-bag    { left: 5.3%;   bottom: 5.8%; width: 19%;    transform: rotate(10.1deg); }
+.bg--zk .zk-flower { right: 1.5%;  bottom: 6.7%; width: 15.7%;  transform: rotate(9.67deg); }
 
 /* Overview spread: blank left page, intro block on the right (Figma 56-751) */
 .ov-intro {
