@@ -1706,6 +1706,13 @@ body.showcase-page {
 }
 
 /* ---------------- Zookal: dotted-paper collage variant of the light theme ---------------- */
+/* Zookal book matches the Figma frame's proportions (1025x692 in a 1920x1080
+   frame) — the default 1300px cap left the props hiding behind the book */
+body.case-paper {
+  --bookw: min(71vw, 1025px);
+  --bookh: min(76svh, calc(100svh - 190px), 692px);
+}
+
 .case-paper .case-nav {
   background: #fdfdfd;
   border: 1px dashed rgba(0, 0, 0, 0.8);
