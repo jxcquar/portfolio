@@ -1706,9 +1706,6 @@ body.showcase-page {
 }
 
 /* ---------------- Zookal: dotted-paper collage variant of the light theme ---------------- */
-/* bg: assets/zookal-collage.jpg (reconstructed from the Figma frame — dot grid
-   synthesized in PIL, deco alpha-composited from a 2x headless capture) */
-
 .case-paper .case-nav {
   background: #fdfdfd;
   border: 1px dashed rgba(0, 0, 0, 0.8);
@@ -1723,6 +1720,39 @@ body.showcase-page {
 .case-paper .case-nav a.active { color: #111; font-weight: 700; }
 @media (hover: hover) {
   .case-paper .case-nav a:hover { color: #111; }
+}
+
+/* Zookal bg: dotted paper as a live CSS layer, props placed individually and
+   edge-anchored — a baked 16:9 collage cropped them off short/wide windows */
+.bg--zk { background: #f8f8f8; }
+.bg--zk::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../assets/zookal-dots.png") top left / 32px 32px repeat;
+  opacity: 0.1;
+}
+.bg--zk .zk-deco {
+  position: absolute;
+  height: auto;
+  object-fit: initial;
+}
+.bg--zk .zk-pen    { left: 10%;    top: -1.5%;   width: 11.3%; transform: scaleX(-1); }
+.bg--zk .zk-spark  { left: 15.4%;  top: 6.4%;    width: 10.6%; transform: rotate(-54.35deg); }
+.bg--zk .zk-star   { left: 19.3%;  top: 8.4%;    width: 10.6%; }
+.bg--zk .zk-key    { right: 4%;    top: 7%;      width: 23.2%; transform: rotate(-45.32deg); }
+.bg--zk .zk-bag    { left: 8%;     bottom: 5%;   width: 16.3%; transform: rotate(10.1deg); }
+.bg--zk .zk-flower { right: 9%;    bottom: 7%;   width: 12.6%; transform: rotate(9.67deg); }
+
+/* shorter/narrower windows: the book spans 71vw, so hug the props to the
+   margins and corners where they stay in view */
+@media (max-width: 1500px) {
+  .bg--zk .zk-pen    { left: 4.5%;  top: -2%; }
+  .bg--zk .zk-spark  { left: 10%;   top: 5%; }
+  .bg--zk .zk-star   { left: 14.5%; top: 6.5%; }
+  .bg--zk .zk-key    { right: 0.8%; top: 3.5%; }
+  .bg--zk .zk-bag    { left: 0.8%;  bottom: 2.5%; }
+  .bg--zk .zk-flower { right: 0.8%; bottom: 3%; }
 }
 
 /* Overview spread: blank left page, intro block on the right (Figma 56-751) */

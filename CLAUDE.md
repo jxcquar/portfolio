@@ -31,10 +31,12 @@ python3 -m http.server 4173
   preview), and an Apple-Books-style scrolling reader on mobile (≤900px: white page,
   light nav, Contents pill with progress % and a TOC sheet). Real copy + media.
 - `case-zookal.html` — full case study (Zookal Exam Prep), same machinery. Light
-  "dotted paper" collage theme (`body.case-light case-paper`, bg
-  `assets/zookal-collage.jpg`, dashed-border paper TOC) matching Figma node 56-751
-  in "folio '26"; overview spread = blank left page + intro right (serif title,
-  `assets/zookal-wordmark.png`, mission copy, SOLO-DESIGNER meta).
+  "dotted paper" collage theme (`body.case-light case-paper`) matching Figma node
+  2068-407 in "folio '26 (Copy)": the dot grid is a repeating CSS tile
+  (`assets/zookal-dots.png`) and each 3D prop/doodle is its own edge-anchored
+  `.zk-deco` img (real Figma exports) so nothing crops off at odd window aspects;
+  dashed-border paper TOC; overview spread = blank left page + intro right (serif title,
+  `assets/zookal-wordmark.svg`, mission copy, SOLO-DESIGNER meta).
 - `case-freelancer.html` — scaffold copy (prompts describing what to write).
 - `about.html` — pannable canvas "world" (drag/wheel with fling momentum), pulsing
   pointers opening glass cards (`bio-card` / compact `bio-card--mini`, one per item);
@@ -149,9 +151,9 @@ no login) —
 
 SwiftShader flags are required (the WebGL canvas renders black without them); a
 3840×2160 window gives a 16:9 frame at ~1.83x. Crop the letterbox bars, then cut
-what you need in PIL (zookal-collage.jpg was rebuilt this way: dot grid re-
-synthesized from measurements, deco elements alpha-composited over it, book/nav/
-TOC erased since the real HTML provides those).
+what you need in PIL. When the MCP quota is available, prefer get_design_context:
+it hands you every layer as a downloadable PNG/SVG asset plus exact geometry
+(the Zookal props in assets/zookal-*.png|svg came from it).
 
 ## Verification notes
 
