@@ -1334,7 +1334,7 @@ body.canvas-page {
   .project-card {
     flex: 0 0 auto;
     width: min(77vw, 320px);
-    min-height: min(76svh, 640px);
+    min-height: min(66svh, 560px); /* a touch shorter — matches the desktop card ratio */
     height: auto;
     scroll-snap-align: center;
   }
