@@ -1697,3 +1697,54 @@ body.showcase-page {
   .deck-controls { bottom: 30px; }
   .deck-hint { display: none; }
 }
+
+/* ---------------- Zookal: dotted-paper collage variant of the light theme ---------------- */
+/* bg: assets/zookal-collage.jpg (reconstructed from the Figma frame — dot grid
+   synthesized in PIL, deco alpha-composited from a 2x headless capture) */
+
+.case-paper .case-nav {
+  background: #fdfdfc;
+  border: 1px dashed rgba(20, 20, 20, 0.5);
+  box-shadow: none;
+  border-radius: 2px;
+  padding: 14px 18px 14px 16px;
+  gap: 7px;
+  font-size: 12.5px;
+}
+.case-paper .case-nav a { color: #8a8a86; }
+.case-paper .case-nav a.active { color: #111; font-weight: 700; }
+@media (hover: hover) {
+  .case-paper .case-nav a:hover { color: #111; }
+}
+
+/* Overview spread: blank left page, intro block on the right (Figma 56-751) */
+.ov-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 46ch;
+}
+.ov-intro h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(24px, 2.3vw, 34px);
+  line-height: 1.28;
+}
+.ov-wordmark {
+  width: min(200px, 46%);
+  height: auto;
+  margin-top: 4px;
+}
+.ov-body {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.ov-meta {
+  margin-top: 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #3a3a38;
+}

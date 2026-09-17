@@ -30,7 +30,11 @@ python3 -m http.server 4173
   (arrows, dots, yellow sticky-note section nav, page-flip leaf with two-sided content
   preview), and an Apple-Books-style scrolling reader on mobile (≤900px: white page,
   light nav, Contents pill with progress % and a TOC sheet). Real copy + media.
-- `case-zookal.html` — full case study (Zookal Exam Prep), same machinery, dark theme.
+- `case-zookal.html` — full case study (Zookal Exam Prep), same machinery. Light
+  "dotted paper" collage theme (`body.case-light case-paper`, bg
+  `assets/zookal-collage.jpg`, dashed-border paper TOC) matching Figma node 56-751
+  in "folio '26"; overview spread = blank left page + intro right (serif title,
+  `assets/zookal-wordmark.png`, mission copy, SOLO-DESIGNER meta).
 - `case-freelancer.html` — scaffold copy (prompts describing what to write).
 - `about.html` — pannable canvas "world" (drag/wheel with fling momentum), pulsing
   pointers opening glass cards (`bio-card` / compact `bio-card--mini`, one per item);
@@ -128,6 +132,26 @@ opens a centred lightbox; 2x pannable on mobile):
   backdrop-filter (adjacent live backdrops smear each other in Chromium on hover).
   901–1340px turns the grid into a horizontal snap carousel; ≤900px a taller one.
 - Fabra uses the light "collage" theme (`body.case-light`, `assets/collage.jpg`).
+
+## Getting designs out of Figma without the MCP
+
+The Figma MCP rate-limits fast on the owner's View seat. Reliable fallback for a
+frame render: headless Chrome on the public embed (works for link-shared files,
+no login) —
+
+```bash
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new \
+  --screenshot=out.png --window-size=3840,2160 --hide-scrollbars \
+  --virtual-time-budget=40000 --enable-unsafe-swiftshader \
+  --use-gl=angle --use-angle=swiftshader \
+  "https://embed.figma.com/proto/<fileKey>/x?node-id=<id>&scaling=contain&embed-host=share&hide-ui=1&hotspot-hints=0"
+```
+
+SwiftShader flags are required (the WebGL canvas renders black without them); a
+3840×2160 window gives a 16:9 frame at ~1.83x. Crop the letterbox bars, then cut
+what you need in PIL (zookal-collage.jpg was rebuilt this way: dot grid re-
+synthesized from measurements, deco elements alpha-composited over it, book/nav/
+TOC erased since the real HTML provides those).
 
 ## Verification notes
 
