@@ -1717,6 +1717,8 @@ body.showcase-page {
   letter-spacing: -0.02em;
 }
 .case-paper .case-nav a { color: #929292; }
+.case-paper .meta-rows--roomy { gap: min(30px, 1.6svh); }
+.case-paper .book-page--center { padding: min(48px, 5.6svh); }
 .case-paper .case-nav a.active { color: #111; font-weight: 700; }
 @media (hover: hover) {
   .case-paper .case-nav a:hover { color: #111; }
@@ -1751,7 +1753,7 @@ body.showcase-page {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 34px;
+  gap: min(34px, 4svh); /* short windows shrink the book; the intro must follow */
   max-width: 400px;
 }
 .ov-intro h2 {
