@@ -146,9 +146,21 @@
     navAbout.addEventListener("click", (e) => {
       if (reduceMotion) return; // plain navigation
       e.preventDefault();
-      document.body.classList.add("leave");
+      document.body.classList.add("leave", "leave-sky");
       setTimeout(() => {
         location.href = navAbout.href;
+      }, 620);
+    });
+
+    // Leaving for Showcase: same outward move, but the veil is the deck's
+    // navy night sky, so the two pages read as one continuous scene.
+    const navShowcase = document.getElementById("navShowcase");
+    navShowcase.addEventListener("click", (e) => {
+      if (reduceMotion) return;
+      e.preventDefault();
+      document.body.classList.add("leave", "leave-night");
+      setTimeout(() => {
+        location.href = navShowcase.href;
       }, 620);
     });
   }
@@ -688,6 +700,8 @@
     const counter = document.getElementById("deckCounter");
     const countEl = document.getElementById("deckCount");
     const hint = document.getElementById("deckHint");
+    const capEl = document.getElementById("deckCaption");
+    const captions = [];
     const n = cards.length;
     if (countEl) countEl.textContent = n + " pages";
 
@@ -718,6 +732,10 @@
         card.style.opacity = ao > 6.5 ? "0" : "1";
         card.classList.toggle("is-current", Math.round(pos) === i);
       });
+      if (capEl) {
+        const idx = Math.round(Math.min(Math.max(pos, 0), n - 1));
+        capEl.textContent = captions[idx] || "";
+      }
       if (counter) counter.textContent = (Math.round(Math.min(Math.max(pos, 0), n - 1)) + 1) + " / " + n;
     }
 
@@ -755,7 +773,7 @@
     stage.addEventListener("pointerdown", (e) => {
       dragging = true; moved = false; startX = e.clientX;
       stage.classList.add("dragging");
-      stage.setPointerCapture(e.pointerId);
+      try { stage.setPointerCapture(e.pointerId); } catch (_) {}
     });
     stage.addEventListener("pointermove", (e) => {
       if (!dragging) return;
@@ -777,8 +795,11 @@
 
     // tap a side page to bring it to the front (ignore drag-release clicks)
     cards.forEach((card, i) => {
+      const cap = card.querySelector("figcaption");
+      captions[i] = cap ? cap.textContent : "";
       card.addEventListener("click", () => { if (!moved && i !== cur) go(i); });
     });
+    render(cur); // captions were collected after the first paint — sync the line
 
     window.addEventListener("resize", () => render(cur));
   }

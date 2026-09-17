@@ -201,12 +201,16 @@ body { animation: page-in 0.7s var(--ease-soft) both; }
   transform: scale(1.07) translate3d(0, 3%, 0);
   transition: transform 0.7s var(--ease-out);
 }
-body.leave .page-veil {
+.page-veil--night {
+  background: radial-gradient(120% 90% at 50% 12%, #232a4d 0%, #171c36 52%, #101427 100%);
+}
+body.leave.leave-sky .page-veil--sky,
+body.leave.leave-night .page-veil--night {
   opacity: 1;
   visibility: visible;
   transition: opacity 0.55s var(--ease-soft), visibility 0s;
 }
-body.leave .page-veil img { transform: none; }
+body.leave.leave-sky .page-veil--sky img { transform: none; }
 body.leave .hero,
 body.leave .work-main {
   translate: 0 -12vh;
@@ -1547,7 +1551,7 @@ body.showcase-page {
   position: absolute;
   left: 50%;
   top: 54%;
-  width: var(--cardw, min(54vw, 68vh, 880px));
+  width: var(--cardw, min(62vw, 72vh, 1000px));
   aspect-ratio: 29 / 21;
   margin: 0;
   transform-origin: 50% 62%;
@@ -1556,7 +1560,7 @@ body.showcase-page {
   box-shadow: 0 28px 60px rgba(4, 8, 24, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.06);
   display: flex;
   flex-direction: column;
-  padding: clamp(10px, 1.2vw, 16px);
+  padding: clamp(10px, 1.1vw, 14px);
   will-change: transform;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -1572,14 +1576,57 @@ body.showcase-page {
   border-radius: 8px;
   pointer-events: none;
 }
+/* description: hidden by default, floats in as a chip when the front page is hovered */
 .deck-card figcaption {
-  flex: none;
-  padding-top: clamp(8px, 1vw, 12px);
+  position: absolute;
+  left: 50%;
+  bottom: clamp(18px, 2.4vw, 30px);
+  transform: translateX(-50%) translateY(8px);
+  max-width: 84%;
+  padding: 8px 20px;
+  border-radius: 999px;
+  background: rgba(23, 20, 12, 0.78);
+  color: #f7f3ea;
+  font-family: "Crimson Text", serif;
+  font-style: italic;
+  font-size: clamp(15px, 1.3vw, 19px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s var(--ease-soft);
+}
+@media (hover: hover) {
+  .deck-card.is-current:hover figcaption {
+    opacity: 1;
+    transform: translateX(-50%);
+  }
+}
+
+/* phone: the description lives under the deck instead (no hover there) */
+.deck-caption {
+  display: none;
+  position: fixed;
+  left: 24px;
+  right: 24px;
+  bottom: 90px;
   text-align: center;
   font-family: "Crimson Text", serif;
   font-style: italic;
-  font-size: clamp(15px, 1.35vw, 19px);
-  color: #4a4438;
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.85);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* deck settles in on arrival — pairs with the navy veil handoff from Home */
+.deck {
+  animation: deck-in 0.95s var(--ease-out) both;
+}
+@keyframes deck-in {
+  from { opacity: 0; transform: translateY(36px) scale(0.955); }
+  to { opacity: 1; transform: none; }
 }
 .deck-card:not(.is-current) { cursor: pointer; }
 
@@ -1632,7 +1679,8 @@ body.showcase-page {
 
 @media (max-width: 900px) {
   .deck-head { top: 88px; }
-  .deck-card { --cardw: min(86vw, 62vh); }
+  .deck-card { --cardw: min(92vw, 66vh); }
+  .deck-caption { display: block; }
   .deck-stage { perspective: 1100px; }
   .deck-controls { bottom: 30px; }
   .deck-hint { display: none; }
