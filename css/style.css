@@ -370,8 +370,10 @@ a.project-card { cursor: pointer; }
   width: 28%;
   filter: drop-shadow(0 8px 14px rgba(0, 20, 0, 0.25));
 }
-/* Zookal card: a floating mockup with its own baked shadows — no frame */
-.card-visual--zookal .cv-shot {
+/* Zookal + Freelancer cards: floating mockups with their own baked shadows — no frame
+   (both thumbnails share the same ~1.25 ratio, so they share geometry) */
+.card-visual--zookal .cv-shot,
+.card-visual--freelancer .cv-shot {
   left: 10%;
   top: 18%;
   width: 80%;
@@ -1351,7 +1353,8 @@ body.canvas-page {
     padding: 110px 24px 70px;
   }
   .work-main::-webkit-scrollbar { display: none; }
-  .card-visual--zookal .cv-shot {
+  .card-visual--zookal .cv-shot,
+  .card-visual--freelancer .cv-shot {
     left: 24%;
     top: 18%;
     width: 52%;

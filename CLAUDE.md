@@ -193,6 +193,10 @@ window sizes, and grep the marker. Delete the scratch file before committing.
   framework, OKR excerpt, plan tiers, stats callout, closing shot).
 - Freelancer case: `.img-slot` in #problem awaits a "current user profile" screenshot.
 - Unplaced owner uploads: `assets/freelancer-share.png` (referral-page laptop mockup),
-  `assets/scape-field-services.png` + `-2.png` (5760px masters — compress before placing).
+  `assets/freelancer-feedback.webp` (6780px collage of real user-feedback comments —
+  a natural fit for the Freelancer solution chapter), `assets/scape-field-services.png`
+  + `-2.png` (5760px masters — compress before placing). `assets/thumbnail.png` (11MB
+  master of the redesigned Freelancer profile) is the source of the work-card visual
+  `assets/fl-profile-card.png`; the raw master itself is unreferenced.
 - `assets/overview.png` was uploaded by the owner but is not yet placed anywhere.
 - Figma/Redbubble About cards carry drafted copy the owner may want to rewrite.
