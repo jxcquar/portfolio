@@ -202,6 +202,8 @@ window sizes, and grep the marker. Delete the scratch file before committing.
   screenshots (structure flow, properties panel, entry-point grid, prioritisation
   framework, OKR excerpt, plan tiers, stats callout, closing shot).
 - Unplaced owner uploads: `assets/freelancer-share.png` (referral-page laptop mockup),
+  `assets/freelancer-giveget.png`, `assets/freelancer-invite.png` (1.3-1.6MB, likely
+  more Freelancer profile/referral screenshots — compress before placing),
   `assets/scape-field-services.png` + `-2.png` (5760px masters — compress before
   placing). `assets/thumbnail.png` (11MB master of the redesigned Freelancer profile)
   is the source of the work-card visual `assets/fl-profile-card.png`, and
