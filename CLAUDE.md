@@ -37,16 +37,21 @@ python3 -m http.server 4173
   `.zk-deco` img (real Figma exports) so nothing crops off at odd window aspects;
   dashed-border paper TOC; overview spread = blank left page + intro right (serif title,
   `assets/zookal-wordmark.svg`, mission copy, SOLO-DESIGNER meta).
-- `case-freelancer.html` — full case study (profiles revamp, "Optimising user profiles
-  to attract more projects and hires"), light "money" theme (`body.case-light
-  case-paper`) matching Figma node 2072-406 in "folio '26 (Copy)": `.bg--fl` =
-  plain #f8f8f8 + 13 falling dollar bills (4 unique PNGs `assets/fl-cash-*.png`,
-  centre-positioned + rotated per the Figma 1920×1080 geometry, stretched to the
-  design's box ratios via `aspect-ratio` + `object-fit:fill`) + `assets/fl-bird.png`
-  hummingbird gift-box artwork cropped off the bottom-right corner. Sections:
-  Overview / 01 The problem / 02 The solution / 03 The result. One `.img-slot`
-  remains ("Example of a current user profile") awaiting a screenshot from the
-  owner. Work-grid order on index.html is Fabra > Zookal > Freelancer.
+- `case-freelancer.html` — full case study (profiles revamp), light "money" theme
+  (`body.case-light case-paper`) matching Figma node 2072-406 in "folio '26 (Copy)":
+  `.bg--fl` = plain #f8f8f8 + 13 falling dollar bills (4 unique PNGs
+  `assets/fl-cash-*.png`, centre-positioned + rotated per the Figma 1920×1080
+  geometry, stretched to the design's box ratios via `aspect-ratio` +
+  `object-fit:fill`) + `assets/fl-bird.png` hummingbird gift-box artwork cropped
+  off the bottom-right corner. Narrative structure mirrors Zookal's: Overview /
+  01 Setup / 02 Discovery / 03 Hypothesis / 04 Validation / 05 Scope / 06 Results
+  (section ids match the eyebrow numbers — case-nav, toc-sheet and the eyebrow
+  text must all stay in sync when editing). Results embeds the owner's real
+  user-feedback collage (`assets/fl-feedback.jpg`, optimised from her
+  `freelancer-feedback.webp` upload) as a zoomable case-figure. Overview's
+  eyebrow is a logo img (`.freelancer-mark`, sized in CSS since it ships with
+  no width/height attrs) rather than text. Work-grid order on index.html is
+  Fabra > Zookal > Freelancer.
 - `about.html` — pannable canvas "world" (drag/wheel with fling momentum), pulsing
   pointers opening glass cards (`bio-card` / compact `bio-card--mini`, one per item);
   on mobile the cards re-parent to <body> as fixed popovers (position:fixed is defeated
@@ -191,12 +196,11 @@ window sizes, and grep the marker. Delete the scratch file before committing.
 - Remaining case-study `[Image]` slots (`.img-slot`) in case-fabra.html await real
   screenshots (structure flow, properties panel, entry-point grid, prioritisation
   framework, OKR excerpt, plan tiers, stats callout, closing shot).
-- Freelancer case: `.img-slot` in #problem awaits a "current user profile" screenshot.
 - Unplaced owner uploads: `assets/freelancer-share.png` (referral-page laptop mockup),
-  `assets/freelancer-feedback.webp` (6780px collage of real user-feedback comments —
-  a natural fit for the Freelancer solution chapter), `assets/scape-field-services.png`
-  + `-2.png` (5760px masters — compress before placing). `assets/thumbnail.png` (11MB
-  master of the redesigned Freelancer profile) is the source of the work-card visual
-  `assets/fl-profile-card.png`; the raw master itself is unreferenced.
+  `assets/scape-field-services.png` + `-2.png` (5760px masters — compress before
+  placing). `assets/thumbnail.png` (11MB master of the redesigned Freelancer profile)
+  is the source of the work-card visual `assets/fl-profile-card.png`, and
+  `assets/freelancer-feedback.webp` is the source of the case-figure
+  `assets/fl-feedback.jpg`; both raw masters are themselves unreferenced.
 - `assets/overview.png` was uploaded by the owner but is not yet placed anywhere.
 - Figma/Redbubble About cards carry drafted copy the owner may want to rewrite.
