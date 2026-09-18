@@ -741,6 +741,13 @@ body.pager {
   letter-spacing: 0.08em;
   color: var(--ink-faint);
 }
+/* Freelancer overview: a logo img standing in for the eyebrow label —
+   sized to the eyebrow's visual weight since it ships with no width/height. */
+.freelancer-mark {
+  display: block;
+  height: 20px;
+  width: auto;
+}
 .book h2 {
   font-family: var(--font-display);
   font-weight: 400;
