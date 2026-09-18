@@ -37,7 +37,11 @@ python3 -m http.server 4173
   `.zk-deco` img (real Figma exports) so nothing crops off at odd window aspects;
   dashed-border paper TOC; overview spread = blank left page + intro right (serif title,
   `assets/zookal-wordmark.svg`, mission copy, SOLO-DESIGNER meta).
-- `case-freelancer.html` — scaffold copy (prompts describing what to write).
+- `case-freelancer.html` — full case study (profiles revamp, "Optimising user profiles
+  to attract more projects and hires"), default dark theme. Sections: Overview /
+  01 The problem / 02 The solution / 03 The result. One `.img-slot` remains
+  ("Example of a current user profile") awaiting a screenshot from the owner.
+  Work-grid order on index.html is Fabra > Zookal > Freelancer (owner's request).
 - `about.html` — pannable canvas "world" (drag/wheel with fling momentum), pulsing
   pointers opening glass cards (`bio-card` / compact `bio-card--mini`, one per item);
   on mobile the cards re-parent to <body> as fixed popovers (position:fixed is defeated
@@ -177,6 +181,8 @@ window sizes, and grep the marker. Delete the scratch file before committing.
 - Remaining case-study `[Image]` slots (`.img-slot`) in case-fabra.html await real
   screenshots (structure flow, properties panel, entry-point grid, prioritisation
   framework, OKR excerpt, plan tiers, stats callout, closing shot).
-- Freelancer.com case study awaits real copy.
+- Freelancer case: `.img-slot` in #problem awaits a "current user profile" screenshot.
+- Unplaced owner uploads: `assets/freelancer-share.png` (referral-page laptop mockup),
+  `assets/scape-field-services.png` + `-2.png` (5760px masters — compress before placing).
 - `assets/overview.png` was uploaded by the owner but is not yet placed anywhere.
 - Figma/Redbubble About cards carry drafted copy the owner may want to rewrite.
