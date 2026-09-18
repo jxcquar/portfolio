@@ -44,7 +44,7 @@ python3 -m http.server 4173
   geometry, stretched to the design's box ratios via `aspect-ratio` +
   `object-fit:fill`) + `assets/fl-bird.png` hummingbird gift-box artwork cropped
   off the bottom-right corner. Narrative structure mirrors Zookal's: Overview /
-  01 Setup / 02 Discovery / 03 Hypothesis / 04 Validation / 05 Scope / 06 Results
+  01 Context / 02 Discovery / 03 Hypothesis / 04 Validation / 05 Scope / 06 Results
   (section ids match the eyebrow numbers — case-nav, toc-sheet and the eyebrow
   text must all stay in sync when editing). Results embeds the owner's real
   user-feedback collage (`assets/fl-feedback.jpg`, optimised from her
@@ -130,7 +130,12 @@ opens a centred lightbox; 2x pannable on mobile):
   reader collapses into one clipped screen (a real bug we shipped once). `.zoomable`
   has `flex-shrink:0` so flex can never squash figures to fit a page. Major window
   resizes reload; crossing the 900px boundary also reloads (in-app browsers settle
-  their viewport after scripts run).
+  their viewport after scripts run). **A spread can hold two short chapters
+  side by side** when both fit on one page each (e.g. Freelancer's Context and
+  Discovery) — `slideSection` in main.js collects *every* section id present
+  on that spread, not just the last one found, so `caseLinks`/dots highlight
+  every chapter actually shown (a real bug we shipped: only the last id won,
+  so the sticky-note nav highlighted the wrong — or a stuck — chapter).
 - **Cache-busting**: every HTML file references `css/style.css?v=N` and
   `js/main.js?v=N`. **Bump N in all six HTML files whenever CSS/JS change** — the
   owner's browsers cache aggressively and stale mixes have caused ghost bugs.

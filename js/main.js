@@ -516,12 +516,15 @@
 
     const slides = [...document.querySelectorAll(".case-slide")];
     const caseLinks = [...document.querySelectorAll(".case-nav a")];
+    // a spread can hold two short chapters side by side (their .book-page
+    // elements carry different dataset.section) — collect every id present,
+    // not just the last one, so the nav highlights every chapter shown
     const slideSection = slides.map((s) => {
-      let id = s.id || null;
+      const ids = s.id ? [s.id] : [];
       s.querySelectorAll(".book-page").forEach((p) => {
-        if (p.dataset.section) id = p.dataset.section;
+        if (p.dataset.section && !ids.includes(p.dataset.section)) ids.push(p.dataset.section);
       });
-      return id;
+      return ids.length ? ids : null;
     });
     for (let k = 1; k < slideSection.length; k++) {
       if (!slideSection[k]) slideSection[k] = slideSection[k - 1];
@@ -585,12 +588,12 @@
         s.classList.toggle("is-active", k === i);
         s.classList.toggle("is-before", k < i);
       });
-      const ownId = slideSection[i] || "";
-      caseLinks.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === "#" + ownId));
+      const ownIds = slideSection[i] || [];
+      caseLinks.forEach((a) => a.classList.toggle("active", ownIds.includes(a.getAttribute("href").slice(1))));
       dots.forEach((d, k) => d.classList.toggle("active", k === i));
       prevBtn.disabled = i === 0;
       nextBtn.disabled = i === slides.length - 1;
-      if (ownId) history.replaceState(null, "", "#" + ownId);
+      if (ownIds[0]) history.replaceState(null, "", "#" + ownIds[0]);
 
       if (!instant) {
         locked = true;
