@@ -143,6 +143,11 @@ opens a centred lightbox; 2x pannable on mobile):
   test at ~390×660, not full height.
 - **Work cards**: frosted glass is a per-card blurred moss layer (`::before`), NOT
   backdrop-filter (adjacent live backdrops smear each other in Chromium on hover).
+  Card titles are owner-supplied brand SVGs (`assets/fabra-logo.svg` white,
+  `zookal-logo.svg` orange, `freelancer-logo.svg` white text + blue bird), sized
+  via `.card-logo--*` heights. Gotcha: Figma-exported SVGs wrapping paths in
+  `<g clip-path="url(#...)">` painted zero pixels when loaded as an `<img>` —
+  strip the clipPath/defs wrapper.
   901–1340px turns the grid into a horizontal snap carousel; ≤900px a taller one.
 - Fabra uses the light "collage" theme (`body.case-light`, `assets/collage.jpg`).
 

@@ -320,6 +320,17 @@ body.leave .pill-nav {
 .wordmark--fabra { font-weight: 600; letter-spacing: 0.14em; }
 .wordmark--zookal { font-weight: 800; letter-spacing: 0.1em; }
 
+/* Brand logo SVGs on the work cards (owner-supplied, white/brand-colour
+   variants for the dark moss glass). Heights tuned so cap heights match. */
+.project-card .card-logo {
+  align-self: flex-end;
+  width: auto;
+  flex-shrink: 0;
+}
+.card-logo--fabra { height: 21px; }
+.card-logo--zookal { height: 23px; }
+.card-logo--freelancer { height: 40px; margin: -8px 0; }
+
 .project-card .card-desc {
   font-size: 19px;
   line-height: 1.4;
