@@ -38,10 +38,15 @@ python3 -m http.server 4173
   dashed-border paper TOC; overview spread = blank left page + intro right (serif title,
   `assets/zookal-wordmark.svg`, mission copy, SOLO-DESIGNER meta).
 - `case-freelancer.html` — full case study (profiles revamp, "Optimising user profiles
-  to attract more projects and hires"), default dark theme. Sections: Overview /
-  01 The problem / 02 The solution / 03 The result. One `.img-slot` remains
-  ("Example of a current user profile") awaiting a screenshot from the owner.
-  Work-grid order on index.html is Fabra > Zookal > Freelancer (owner's request).
+  to attract more projects and hires"), light "money" theme (`body.case-light
+  case-paper`) matching Figma node 2072-406 in "folio '26 (Copy)": `.bg--fl` =
+  plain #f8f8f8 + 13 falling dollar bills (4 unique PNGs `assets/fl-cash-*.png`,
+  centre-positioned + rotated per the Figma 1920×1080 geometry, stretched to the
+  design's box ratios via `aspect-ratio` + `object-fit:fill`) + `assets/fl-bird.png`
+  hummingbird gift-box artwork cropped off the bottom-right corner. Sections:
+  Overview / 01 The problem / 02 The solution / 03 The result. One `.img-slot`
+  remains ("Example of a current user profile") awaiting a screenshot from the
+  owner. Work-grid order on index.html is Fabra > Zookal > Freelancer.
 - `about.html` — pannable canvas "world" (drag/wheel with fling momentum), pulsing
   pointers opening glass cards (`bio-card` / compact `bio-card--mini`, one per item);
   on mobile the cards re-parent to <body> as fixed popovers (position:fixed is defeated

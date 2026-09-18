@@ -1812,6 +1812,43 @@ body.case-paper {
 .bg--zk .zk-bag    { left: 5.3%;   bottom: 5.8%; width: 19%;    transform: rotate(10.1deg); }
 .bg--zk .zk-flower { right: 1.5%;  bottom: 6.7%; width: 15.7%;  transform: rotate(9.67deg); }
 
+/* Freelancer bg (Figma 2072-406): plain light stage, 13 falling dollar bills
+   (4 unique PNGs, positioned by their rotation-centres so any viewport aspect
+   keeps the scatter) + hummingbird gift-box artwork cropped off bottom-right.
+   The design stretches each source into its box, hence explicit aspect-ratios. */
+.bg--fl { background: #f8f8f8; }
+.bg--fl .fl-cash {
+  position: absolute;
+  height: auto; /* .bg img sets height:100% — aspect-ratio must win */
+  object-fit: fill;
+}
+.bg--fl .fl-cash--a { width: 4.2%;  aspect-ratio: 80.63 / 119.67; }
+.bg--fl .fl-cash--b { width: 5.81%; aspect-ratio: 111.54 / 112.89; }
+.bg--fl .fl-cash--c { width: 5.28%; aspect-ratio: 101.31 / 102.4; }
+.bg--fl .fl-cash--d { width: 3.79%; aspect-ratio: 72.7 / 99.54; }
+.bg--fl .fl-p1  { left: 22.41%; top: 13.33%; transform: translate(-50%, -50%) rotate(64.66deg); }
+.bg--fl .fl-p2  { left: 11.19%; top: 32.37%; transform: translate(-50%, -50%) rotate(64.66deg); }
+.bg--fl .fl-p3  { left: 10.42%; top: 14.51%; transform: translate(-50%, -50%) rotate(64.66deg); }
+.bg--fl .fl-p4  { left: 14.3%;  top: 5.3%;   transform: translate(-50%, -50%) rotate(64.66deg); }
+.bg--fl .fl-p5  { left: 94.32%; top: 24.68%; transform: translate(-50%, -50%) rotate(116deg); }
+.bg--fl .fl-p6  { left: 86.95%; top: 36.89%; transform: translate(-50%, -50%) rotate(73.66deg); }
+.bg--fl .fl-p7  { left: 82.49%; top: 16.39%; transform: translate(-50%, -50%) rotate(73.66deg); }
+.bg--fl .fl-p8  { left: 88.83%; top: 8.88%;  transform: translate(-50%, -50%) rotate(73.66deg); }
+.bg--fl .fl-p9  { left: 20.51%; top: 69.49%; transform: translate(-50%, -50%) rotate(73.66deg); }
+.bg--fl .fl-p10 { left: 10.52%; top: 80.41%; transform: translate(-50%, -50%) rotate(73.66deg); }
+.bg--fl .fl-p11 { left: 9.81%;  top: 58.83%; transform: translate(-50%, -50%) rotate(73.66deg); }
+.bg--fl .fl-p12 { left: 17.5%;  top: 44.06%; transform: translate(-50%, -50%) rotate(73.66deg); }
+.bg--fl .fl-p13 { left: 16.93%; top: 93.6%;  transform: translate(-50%, -50%) rotate(106.34deg) scaleY(-1); }
+.bg--fl .fl-bird {
+  position: absolute;
+  right: -13.07%;
+  bottom: -2.25%;
+  width: 46.04%;
+  height: auto;
+  aspect-ratio: 884 / 620;
+  object-fit: fill;
+}
+
 /* Overview spread: blank left page, intro block on the right (Figma 56-751) */
 .ov-intro {
   display: flex;
