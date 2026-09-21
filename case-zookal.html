@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,500;1,600&family=Crimson+Text:ital@0;1&family=Inter:wght@400;500;600;700;800&family=Roboto:wght@500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=93" />
+  <link rel="stylesheet" href="css/style.css?v=94" />
 </head>
 <body class="pager case-light case-paper" data-page="case">
 
@@ -39,6 +39,7 @@
     <a href="#hypothesis">Hypothesis</a>
     <a href="#validation">Validation</a>
     <a href="#scope">Scope</a>
+    <a href="#experience">Experience</a>
     <a href="#results">Results</a>
     <a href="#learned">Learnings</a>
   </nav>
@@ -87,15 +88,15 @@
             <p class="eyebrow">01 · The context</p>
             <h2>The hardest part wasn't the interface.</h2>
             <div class="body">
-              <p>Most 0→1 stories get told as execution stories. Here's the problem, here's what I designed, here are the launch numbers. I want to tell this one a bit differently.</p>
-              <p>Almost every real decision on this project got made without the thing you'd normally want first. No market validation for this exact idea. No PM in the room during the week it mattered most. No internal precedent for an AI product at the company. And a board asking for more than engineering could realistically deliver in the time we had.</p>
+              <p>We were building something new, and a lot of the usual inputs weren't there.</p>
+              <p>There was no market validation for the idea, no PM during a key part of the project and no precedent for building an AI product at the company. At the same time, the board had a long list of expectations and we had a small engineering team and a tight timeline.</p>
             </div>
           </div>
           <div class="book-page">
             <div class="body">
-              <p>So this is really a story about how I made, and defended, product calls under that kind of uncertainty. And what I'd do differently if I ran it again.</p>
+              <p>A lot of my role became figuring out what we should actually build, what we could realistically ship, and what we needed to leave out.</p>
+              <p>This case study covers the decisions I made, what informed them and what I'd do differently in hindsight.</p>
             </div>
-            <p class="principle">Product judgment under ambiguity.</p>
           </div>
       </div>
     </section>
@@ -104,20 +105,22 @@
       <div class="book-inner">
           <div class="book-page">
             <p class="eyebrow">02 · Problem discovery</p>
-            <h2>A business that needed a second act, and students stuck between thin free tools and $100-an-hour tutors.</h2>
+            <h2>Zookal needed a product it could monetise, while students had few options between free resources and expensive tutoring.</h2>
             <div class="body">
-              <p>The business problem first. Zookal had a real business built on textbooks, and we'd secured funding, but the tech downturn made it harder to raise more. Inside the company that meant three things were happening at once. Engagement and retention on the platform were low. We had the product "shell" but not enough content to fill it. And the board wanted something we could sell, soon.</p>
-              <p>Then the user problem. Past research and a proper look at our competitors pointed to a gap specific enough to actually build against. It wasn't "students need help studying," it was much narrower than that. HSC and VCE practice resources online had thin question banks, covered only a few subjects, and gave no real feedback.</p>
+              <p>Zookal had built its business around textbooks, but the tech downturn made raising more capital difficult. At the same time, engagement and retention were low, the platform had the foundations of a product but not enough content and the board wanted something we could monetise quickly.</p>
+              <p>On the student side, previous research and competitor analysis pointed to a more specific problem. HSC and VCE students could find practice resources online but question banks were limited, subject coverage was inconsistent and most offered little meaningful feedback.</p>
+              <p>I ran into the same problem while testing NESA's practice exams.</p>
             </div>
+            <div class="img-slot"><span>[Image] NESA's HSC practice exam — no way to save progress</span></div>
           </div>
           <div class="book-page">
             <div class="body">
-              <p>I actually hit this wall myself testing NESA's own practice exams. I couldn't even save my progress. That frustration is basically where the value proposition came from.</p>
-              <p>And the market signal backed it up. HSC and VCE together are about 125,000 students a year, and private tutoring in Sydney runs $60 to $100+ an hour. Real demand for help, sitting right next to weak digital alternatives. That was the opening.</p>
-              <p>Here's where the ambiguity started. Our Head of Product went on leave right when we needed to align the CEO, product scientists and engineering on the value prop and positioning. So I stepped into that gap myself. I built the competitor analysis and presented it directly to the CEO, which meant I was effectively running the definition phase of a product nobody had officially told me I owned yet.</p>
-              <p>There was no playbook for "designer runs stakeholder alignment on an AI product nobody in the company had built before." I had to figure out what "good enough alignment" looked like on the fly, then stand behind it.</p>
+              <p>I couldn't even save my progress. It was a small frustration but it highlighted how limited the experience was beyond simply answering questions.</p>
+              <p>There was also a clear market for better support. Around 125,000 students sit the HSC and VCE each year, while private tutoring in Sydney can cost $60 to $100+ an hour. We saw an opportunity to offer students more useful exam preparation without the cost of one-on-one tutoring.</p>
+              <p>The harder part was deciding what that product should actually be.</p>
+              <p>At this stage, we were still working through some fundamental questions: what the product should be, how we should position it and what we could realistically build. With our Head of Product on leave, I worked directly with the CEO, product scientists and engineering to move those decisions forward. I pulled together the competitor analysis, helped shape the value proposition and presented the direction to the CEO.</p>
+              <p>That meant working through the product direction as a team before getting into the experience itself.</p>
             </div>
-            <div class="img-slot"><span>[Image] Competitor analysis snapshot, the gap in HSC/VCE practice tools, as presented to the CEO</span></div>
           </div>
       </div>
     </section>
@@ -126,17 +129,16 @@
       <div class="book-inner">
           <div class="book-page">
             <p class="eyebrow">03 · The hypothesis</p>
-            <h2>A pricing and access bet, more than a feature bet.</h2>
+            <h2>The bet was as much about access and pricing as the product itself.</h2>
             <div class="body">
-              <p>The bet was simple. Offer AI-driven exam practice with instant feedback for $20 a month, a fraction of $60+ an hour for private tutoring, and HSC and VCE students who can't access or afford tutoring will pick it up as a practice tool. It also gives Zookal a second reason for existing subscribers to upgrade.</p>
+              <p>Our hypothesis was simple: if we could offer AI-powered exam practice with instant feedback for $20 a month, we could give HSC and VCE students a more affordable way to practise outside the classroom, without relying on private tutoring at $60+ an hour. For Zookal, it also gave existing subscribers another reason to upgrade.</p>
             </div>
           </div>
           <div class="book-page">
             <div class="body">
-              <p>That framing mattered later, because it meant the product's job was never to be comprehensive. It just had to be credible enough, fast enough and cheap enough to beat doing nothing, and beat paying for a tutor.</p>
-              <p>Every scoping decision after this got measured against that, not against "what would make this feature complete."</p>
+              <p>That shaped how we thought about the product. We didn't need to recreate everything a tutor could do. We needed to give students enough questions, useful feedback and a simple way to practise consistently.</p>
+              <p>That became a useful way to make trade-offs. Instead of asking what would make the product feel complete, we focused on what students needed for it to be genuinely useful.</p>
             </div>
-            <p class="pullquote">Credible enough, fast enough and cheap enough to beat doing nothing, and beat paying for a tutor.</p>
           </div>
       </div>
     </section>
@@ -145,20 +147,22 @@
       <div class="book-inner">
           <div class="book-page">
             <p class="eyebrow">04 · Validation</p>
-            <h2>With under two months before exams, validation had to happen inside the build, not before it.</h2>
+            <h2>With less than two months before exams, we had to validate while we built.</h2>
             <div class="body">
-              <p>A feature page with a waitlist went live before the full product did. It was the smallest thing we could ship to find out if interest was real before we committed more engineering time, and it ended up doubling as our main acquisition surface.</p>
-              <p>I showed low-fidelity flows to stakeholders early, on purpose, before they were polished. That way I'd get the disagreement and pushback while it was still cheap to change things.</p>
-              <p>And we tested early designs directly with real HSC-adjacent students. One response has stuck with me ever since.</p>
+              <p>We launched a feature page and waitlist before the full product was ready. It was a lightweight way to test whether students were interested before committing more engineering time. It later became our main acquisition surface.</p>
+              <p>I also shared low-fidelity flows with stakeholders early, before spending time on polish. The goal was to surface questions and disagreements while the direction was still easy to change.</p>
             </div>
+            <div class="img-slot"><span>[Image] Early low-fidelity flows shared with stakeholders</span></div>
           </div>
           <div class="book-page">
+            <div class="body">
+              <p>At the same time, we tested early concepts with recent HSC students. One piece of feedback reinforced something we'd been thinking about with the free tier:</p>
+            </div>
             <p class="pullquote">"I think this would be a very helpful and easy to use study tool for HSC students... I wish the free package could offer a little more, as many students do not have an income."<br/><span style="font-size:15px; font-style:normal; color:#777">Ieve, recent HSC graduate</span></p>
             <div class="body">
-              <p>It confirmed the free-tier idea was landing before we even had any premium conversion data, and it pointed straight at a gap in the free tier that ended up shaping the free/premium split.</p>
-              <p>To be honest about what this wasn't, the waitlist and early testing ran alongside the build, not ahead of it. This was validation squeezed into a build we were already committed to, not validation that decided whether we should build at all in the first place. We just didn't have that runway this time.</p>
+              <p>That gave us an early signal that the free tier mattered, but also that we needed to think carefully about where we drew the line between free and paid.</p>
+              <p>The constraint was that validation happened alongside development, not before it. We weren't using research to decide whether to build the product. We were using it to make better decisions about what we were already building.</p>
             </div>
-            <div class="img-slot"><span>[Image] The waitlist feature page that went live before the product did</span></div>
           </div>
       </div>
     </section>
@@ -167,20 +171,78 @@
       <div class="book-inner">
           <div class="book-page">
             <p class="eyebrow">05 · Scoping v1</p>
-            <h2>Pressure from two directions. A board that wanted more, and a deadline that wasn't moving.</h2>
+            <h2>We had more ideas than we had time to build.</h2>
             <div class="body">
-              <p>The board wanted more features to make the launch feel bigger. Engineering had a fixed deadline, the HSC start date, and it wasn't moving. Here's what I decided on, and stood behind.</p>
-              <p>Mobile practice over desktop polish, for one. Research told us students study on desktop but practise on mobile, on the go, in between everything else. Since "practise anywhere, get instant feedback" was the actual promise, not "study anywhere," I put the mobile practice experience first and treated desktop as secondary instead of splitting effort evenly.</p>
-              <p>A free tier you could actually feel, not a locked demo, was the other. Instead of gating everything behind a paywall, I designed the free and premium split so free users could genuinely experience the product's value. That came straight from the student feedback. A thin free tier would lose exactly the students who couldn't afford tutoring in the first place, which would have undercut the entire point of the product.</p>
+              <p>The board wanted more features for launch, while engineering was working towards a fixed deadline: the start of the HSC exam period. We had to be deliberate about what made v1 and what could wait.</p>
+              <p>One of those decisions was prioritising the mobile practice experience. Our research showed that while students tended to study on desktop, practice was more likely to happen on mobile, in shorter moments throughout the day.</p>
+              <p>The other was making the free tier genuinely useful. Instead of putting most of the experience behind a paywall, free users could answer enough questions and receive feedback to understand the value of the product before upgrading.</p>
             </div>
           </div>
           <div class="book-page">
             <div class="body">
-              <p>There was a third piece too, negotiating scope with the board using what engineering could actually deliver, not just my opinion. I sat down with the engineers to understand what was realistic in the time we had, then brought that back to the board as the basis for what we'd ship. I didn't quietly overpromise to keep everyone happy, and I didn't cut scope on my own without buy-in either.</p>
-              <p>That negotiation doesn't usually show up in a case study, but it was one of the most important decisions I made on this project. It's the difference between executing a brief and actually shaping what the business could realistically commit to.</p>
-              <p>We didn't launch a finished product. We launched one that was scoped tightly enough to hold up against the hypothesis, and that we could actually ship in the time we had. That was the constraint that mattered most.</p>
+              <p>That decision was also influenced by what we heard from students. If the free experience was too limited, we risked excluding the same students for whom private tutoring was already out of reach.</p>
+              <p>Scope itself was an ongoing conversation. I worked closely with engineering to understand what we could realistically deliver within the timeframe, then used that to align with the board on what would make the first release.</p>
+              <p>Not everything made it in and v1 wasn't intended to be the finished product. The goal was to ship enough of the core experience to test whether students would use it, without stretching the team across features that weren't essential yet.</p>
             </div>
-            <div class="img-slot"><span>[Image] Mobile-first practice flow, question, answer, instant AI feedback</span></div>
+          </div>
+      </div>
+    </section>
+
+    <section class="case-slide" id="experience">
+      <div class="book-inner">
+          <div class="book-page">
+            <p class="eyebrow">06 · Designing the experience</p>
+            <h2>Making exam practice easy to start and worth returning to</h2>
+            <div class="body">
+              <p class="sub-head">Start with something students already knew</p>
+              <p>We kept the question formats close to what students were already used to, from multiple choice to short and long answers. The idea was simple: the product should feel familiar from the first question.</p>
+            </div>
+            <div class="img-slot"><span>[Image] HSC/VCE exam format → Zookal practice experience</span></div>
+            <div class="body">
+              <p class="sub-head">Make the feedback useful, not just instant</p>
+              <p>For multiple choice, feedback was straightforward. Short and long answers were harder because there wasn't always one correct response.</p>
+              <p>We worked with teachers to give the AI the same HSC and VCE criteria students would be assessed against, alongside teacher feedback and example responses. My focus was on making that feedback useful to students: showing what they did well, where they could improve and what to work on next.</p>
+              <p>Students could practise written responses in a familiar exam format and get meaningful feedback straight away, without waiting for a teacher or tutor to review their work.</p>
+            </div>
+            <div class="img-slot"><span>[Image] Student response → AI evaluation → feedback</span></div>
+            <ul class="flow-list annot-list">
+              <li>Assessed against HSC/VCE criteria</li>
+              <li>Teacher-informed feedback</li>
+              <li>Feedback shown directly after submission</li>
+              <li>Clear next step for improving the response</li>
+            </ul>
+          </div>
+          <div class="book-page">
+            <div class="body">
+              <p class="sub-head">Make it easy to practise anywhere</p>
+              <p>On mobile, I designed the practice flow around shorter sessions, with as little friction as possible between opening the product and answering a question.</p>
+              <p>I kept the core loop simple: choose a subject, pick a practice mode, answer a question, get immediate feedback and move onto the next one. Everything else stayed secondary so students could focus on practising.</p>
+            </div>
+            <div class="img-slot"><span>[Image] Mobile practice flow — subject selection → question → answer → AI feedback</span></div>
+            <ul class="flow-list annot-list">
+              <li>Short path into the first question</li>
+              <li>Question remains the primary focus</li>
+              <li>Feedback appears within the practice flow rather than sending students elsewhere</li>
+            </ul>
+            <div class="body">
+              <p class="sub-head">Give students a reason to come back</p>
+              <p>Getting someone through one practice session wasn't enough. We also needed to make their effort feel like it was building towards something.</p>
+              <p>I made progress visible throughout the experience so students could see what they had completed and how far they'd come. The idea was to make each session feel connected to something bigger, rather than like another standalone set of questions.</p>
+            </div>
+            <div class="img-slot"><span>[Image] Dashboard / progress / gamification screens</span></div>
+            <div class="body">
+              <p>I also introduced Zookie to make exam practice feel a little less serious and repetitive. Inspired by how Duolingo uses its character throughout the learning experience, I brought Zookie into progress, feedback and achievement moments to add personality without getting in the way of practice.</p>
+            </div>
+            <div class="img-slot"><span>[Image] Zookie across progress, feedback and success states</span></div>
+            <div class="body">
+              <p class="sub-head">Show the value before asking students to pay</p>
+              <p>The free tier also had to work as part of the experience, not just the pricing model.</p>
+              <p>Rather than locking the core experience behind a paywall, I designed the free tier so students could answer questions and see the feedback for themselves before reaching a limit. Upgrade moments only appeared once they'd had a chance to understand what the product could do.</p>
+            </div>
+            <div class="img-slot"><span>[Image] Free practice → feedback → limit / upgrade flow</span></div>
+            <div class="body">
+              <p>That gave us a way to balance two competing needs: keeping the product accessible enough to be useful for students who couldn't afford tutoring, while still giving people a reason to upgrade.</p>
+            </div>
           </div>
       </div>
     </section>
@@ -188,24 +250,25 @@
     <section class="case-slide" id="results">
       <div class="book-inner">
           <div class="book-page">
-            <p class="eyebrow">06 · The results</p>
-            <h2>10,955 students in the first five weeks.</h2>
+            <p class="eyebrow">07 · The results</p>
+            <h2>10,955 students joined in the first five weeks.</h2>
             <div class="body">
-              <p>We launched in time for HSC and VCE season, against a total addressable market of around 127,000 students (77K HSC plus 50K VCE).</p>
+              <p>We launched in time for the HSC and VCE exam period. In the first five weeks, the product received 127K visits and 10,955 students joined.</p>
             </div>
-            <p class="mini-eyebrow">In the first 5 weeks</p>
+            <p class="mini-eyebrow">In the first five weeks</p>
             <div class="stat-rows">
-              <p class="stat-row"><span class="stat-num">10,955</span><span class="stat-label">students on the platform</span></p>
-              <p class="stat-row"><span class="stat-num">47.3%</span><span class="stat-label">free-trial to paid conversion</span></p>
+              <p class="stat-row"><span class="stat-num">127K</span><span class="stat-label">visits in the first five weeks</span></p>
+              <p class="stat-row"><span class="stat-num">10,955</span><span class="stat-label">students joined</span></p>
               <p class="stat-row"><span class="stat-num">95%</span><span class="stat-label">of new trial users returned 7+ days after their first visit</span></p>
+              <p class="stat-row"><span class="stat-num">146</span><span class="stat-label">subscriptions created</span></p>
             </div>
           </div>
           <div class="book-page">
             <div class="body">
-              <p>Behind the headline numbers, there's more detail. 1,117 engaged users, about 10% of signups. 146 subscriptions created at a 14.0% conversion rate. And 69 of those came from free trial users converting to paid.</p>
-              <p>For a product that went from an unnamed idea to launch in under two months, with only two weeks for the actual visual design, those are solid numbers. The trial-to-paid conversion especially tells me the core promise, instant feedback and affordable practice, actually held up once students got their hands on it.</p>
+              <p>Beyond the headline numbers, 1,117 students became engaged users and 69 converted from a free trial to a paid subscription.</p>
+              <p>The product had gone from an early idea to launch in under two months, with roughly two weeks spent on the final visual design. More importantly, students didn't just sign up. They came back, practised and some were willing to pay for it.</p>
+              <p>For us, those were early signs that the product was useful beyond the initial signup.</p>
             </div>
-            <div class="img-slot"><span>[Image] Launch stats callout, or the Zookie and astronaut launch brand, the launch landed on 7NEWS</span></div>
           </div>
       </div>
     </section>
@@ -213,18 +276,18 @@
     <section class="case-slide" id="learned">
       <div class="book-inner">
           <div class="book-page">
-            <p class="eyebrow">07 · What I learned</p>
-            <h2>The biggest lesson wasn't a feature I missed. It was about timing validation properly, instead of just hitting a launch date.</h2>
+            <p class="eyebrow">08 · What I learned</p>
+            <h2>The biggest thing I'd change is when we started validating.</h2>
             <div class="body">
-              <p>HSC and VCE students usually start preparing up to a year ahead. We had a two-month build window because that's when the board made the call, not because that's when the market was actually ready for us.</p>
-              <p>If I ran this again with the same ambiguity, I'd push harder, earlier, to separate validation from the launch deadline. Even a scrappy four-week head start on the waitlist and low-fidelity testing would have given us real behavioural data before the biggest decisions got locked in.</p>
+              <p>HSC and VCE students can start preparing months before their exams. Our two-month build window was driven by when the business decided to launch, rather than when students actually started preparing.</p>
+              <p>If I ran the project again, I'd push to start validation earlier and separate it from the launch timeline. Even four extra weeks with the waitlist and early concepts would have given us more evidence before some of the bigger product decisions were made.</p>
             </div>
           </div>
           <div class="book-page">
             <div class="body">
-              <p>With more time, there are three things I would have prioritised on the product itself. Gamification modelled on what actually makes Duolingo's retention loop work, a real structural mechanism rather than decoration. Email marketing and in-app notifications to bring back the 90% of signups who never became active users, still the biggest single gap in our funnel. And product animations to carry the Zookie and astronaut brand identity we built for launch. It landed well outside the product (we ended up on 7NEWS) but never got used enough inside it.</p>
-              <p>I'm no longer with the Zookal team, though from what I understand, the product kept iterating under the team after I left.</p>
-              <p>If you're making product calls under ambiguity and want a designer who'll own them, let's chat on <a href="https://www.linkedin.com/in/jtenges/" target="_blank" rel="noopener" style="text-decoration:underline">LinkedIn</a> or email me at <a href="mailto:jxcquie@gmail.com" style="text-decoration:underline">jxcquie@gmail.com</a>.</p>
+              <p>I'd also spend more time understanding retention after the first practice session. We designed v1 to make practice quick to start and rewarding to return to, but the gap between signups and engaged users showed there was still more work to do. I'd want to understand where students dropped off before deciding whether the answer was stronger progress mechanics, reminders, personalisation or something else.</p>
+              <p>The project also changed how I think about 0→1 design. When there isn't enough time or evidence to know the right answer, I've learned to be clear about what I'm assuming, test the smallest thing I can and leave enough room to change direction as I learn more.</p>
+              <p>I left Zookal after launch, so I wasn't part of the iterations that followed, but it's still a project that shapes how I approach design today.</p>
             </div>
             <a class="case-next" href="contact.html">Let's work together →</a>
           </div>
@@ -257,12 +320,13 @@
     <a href="#context">01 · The context</a>
     <a href="#discovery">02 · Problem discovery</a>
     <a href="#hypothesis">03 · The hypothesis</a>
-    <a href="#validation">04 · Scrappy validation</a>
+    <a href="#validation">04 · Validation</a>
     <a href="#scope">05 · Scoping v1</a>
-    <a href="#results">06 · The results</a>
-    <a href="#learned">07 · What I learned</a>
+    <a href="#experience">06 · Designing the experience</a>
+    <a href="#results">07 · The results</a>
+    <a href="#learned">08 · What I learned</a>
   </nav>
 
-  <script src="js/main.js?v=93"></script>
+  <script src="js/main.js?v=94"></script>
 </body>
 </html>

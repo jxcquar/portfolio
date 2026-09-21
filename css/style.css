@@ -838,6 +838,17 @@ body.case-light { background: #ffffff; }
   color: var(--ink-soft);
 }
 .flow-list li::before { content: "–  "; color: var(--ink-faint); }
+/* smaller, muted variant for captioning annotations under a placeholder image */
+.flow-list.annot-list { font-size: 14px; line-height: 1.5; color: var(--ink-faint); }
+
+/* mini sub-heading inside a chapter's .body flow, for multi-part chapters
+   (e.g. Zookal's "Designing the experience") that need more than one h2 */
+.body .sub-head {
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
 
 /* repaginated pages: paragraphs flow as individual blocks */
 .book-page--flow { gap: 16px; }

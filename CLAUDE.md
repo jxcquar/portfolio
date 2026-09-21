@@ -36,7 +36,12 @@ python3 -m http.server 4173
   (`assets/zookal-dots.png`) and each 3D prop/doodle is its own edge-anchored
   `.zk-deco` img (real Figma exports) so nothing crops off at odd window aspects;
   dashed-border paper TOC; overview spread = blank left page + intro right (serif title,
-  `assets/zookal-wordmark.svg`, mission copy, SOLO-DESIGNER meta).
+  `assets/zookal-wordmark.svg`, mission copy, SOLO-DESIGNER meta). Narrative:
+  Overview / 01 Context / 02 Discovery / 03 Hypothesis / 04 Validation / 05 Scope /
+  06 Experience ("Designing the experience" — a multi-part chapter using `.sub-head`
+  for its five mini-headings inside `.body`, plus `.flow-list.annot-list` for the
+  small muted bullet call-outs under a couple of its image placeholders) /
+  07 Results (four `.stat-row`s) / 08 Learnings.
 - `case-freelancer.html` — full case study (profiles revamp), light "money" theme
   (`body.case-light case-paper`) matching Figma node 2072-406 in "folio '26 (Copy)":
   `.bg--fl` = plain #f8f8f8 + 13 falling dollar bills (4 unique PNGs
@@ -201,6 +206,13 @@ window sizes, and grep the marker. Delete the scratch file before committing.
 - Remaining case-study `[Image]` slots (`.img-slot`) in case-fabra.html await real
   screenshots (structure flow, properties panel, entry-point grid, prioritisation
   framework, OKR excerpt, plan tiers, stats callout, closing shot).
+- case-zookal.html has 9 open `[Image]` slots after the Context/Discovery/
+  Experience rewrite: NESA practice exam, early low-fi flows, HSC/VCE exam
+  format → practice experience, student response → AI eval → feedback, mobile
+  practice flow, dashboard/progress/gamification, Zookie across states, free
+  practice → upgrade flow. `assets/zookal-user-base.avif` and
+  `assets/fitfocus-mobile.png` / `-2.png` were uploaded recently and may cover
+  some of these — check with the owner before placing.
 - Unplaced owner uploads: `assets/freelancer-share.png` (referral-page laptop mockup),
   `assets/freelancer-giveget.png`, `assets/freelancer-invite.png` (1.3-1.6MB, likely
   more Freelancer profile/referral screenshots — compress before placing),
