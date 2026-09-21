@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
   <title>Freelancer.com — Case Study — Jacqueline Tenges</title>
-  <meta name="description" content="Case study: Freelancer.com — optimising user profiles to attract more projects and hires." />
+  <meta name="description" content="Case study: Freelancer.com — redesigning profiles to help freelancers attract more projects and hires." />
   <meta name="theme-color" media="(max-width: 900px)" content="#ffffff" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌼</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,500;1,600&family=Crimson+Text:ital@0;1&family=Inter:wght@400;500;600;700;800&family=Roboto:wght@500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=94" />
+  <link rel="stylesheet" href="css/style.css?v=95" />
 </head>
 <body class="pager case-light case-paper" data-page="case">
 
@@ -44,10 +44,12 @@
     <a href="#overview">Overview</a>
     <a href="#context">Context</a>
     <a href="#discovery">Discovery</a>
-    <a href="#hypothesis">Hypothesis</a>
-    <a href="#validation">Validation</a>
-    <a href="#scope">Scope</a>
-    <a href="#results">Results</a>
+    <a href="#direction">Direction</a>
+    <a href="#testing">Testing</a>
+    <a href="#perspectives">Perspectives</a>
+    <a href="#experience">Experience</a>
+    <a href="#outcome">Outcome</a>
+    <a href="#learned">Learnings</a>
   </nav>
 
   <main>
@@ -59,10 +61,10 @@
             <p class="ghostmark">Freelancer.com</p>
           </div>
           <div class="book-page book-page--center">
-            <h2>Optimising Freelancer.com's user profiles to attract more projects and hires. </h2>
+            <h2>Redesigning Freelancer.com profiles to help freelancers attract more projects and hires.</h2>
             <div>
                <img class="freelancer-mark" src="assets/freelancer-logo-black.png" alt="Freelancer.com" />
-              <p class="body" style="margin-top:6px">Optimising Freelancer.com's user profiles to attract more projects and hires.</p>
+              <p class="body" style="margin-top:6px">Freelancer.com is a global marketplace trusted by more than 71 million users.</p>
             </div>
             <p class="meta">Product Designer | Jan 2023 - Jul 2023</p>
           </div>
@@ -73,14 +75,15 @@
       <div class="book-inner">
           <div class="book-page">
             <p class="eyebrow">01 · Context</p>
-            <h2>Building on top of a legacy structure</h2>
+            <h2>The profile had years of decisions behind it.</h2>
             <div class="body">
-              <p>The page's overall structure was legacy, already shaped by rounds of A/B testing before I joined, and I built inside Freelancer's existing Bits design system rather than starting from scratch.</p>
+              <p>Freelancer's profile had evolved through years of product changes, new features and A/B testing. Much of what was there existed for a reason, even if the experience no longer felt particularly cohesive.</p>
+              <p>I was working within Freelancer's existing Bits design system, an established page structure and early concepts from my product manager.</p>
             </div>
           </div>
           <div class="book-page">
             <div class="body">
-              <p>My product manager had already sketched a few early ideas to work from.</p>
+              <p>Two previous attempts to redesign the profile had already stalled before reaching development. This time, we needed to understand what was worth changing, what should stay and how to build enough confidence in the direction to move it forward.</p>
             </div>
           </div>
       </div>
@@ -89,84 +92,146 @@
     <section class="case-slide" id="discovery">
       <div class="book-inner">
           <div class="book-page">
-            <p class="eyebrow">02 · Discovery</p>
-            <h2>Trust starts before a client even reaches out</h2>
+            <p class="eyebrow">02 · Problem discovery</p>
+            <h2>The profile already had plenty of information. The hierarchy was the problem.</h2>
             <div class="body">
-              <p>The design dated back to the early 2000s, and clients noticed. A profile is often the first real signal someone gets about whether a freelancer's worth hiring, and an outdated one made that call harder than it needed to be, no matter how good the person behind it actually was.</p>
+              <p>A freelancer's profile contains most of what a client might want to know: previous work, ratings, reviews, skills, badges and completed projects.</p>
+              <p>But those elements had accumulated over time and competed for attention. For someone seeing a freelancer for the first time, it was difficult to quickly understand what they were good at, what they had done before and whether they felt credible enough to hire.</p>
             </div>
           </div>
           <div class="book-page">
             <div class="body">
-              <p>Two earlier attempts to redesign the page had already stalled, not for lack of good ideas, but because it's a hard sell to get engineering time for a page that doesn't directly move revenue.</p>
+              <p>For freelancers, their work also felt secondary to the information around it. The profile behaved more like a marketplace listing than somewhere they could properly present what they could do.</p>
+              <p>That shifted the problem for me. Rather than asking what else we could add to the profile, I started looking at how the information already there could work harder.</p>
+            </div>
+            <figure class="zoomable"><img class="case-figure" src="assets/fl-profile-old.jpg" width="1600" height="1013" alt="The old Freelancer.com profile, annotated with the problems it had: hard to digest quickly, poor grouping, unclear to freelancers what a client needs" /></figure>
+          </div>
+      </div>
+    </section>
+
+    <section class="case-slide" id="direction">
+      <div class="book-inner">
+          <div class="book-page">
+            <p class="eyebrow">03 · The direction</p>
+            <h2>Give the work more weight, without losing the trust freelancers had already earned.</h2>
+            <div class="body">
+              <p>Making the profile feel more like a portfolio seemed straightforward, but there was something important we couldn't lose.</p>
+              <p>Freelancers had spent years building ratings, reviews, completed projects and badges. Those signals gave clients information that the portfolio alone couldn't, so removing them for the sake of a cleaner profile would have solved the wrong problem.</p>
+            </div>
+            <p class="principle">The work should demonstrate capability, while reputation should reinforce trust.</p>
+          </div>
+          <div class="book-page">
+            <div class="img-slot img-slot--tall"><span>[Image] Existing hierarchy → proposed hierarchy</span></div>
+            <div class="body">
+              <p>It shaped the visual direction too. I pushed the profile towards something brighter and more expressive, while keeping the existing trust signals recognisable and working within the Bits design system.</p>
             </div>
           </div>
       </div>
     </section>
 
-    <section class="case-slide" id="hypothesis">
+    <section class="case-slide" id="testing">
       <div class="book-inner">
           <div class="book-page">
-            <p class="eyebrow">03 · Hypothesis</p>
-            <h2>Bring people in early, and trust follows</h2>
+            <p class="eyebrow">04 · Testing the direction</p>
+            <h2>Sharing the work early changed the design.</h2>
             <div class="body">
-              <p>If the profile could build trust before a client ever sent a message, and if stakeholders were brought into the design early enough to shape it themselves, this attempt could get further than the two before it.</p>
+              <p>With two previous redesign attempts already stalled, I brought stakeholders into the work early, while there was still room to change it.</p>
+              <p>I started with rough wireframes to agree on the overall hierarchy, then moved into more detailed flows as we worked through how people would navigate and manage their profiles.</p>
             </div>
+            <figure class="zoomable"><img class="case-figure" src="assets/fl-wireframes-discovery.jpg" width="1600" height="909" alt="Low-fidelity wireframes exploring profile hierarchy" /></figure>
           </div>
           <div class="book-page">
-            <p class="principle">This wasn't about making things look pretty. It was about giving clients a reason to trust someone before any conversation happened.</p>
+            <div class="body">
+              <p>One of the bigger changes was how freelancers edited their profile.</p>
+              <p>Previously, making a change meant leaving the profile and going into a separate settings page. I brought editing into the profile itself, so freelancers could make changes where they would actually appear.</p>
+            </div>
+            <figure class="zoomable"><img class="case-figure" src="assets/fl-profile-editing.jpg" width="1600" height="1162" alt="Editing a profile in place, rather than in a separate settings page" /></figure>
           </div>
       </div>
     </section>
 
-    <section class="case-slide" id="validation">
+    <section class="case-slide" id="perspectives">
       <div class="book-inner">
           <div class="book-page">
-            <p class="eyebrow">04 · Validation</p>
-            <h2>Wireframes first, colour later</h2>
+            <p class="eyebrow">05 · Working through different points of view</p>
+            <h2>Research and leadership weren't always pointing in the same direction.</h2>
             <div class="body">
-              <p>I turned early sketches into low-fidelity wireframes and shared them right away, so stakeholders were shaping the direction from day one instead of reacting to a finished design later. Mid-fidelity wireframes tested navigation and flow before any visual design work, surfacing two real changes, simplifying the manage-portfolio flow, and adding a clear call-to-action on the homepage.</p>
+              <p>As the designs developed, what we were hearing from users didn't always line up with what leadership had in mind for the profile.</p>
+              <p>Instead of choosing one direction over the other, I went back to what clients actually needed from the page: understand someone's work, decide whether they trusted them and know what to do next.</p>
+              <p>Those became a more useful way to judge the designs than which version people preferred.</p>
             </div>
           </div>
           <div class="book-page">
+            <figure class="zoomable"><img class="case-figure" src="assets/fl-feedback.jpg" width="1600" height="591" alt="Real client feedback comments on the profile direction" /></figure>
+            <div class="img-slot"><span>[Image] Stakeholder feedback on the early designs</span></div>
             <div class="body">
-              <p>Once the concept was validated, I used Midjourney to generate high-fidelity visuals instead of waiting on production-ready assets, which let me put a near-final version in front of people fast and get wider buy-in moving. That process also surfaced a real tension between leadership's vision for the profile and what research was telling us. Our CEO had a clear point of view on where this should go, and user research was pointing somewhere else. Closing that gap meant translating research into terms leadership cared about, not "users prefer this," but why it mattered for trust, conversion, and hire rate.</p>
-            </div>
-          </div>
-      </div>
-    </section>
-
-    <section class="case-slide" id="scope">
-      <div class="book-inner">
-          <div class="book-page">
-            <p class="eyebrow">05 · Scope</p>
-            <h2>Keeping what freelancers earned, changing how clients saw it</h2>
-            <div class="body">
-              <p>The direction ended up brighter and more colourful than the existing page, but every badge and feature freelancers had already earned carried over, so returning users wouldn't lose anything in the switch.</p>
-            </div>
-          </div>
-          <div class="book-page">
-            <div class="body">
-              <p>Based on ongoing feedback, the design centred on inline editing instead of a separate settings flow, a portfolio-style layout for past work, and visual trust cues, badges, completed work, ratings, built to do their job fast for a client seeing that freelancer for the first time.</p>
+              <p>The final direction took something from both. Leadership influenced the more expressive visual treatment, while research shaped the hierarchy around portfolio work, profile management and trust signals.</p>
             </div>
           </div>
       </div>
     </section>
 
-    <section class="case-slide" id="results">
+    <section class="case-slide" id="experience">
       <div class="book-inner">
           <div class="book-page">
-            <p class="eyebrow">06 · Results</p>
-            <h2>A strong internal reception, without a launch to measure</h2>
+            <p class="eyebrow">06 · Designing the experience</p>
+            <h2>Make the profile easier to judge and easier to manage.</h2>
             <div class="body">
-              <p>I moved on from Freelancer.com before this shipped, so I don't have launch numbers to point to. What I do have is what came out of talking to users.</p>
+              <p class="sub-head">Put the work first</p>
+              <p>Portfolio projects became the most visual part of the profile, giving clients a quicker way to understand what someone could do through the work they had actually done.</p>
             </div>
-            <figure class="zoomable"><img class="case-figure" src="assets/fl-feedback.jpg" width="1600" height="591" alt="Real user feedback comments on the Freelancer.com redesign" /></figure>
+            <figure class="zoomable"><img class="case-figure" src="assets/fl-wireframes-ia.jpg" width="1600" height="1307" alt="Mobile and desktop profile wireframes, putting portfolio work first" /></figure>
+            <div class="body">
+              <p class="sub-head">Let freelancers edit in context</p>
+              <p>Instead of sending freelancers to a separate settings page, editing happened directly within the profile. They could make changes where they would actually appear, without moving between two different experiences.</p>
+            </div>
+            <figure class="zoomable"><img class="case-figure" src="assets/fl-profile-editing.jpg" width="1600" height="1162" alt="Editing a profile in context, directly on the page" /></figure>
           </div>
           <div class="book-page">
             <div class="body">
-              <p>Freelancers wanted to edit their profile in place instead of getting routed to a separate settings page. They wanted it to read like an actual portfolio, not a directory listing. Clients new to the platform kept coming back to trust, wanting to feel confident about who they were hiring before committing to anything.</p>
-              <p>Those conversations and feedback shaped the direction of the redesign, and the core decisions from this phase became the foundation the next phase of work was built on.</p>
+              <p class="sub-head">Keep trust easy to scan</p>
+              <p>Ratings, completed projects and badges stayed visible around the work, giving clients more context without letting every trust signal compete for the same attention.</p>
             </div>
+            <div class="img-slot"><span>[Image] Annotated profile — trust signals kept visible alongside the work</span></div>
+            <div class="body">
+              <p class="sub-head">Bringing it together</p>
+              <p>The final profile was brighter and more expressive, while still working within Freelancer's Bits design system and keeping the reputation freelancers had already built recognisable.</p>
+            </div>
+            <figure class="zoomable"><img class="case-figure" src="assets/fl-profile-new.jpg" width="1600" height="952" alt="The final redesigned Freelancer.com profile" /></figure>
+          </div>
+      </div>
+    </section>
+
+    <section class="case-slide" id="outcome">
+      <div class="book-inner">
+          <div class="book-page">
+            <p class="eyebrow">07 · The outcome</p>
+            <h2>A direction we could move forward with.</h2>
+            <div class="body">
+              <p>Research gave us confidence in the direction. Freelancers wanted their work to have more prominence and an easier way to manage their profile, while clients consistently looked for enough information to feel confident about who they were hiring.</p>
+            </div>
+          </div>
+          <div class="book-page">
+            <div class="body">
+              <p>Those findings shaped the final direction and became the foundation for the next phase of the profile redesign.</p>
+              <p>I moved on from Freelancer.com before the redesign launched, so I wasn't there to measure its post-launch impact.</p>
+            </div>
+          </div>
+      </div>
+    </section>
+
+    <section class="case-slide" id="learned">
+      <div class="book-inner">
+          <div class="book-page">
+            <p class="eyebrow">08 · What I learned</p>
+            <h2>Knowing what to keep matters as much as knowing what to change.</h2>
+            <div class="body">
+              <p>Working on a mature product changed how I think about redesigns. Something looking dated isn't always a reason to replace it. Existing patterns can carry years of user behaviour, experiments and expectations that aren't immediately obvious from the interface.</p>
+              <p>The harder part is knowing what still serves a purpose, and what's simply there because it's always been there.</p>
+            </div>
+          </div>
+          <div class="book-page">
+            <p class="principle">Sometimes good design is less about starting again and more about giving what's already there a better chance to work.</p>
             <a class="case-next" href="contact.html">Let's work together →</a>
           </div>
       </div>
@@ -196,13 +261,15 @@
   <nav class="toc-sheet" id="tocSheet" aria-label="Contents" hidden>
     <a href="#overview">Overview</a>
     <a href="#context">01 · Context</a>
-    <a href="#discovery">02 · Discovery</a>
-    <a href="#hypothesis">03 · Hypothesis</a>
-    <a href="#validation">04 · Validation</a>
-    <a href="#scope">05 · Scope</a>
-    <a href="#results">06 · Results</a>
+    <a href="#discovery">02 · Problem discovery</a>
+    <a href="#direction">03 · The direction</a>
+    <a href="#testing">04 · Testing the direction</a>
+    <a href="#perspectives">05 · Working through different points of view</a>
+    <a href="#experience">06 · Designing the experience</a>
+    <a href="#outcome">07 · The outcome</a>
+    <a href="#learned">08 · What I learned</a>
   </nav>
 
-  <script src="js/main.js?v=94"></script>
+  <script src="js/main.js?v=95"></script>
 </body>
 </html>

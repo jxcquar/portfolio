@@ -49,14 +49,27 @@ python3 -m http.server 4173
   geometry, stretched to the design's box ratios via `aspect-ratio` +
   `object-fit:fill`) + `assets/fl-bird.png` hummingbird gift-box artwork cropped
   off the bottom-right corner. Narrative structure mirrors Zookal's: Overview /
-  01 Context / 02 Discovery / 03 Hypothesis / 04 Validation / 05 Scope / 06 Results
-  (section ids match the eyebrow numbers — case-nav, toc-sheet and the eyebrow
-  text must all stay in sync when editing). Results embeds the owner's real
-  user-feedback collage (`assets/fl-feedback.jpg`, optimised from her
-  `freelancer-feedback.webp` upload) as a zoomable case-figure. Overview's
-  eyebrow is a logo img (`.freelancer-mark`, sized in CSS since it ships with
-  no width/height attrs) rather than text. Work-grid order on index.html is
-  Fabra > Zookal > Freelancer.
+  01 Context / 02 Problem discovery / 03 The direction / 04 Testing the direction /
+  05 Working through different points of view / 06 Designing the experience
+  (multi-part chapter using `.sub-head` for its four mini-headings, same pattern
+  as Zookal's Experience chapter) / 07 The outcome / 08 What I learned (section
+  ids match the eyebrow numbers — case-nav, toc-sheet and the eyebrow text must
+  all stay in sync when editing). Real case-study screenshots the owner supplied:
+  `assets/fl-profile-old.jpg` (annotated old profile, Discovery), `assets/
+  fl-wireframes-discovery.jpg` (low-fi wireframes, Testing), `assets/
+  fl-profile-editing.jpg` (inline editing, reused in both Testing and
+  Experience — no distinct second image was uploaded for Experience's
+  "edit in context" slot), `assets/fl-feedback.jpg` (client feedback collage,
+  Perspectives), `assets/fl-wireframes-ia.jpg` (mobile/desktop IA wireframes,
+  Experience — tall image, its own page; only clips ~9-40px at unrealistic
+  ≤633px window heights, clean at realistic sizes), `assets/fl-profile-new.jpg`
+  (final redesigned profile, cropped from a full-page scroll capture to just
+  hero+card+bio — the full capture was too tall to fit a book page). Two
+  `.img-slot` placeholders remain (existing-vs-proposed hierarchy diagram in
+  Direction; annotated trust-signals profile in Experience) awaiting assets.
+  Overview's eyebrow is a logo img (`.freelancer-mark`, sized in CSS since it
+  ships with no width/height attrs) rather than text. Work-grid order on
+  index.html is Fabra > Zookal > Freelancer.
 - `about.html` — pannable canvas "world" (drag/wheel with fling momentum), pulsing
   pointers opening glass cards (`bio-card` / compact `bio-card--mini`, one per item);
   on mobile the cards re-parent to <body> as fixed popovers (position:fixed is defeated
@@ -213,13 +226,20 @@ window sizes, and grep the marker. Delete the scratch file before committing.
   practice → upgrade flow. `assets/zookal-user-base.avif` and
   `assets/fitfocus-mobile.png` / `-2.png` were uploaded recently and may cover
   some of these — check with the owner before placing.
-- Unplaced owner uploads: `assets/freelancer-share.png` (referral-page laptop mockup),
-  `assets/freelancer-giveget.png`, `assets/freelancer-invite.png` (1.3-1.6MB, likely
-  more Freelancer profile/referral screenshots — compress before placing),
-  `assets/scape-field-services.png` + `-2.png` (5760px masters — compress before
-  placing). `assets/thumbnail.png` (11MB master of the redesigned Freelancer profile)
-  is the source of the work-card visual `assets/fl-profile-card.png`, and
-  `assets/freelancer-feedback.webp` is the source of the case-figure
-  `assets/fl-feedback.jpg`; both raw masters are themselves unreferenced.
+- case-freelancer.html has 2 open `[Image]` slots: existing-vs-proposed hierarchy
+  diagram (Direction) and an annotated trust-signals profile (Experience).
+- Unplaced owner uploads: `assets/freelancer-share.png` (referral-page laptop
+  mockup), `assets/freelancer-giveget.png`, `assets/freelancer-invite.png`
+  (1.3-1.6MB, likely more Freelancer profile/referral screenshots — check with
+  the owner, may cover the two open slots above), `assets/scape-field-services.png`
+  + `-2.png` (5760px masters — compress before placing). Raw masters kept but
+  unreferenced (their optimised copies are what's actually used): `assets/
+  thumbnail.png` (→ `fl-profile-card.png`), `assets/old-fln-profile.png` (→
+  `fl-profile-old.jpg`), `assets/fln-wireframes.png` (→ `fl-wireframes-
+  discovery.jpg`), `assets/editing-profile.webp` (→ `fl-profile-editing.jpg`),
+  `assets/feedback-clients.avif` (→ `fl-feedback.jpg`; superseded the older
+  `freelancer-feedback.webp` upload), `assets/wireframes-profile.avif` (→
+  `fl-wireframes-ia.jpg`), `assets/new-profile.webp` (→ `fl-profile-new.jpg`,
+  cropped from the full-page scroll capture).
 - `assets/overview.png` was uploaded by the owner but is not yet placed anywhere.
 - Figma/Redbubble About cards carry drafted copy the owner may want to rewrite.
