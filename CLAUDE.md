@@ -219,13 +219,9 @@ window sizes, and grep the marker. Delete the scratch file before committing.
 - Remaining case-study `[Image]` slots (`.img-slot`) in case-fabra.html await real
   screenshots (structure flow, properties panel, entry-point grid, prioritisation
   framework, OKR excerpt, plan tiers, stats callout, closing shot).
-- case-zookal.html has 9 open `[Image]` slots after the Context/Discovery/
-  Experience rewrite: NESA practice exam, early low-fi flows, HSC/VCE exam
-  format → practice experience, student response → AI eval → feedback, mobile
-  practice flow, dashboard/progress/gamification, Zookie across states, free
-  practice → upgrade flow. `assets/zookal-user-base.avif` and
-  `assets/fitfocus-mobile.png` / `-2.png` were uploaded recently and may cover
-  some of these — check with the owner before placing.
+- case-zookal.html: the owner filled every `[Image]` placeholder herself with
+  real screenshots (NESA, competitor research, Figma iterations, mobile/free-
+  tier/progress/Zookie shots, etc.) — no open img-slots left as of v96.
 - case-freelancer.html has 2 open `[Image]` slots: existing-vs-proposed hierarchy
   diagram (Direction) and an annotated trust-signals profile (Experience).
 - Unplaced owner uploads: `assets/freelancer-share.png` (referral-page laptop
